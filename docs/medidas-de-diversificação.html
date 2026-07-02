@@ -131,7 +131,7 @@ solução abaixo resolve o problema de forma manual:</p>
 <span><span class="st">((Apodiformes:21.3,Trochiliformes:21.3):0.6,(Musophagiformes:20.4,Strigiformes:2</span></span>
 <span><span class="st">0.4):1.5):0.6,((Columbiformes:20.8,(Gruiformes:20.1,Ciconiiformes:20.1):0.7):0.8,Pa</span></span>
 <span><span class="st">sseriformes:21.6):0.9):0.6):0.6):0.8):0.5):1.3):0.7):1);"</span><span class="op">)</span></span>
-<span><span class="va">tree.phylog</span><span class="op">&lt;-</span><span class="fu"><a href="https://adeverse.github.io/ade4/reference/newick2phylog.html">newick2phylog</a></span><span class="op">(</span><span class="va">tree</span>,add.tools <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">tree.phylog</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ade4/man/newick2phylog.html">newick2phylog</a></span><span class="op">(</span><span class="va">tree</span>,add.tools <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb139-1" tabindex="-1"></a><span class="fu">require</span>(ade4)</span>
 <span id="cb139-2"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb139-2" tabindex="-1"></a>ori<span class="ot">&lt;-</span><span class="fu">originality</span>(tree.phylog,<span class="at">method=</span><span class="dv">5</span>)</span>
 <span id="cb139-3"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb139-3" tabindex="-1"></a><span class="co"># method = 1 = Vane-Wright et al.'s (1991) node-counting index</span></span>

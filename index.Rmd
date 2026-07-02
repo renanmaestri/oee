@@ -4,7 +4,7 @@ author: "Renan Maestri & Leandro Duarte"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [book.bib, packages.bib, references.bib]
+bibliography: [book.bib, packages.bib]
 nocite: '@*'
 url: https://renanmaestri.github.io/oee/
 cover-image: images/Logo JPEG.jpg
@@ -17,7 +17,7 @@ output: bookdown::pdf_document2
 
 # Prefácio {-}
 
-```{r, echo=FALSE, out.width='70%', fig.align='center'}
+```{r, echo=FALSE, out.width='70.0%', fig.align='center'}
 knitr::include_graphics("images/Logo JPEG.jpg")
 ```
 

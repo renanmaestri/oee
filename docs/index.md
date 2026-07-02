@@ -4,7 +4,7 @@ author: "Renan Maestri & Leandro Duarte"
 date: "2026-07-02"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [book.bib, packages.bib, references.bib]
+bibliography: [book.bib, packages.bib]
 nocite: '@*'
 url: https://renanmaestri.github.io/oee/
 cover-image: images/Logo JPEG.jpg
@@ -17,7 +17,7 @@ output: bookdown::pdf_document2
 
 # Prefácio {-}
 
-<img src="images/Logo JPEG.jpg" alt="" width="70%" style="display: block; margin: auto;" />
+<img src="images/Logo JPEG.jpg" alt="" width="70.0%" style="display: block; margin: auto;" />
 
 Bem-vindo ao site da disciplina **Oficina de Ecologia Evolutiva (OEE)**, oferecida pelo Programa de Pós-Graduação em Ecologia da Universidade Federal do Rio Grande do Sul (UFRGS).
 

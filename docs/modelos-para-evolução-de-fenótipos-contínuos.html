@@ -127,9 +127,9 @@ a função treedata</p>
 <span><span class="va">bodymass</span><span class="op">&lt;-</span><span class="va">dados</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span></span>
 <span><span class="va">bodymass</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="va">bodymass</span>,<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">bodymass</span></span></code></pre></div>
-<div id="modelos-evolutivos-contínuos" class="section level2" number="0.17">
+<div id="modelos-evolutivos-contínuos" class="section level2" number="2.1">
 <h2>
-<span class="header-section-number">0.17</span> Modelos evolutivos contínuos<a class="anchor" aria-label="anchor" href="#modelos-evolutivos-cont%C3%ADnuos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.1</span> Modelos evolutivos contínuos<a class="anchor" aria-label="anchor" href="#modelos-evolutivos-cont%C3%ADnuos"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Modelo Browniano</span></span>
@@ -165,9 +165,9 @@ com o tempo. Se a é próximo de 0, a evolução é aproximadamente Browniana.</
 “melhor” modelo, variando de 2-10 unidades. É comum usar 4 unidades, então EB não
 tem um ajuste muito melhor do que BM ou OU.</p>
 </div>
-<div id="reconstrução-ancestral-de-dados-contínuos" class="section level2" number="0.18">
+<div id="reconstrução-ancestral-de-dados-contínuos" class="section level2" number="2.2">
 <h2>
-<span class="header-section-number">0.18</span> Reconstrução ancestral de dados contínuos<a class="anchor" aria-label="anchor" href="#reconstru%C3%A7%C3%A3o-ancestral-de-dados-cont%C3%ADnuos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.2</span> Reconstrução ancestral de dados contínuos<a class="anchor" aria-label="anchor" href="#reconstru%C3%A7%C3%A3o-ancestral-de-dados-cont%C3%ADnuos"><i class="fas fa-link"></i></a>
 </h2>
 <p>Estimativa do tamanho corporal ancestral para primatas, sob um modelo Browniano.
 As funções ace (ape) e fastAnc (phytools), entre outras, implementam reconstrução
@@ -216,14 +216,14 @@ a estimativa se o valor de algum nó é conhecido (e.g., fóssil).</p>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>,mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/phenogram.html">phenogram</a></span><span class="op">(</span><span class="va">tree</span>,<span class="va">X</span>,ftype<span class="op">=</span><span class="st">"i"</span>,fsize<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="exercício-2---modelos-contínuos-e-variação" class="section level2" number="0.19">
+<div id="exercício-2---modelos-contínuos-e-variação" class="section level2" number="2.3">
 <h2>
-<span class="header-section-number">0.19</span> Exercício 2 - Modelos contínuos e variação<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio-2---modelos-cont%C3%ADnuos-e-varia%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.3</span> Exercício 2 - Modelos contínuos e variação<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio-2---modelos-cont%C3%ADnuos-e-varia%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="intraespecífica" class="section level2" number="0.20">
+<div id="intraespecífica" class="section level2" number="2.4">
 <h2>
-<span class="header-section-number">0.20</span> intraespecífica<a class="anchor" aria-label="anchor" href="#intraespec%C3%ADfica"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.4</span> intraespecífica<a class="anchor" aria-label="anchor" href="#intraespec%C3%ADfica"><i class="fas fa-link"></i></a>
 </h2>
 <p>Carregue os dados:
 primate-data-erro.txt
@@ -248,10 +248,10 @@ obtido através da fórmula SD/√N (N=tamanho da amostra) = se&lt;-sd/sqrt(10).
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos">2. Modelos para evolução de fenótipos contínuos</a></li>
-<li><a class="nav-link" href="#modelos-evolutivos-cont%C3%ADnuos"><span class="header-section-number">0.17</span> Modelos evolutivos contínuos</a></li>
-<li><a class="nav-link" href="#reconstru%C3%A7%C3%A3o-ancestral-de-dados-cont%C3%ADnuos"><span class="header-section-number">0.18</span> Reconstrução ancestral de dados contínuos</a></li>
-<li><a class="nav-link" href="#exerc%C3%ADcio-2---modelos-cont%C3%ADnuos-e-varia%C3%A7%C3%A3o"><span class="header-section-number">0.19</span> Exercício 2 - Modelos contínuos e variação</a></li>
-<li><a class="nav-link" href="#intraespec%C3%ADfica"><span class="header-section-number">0.20</span> intraespecífica</a></li>
+<li><a class="nav-link" href="#modelos-evolutivos-cont%C3%ADnuos"><span class="header-section-number">2.1</span> Modelos evolutivos contínuos</a></li>
+<li><a class="nav-link" href="#reconstru%C3%A7%C3%A3o-ancestral-de-dados-cont%C3%ADnuos"><span class="header-section-number">2.2</span> Reconstrução ancestral de dados contínuos</a></li>
+<li><a class="nav-link" href="#exerc%C3%ADcio-2---modelos-cont%C3%ADnuos-e-varia%C3%A7%C3%A3o"><span class="header-section-number">2.3</span> Exercício 2 - Modelos contínuos e variação</a></li>
+<li><a class="nav-link" href="#intraespec%C3%ADfica"><span class="header-section-number">2.4</span> intraespecífica</a></li>
 </ul>
 
       <div class="book-extra">

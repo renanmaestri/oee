@@ -25,13 +25,17 @@ espécies, costuma-se organizar os dados de assembleias em data frames, nas quai
 primeira coluna informa a assembleia (sítio), a segunda coluna informa a identidade da 
 espécie, e a terceira informa o valor, seja de presença/ausência da espécie no sítio, ou de 
 abundância de indivíduos, da seguinte forma: 
+
+
 | Site | Species | Value |
 |---|---|---|
 | Com1 | Sp_1 | 2 |
 | Com1 | Sp_2 | 10 |
 | Com2 | Sp_1 | 5 |
 | Com3 | Sp_3 | 1 |
-| Com3 | Sp_3 | 8 | 
+| Com3 | Sp_3 | 8 |
+
+ 
 Neste caso, para podermos seguir nossas análises, precisamos primeiramente converter 
 o data frame em matriz, o que pode ser feito da seguinte forma: 
 

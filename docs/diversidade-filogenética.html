@@ -131,9 +131,9 @@ função ses.pd disponibiliza várias opções de modelos nulos. Antes de rodar 
 avaliar qual modelo mais se adequa ao objetivo da análise. No manual do pacote picante
 (<a href="https://cran.r-project.org/web/packages/picante/picante.pdf" class="uri">https://cran.r-project.org/web/packages/picante/picante.pdf</a>), os diferentes modelos
 nulos são apresentados em detalhe.</p>
-<div id="mean-phylogenetic-distance-mpd" class="section level2" number="0.45">
+<div id="mean-phylogenetic-distance-mpd" class="section level2" number="2.1">
 <h2>
-<span class="header-section-number">0.45</span> Mean Phylogenetic Distance (MPD)<a class="anchor" aria-label="anchor" href="#mean-phylogenetic-distance-mpd"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.1</span> Mean Phylogenetic Distance (MPD)<a class="anchor" aria-label="anchor" href="#mean-phylogenetic-distance-mpd"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mpd_comm</span><span class="op">&lt;-</span><span class="fu">picante</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/picante/man/mpd.html">mpd</a></span><span class="op">(</span><span class="va">comm</span>,<span class="fu"><a href="https://rdrr.io/r/stats/cophenetic.html">cophenetic</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span>, abundance.weighted <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
@@ -142,9 +142,9 @@ nulos são apresentados em detalhe.</p>
 <p>Verificar a opção de modelo nulo mais adequada (<a href="https://cran.r-" class="uri">https://cran.r-</a>
 project.org/web/packages/picante/picante.pdf).</p>
 </div>
-<div id="mean-nearest-taxon-distance-mntd" class="section level2" number="0.46">
+<div id="mean-nearest-taxon-distance-mntd" class="section level2" number="2.2">
 <h2>
-<span class="header-section-number">0.46</span> Mean Nearest Taxon Distance (MNTD)<a class="anchor" aria-label="anchor" href="#mean-nearest-taxon-distance-mntd"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.2</span> Mean Nearest Taxon Distance (MNTD)<a class="anchor" aria-label="anchor" href="#mean-nearest-taxon-distance-mntd"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mntd_comm</span><span class="op">&lt;-</span><span class="fu">picante</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/picante/man/mntd.html">mntd</a></span><span class="op">(</span><span class="va">comm</span>,<span class="fu"><a href="https://rdrr.io/r/stats/cophenetic.html">cophenetic</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span>, abundance.weighted <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
@@ -153,16 +153,16 @@ project.org/web/packages/picante/picante.pdf).</p>
 <p>Verificar a opção de modelo nulo mais adequada (<a href="https://cran.r-" class="uri">https://cran.r-</a>
 project.org/web/packages/picante/picante.pdf</p>
 </div>
-<div id="pd-de-rao-raos-d" class="section level2" number="0.47">
+<div id="pd-de-rao-raos-d" class="section level2" number="2.3">
 <h2>
-<span class="header-section-number">0.47</span> PD de Rao (Rao’s D)<a class="anchor" aria-label="anchor" href="#pd-de-rao-raos-d"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.3</span> PD de Rao (Rao’s D)<a class="anchor" aria-label="anchor" href="#pd-de-rao-raos-d"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">raoD_comm</span><span class="op">&lt;-</span><span class="fu">picante</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/picante/man/raoD.html">raoD</a></span><span class="op">(</span><span class="va">comm</span>,<span class="va">tree</span><span class="op">)</span><span class="op">$</span><span class="va">Dkk</span></span></code></pre></div>
 </div>
-<div id="variabilidade-filogenética-psv" class="section level2" number="0.48">
+<div id="variabilidade-filogenética-psv" class="section level2" number="2.4">
 <h2>
-<span class="header-section-number">0.48</span> Variabilidade filogenética (PSV)<a class="anchor" aria-label="anchor" href="#variabilidade-filogen%C3%A9tica-psv"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.4</span> Variabilidade filogenética (PSV)<a class="anchor" aria-label="anchor" href="#variabilidade-filogen%C3%A9tica-psv"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">psv_comm</span><span class="op">&lt;-</span><span class="fu">picante</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/picante/man/psd.html">psv</a></span><span class="op">(</span><span class="va">comm</span>,<span class="va">tree</span>,compute.var<span class="op">=</span><span class="cn">TRUE</span>,scale.vcv<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
@@ -170,9 +170,9 @@ project.org/web/packages/picante/picante.pdf</p>
 <p>A função psr calcula uma medida de riqueza filogenética ao multiplicar a riqueza
 observada pelo valor de PSV.</p>
 </div>
-<div id="exercício" class="section level2" number="0.49">
+<div id="exercício" class="section level2" number="2.5">
 <h2>
-<span class="header-section-number">0.49</span> Exercício<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5</span> Exercício<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio"><i class="fas fa-link"></i></a>
 </h2>
 <ol style="list-style-type: decimal">
 <li>Calcule as diferentes medidas de diversidade filogenética, e correlacione os
@@ -191,11 +191,11 @@ Por que alguns modelos dão resultados tão diferentes dos outros?</li>
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#diversidade-filogen%C3%A9tica">2. Diversidade filogenética</a></li>
-<li><a class="nav-link" href="#mean-phylogenetic-distance-mpd"><span class="header-section-number">0.45</span> Mean Phylogenetic Distance (MPD)</a></li>
-<li><a class="nav-link" href="#mean-nearest-taxon-distance-mntd"><span class="header-section-number">0.46</span> Mean Nearest Taxon Distance (MNTD)</a></li>
-<li><a class="nav-link" href="#pd-de-rao-raos-d"><span class="header-section-number">0.47</span> PD de Rao (Rao’s D)</a></li>
-<li><a class="nav-link" href="#variabilidade-filogen%C3%A9tica-psv"><span class="header-section-number">0.48</span> Variabilidade filogenética (PSV)</a></li>
-<li><a class="nav-link" href="#exerc%C3%ADcio"><span class="header-section-number">0.49</span> Exercício</a></li>
+<li><a class="nav-link" href="#mean-phylogenetic-distance-mpd"><span class="header-section-number">2.1</span> Mean Phylogenetic Distance (MPD)</a></li>
+<li><a class="nav-link" href="#mean-nearest-taxon-distance-mntd"><span class="header-section-number">2.2</span> Mean Nearest Taxon Distance (MNTD)</a></li>
+<li><a class="nav-link" href="#pd-de-rao-raos-d"><span class="header-section-number">2.3</span> PD de Rao (Rao’s D)</a></li>
+<li><a class="nav-link" href="#variabilidade-filogen%C3%A9tica-psv"><span class="header-section-number">2.4</span> Variabilidade filogenética (PSV)</a></li>
+<li><a class="nav-link" href="#exerc%C3%ADcio"><span class="header-section-number">2.5</span> Exercício</a></li>
 </ul>
 
       <div class="book-extra">

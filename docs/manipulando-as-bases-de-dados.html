@@ -116,15 +116,42 @@ dados é uma matriz na qual as linhas são as assembleias, e as colunas são as 
 espécies, costuma-se organizar os dados de assembleias em data frames, nas quais a
 primeira coluna informa a assembleia (sítio), a segunda coluna informa a identidade da
 espécie, e a terceira informa o valor, seja de presença/ausência da espécie no sítio, ou de
-abundância de indivíduos, da seguinte forma:
-| Site | Species | Value |
-|—|—|—|
-| Com1 | Sp_1 | 2 |
-| Com1 | Sp_2 | 10 |
-| Com2 | Sp_1 | 5 |
-| Com3 | Sp_3 | 1 |
-| Com3 | Sp_3 | 8 |
-Neste caso, para podermos seguir nossas análises, precisamos primeiramente converter
+abundância de indivíduos, da seguinte forma:</p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th>Site</th>
+<th>Species</th>
+<th>Value</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Com1</td>
+<td>Sp_1</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>Com1</td>
+<td>Sp_2</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>Com2</td>
+<td>Sp_1</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>Com3</td>
+<td>Sp_3</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>Com3</td>
+<td>Sp_3</td>
+<td>8</td>
+</tr>
+</tbody>
+</table></div>
+<p>Neste caso, para podermos seguir nossas análises, precisamos primeiramente converter
 o data frame em matriz, o que pode ser feito da seguinte forma:</p>
 <div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/reshape">reshape2</a></span><span class="op">)</span></span>

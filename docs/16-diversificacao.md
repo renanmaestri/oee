@@ -1,4 +1,4 @@
-# Medidas de diversificação
+# 5. Medidas de diversificação {-}
 
 Indicadores de taxa de diversificação média em assembleias são excelentes fontes de 
 informação sobre a história de formação das assembleias, e podem explicar a variação 

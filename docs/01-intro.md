@@ -1,4 +1,4 @@
-# Estrutura e Programa da Disciplina
+# Estrutura e Programa da Disciplina {-}
 
 ## Informações Gerais
 * **Duração**: 3 semanas (concentrada)

@@ -1,4 +1,4 @@
-# Modelos para evolução de fenótipos contínuos
+# 2. Modelos para evolução de fenótipos contínuos {-}
 
 Existem vários modelos de evolução de atributos contínuos univariados. Os modelos 
 macroevolutivos mais comuns são o Browniano (BM), o modelo de Ornstein- 

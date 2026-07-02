@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capítulo 5 Regressão Filogenética | Oficina de Ecologia Evolutiva</title>
+<title>4. Regressão Filogenética | Oficina de Ecologia Evolutiva</title>
 <meta name="author" content="Renan Maestri &amp; Leandro Duarte">
 <meta name="description" content="Esse tutorial implementa os Contrastes Filogenéticos Independentes (PIC) (Felsenstein (1985), PGLS (Grafen 1989) e PVR (Diniz-Filho et al. 1998). Vamos carregar alguns dados contendo diferentes...">
 <meta name="generator" content="bookdown 0.47 with bs4_book()">
-<meta property="og:title" content="Capítulo 5 Regressão Filogenética | Oficina de Ecologia Evolutiva">
+<meta property="og:title" content="4. Regressão Filogenética | Oficina de Ecologia Evolutiva">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://renanmaestri.github.io/oee/regressão-filogenética.html">
 <meta property="og:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
 <meta property="og:description" content="Esse tutorial implementa os Contrastes Filogenéticos Independentes (PIC) (Felsenstein (1985), PGLS (Grafen 1989) e PVR (Diniz-Filho et al. 1998). Vamos carregar alguns dados contendo diferentes...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capítulo 5 Regressão Filogenética | Oficina de Ecologia Evolutiva">
+<meta name="twitter:title" content="4. Regressão Filogenética | Oficina de Ecologia Evolutiva">
 <meta name="twitter:description" content="Esse tutorial implementa os Contrastes Filogenéticos Independentes (PIC) (Felsenstein (1985), PGLS (Grafen 1989) e PVR (Diniz-Filho et al. 1998). Vamos carregar alguns dados contendo diferentes...">
 <meta name="twitter:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,6 +23,29 @@
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
   </style>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -47,22 +70,24 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Prefácio</a></li>
-<li><a class="" href="estrutura-e-programa-da-disciplina.html"><span class="header-section-number">1</span> Estrutura e Programa da Disciplina</a></li>
-<li><a class="" href="manipulando-filogenias-no-r---sinal-filogen%C3%A9tico.html"><span class="header-section-number">2</span> Manipulando filogenias no R - Sinal Filogenético</a></li>
-<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos.html"><span class="header-section-number">3</span> Modelos para evolução de fenótipos contínuos</a></li>
-<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-discretos.html"><span class="header-section-number">4</span> Modelos para evolução de fenótipos discretos</a></li>
-<li><a class="active" href="regress%C3%A3o-filogen%C3%A9tica.html"><span class="header-section-number">5</span> Regressão Filogenética</a></li>
-<li><a class="" href="correla%C3%A7%C3%A3o-de-atributos-discretos.html"><span class="header-section-number">6</span> Correlação de atributos discretos</a></li>
-<li><a class="" href="modelos-multi-taxa-e-multi-regime.html"><span class="header-section-number">7</span> Modelos multi-taxa e multi-regime</a></li>
-<li><a class="" href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html"><span class="header-section-number">8</span> Métodos filogenéticos multivariados</a></li>
-<li><a class="" href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html"><span class="header-section-number">9</span> Diversificação de linhagens e fenotípica ao longo do tempo</a></li>
-<li><a class="" href="estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o.html"><span class="header-section-number">10</span> Estimativas de taxas de especiação e extinção</a></li>
-<li><a class="" href="diversifica%C3%A7%C3%A3o-dependente-de-estado.html"><span class="header-section-number">11</span> Diversificação dependente de estado</a></li>
-<li><a class="" href="manipulando-as-bases-de-dados.html"><span class="header-section-number">12</span> Manipulando as bases de dados</a></li>
-<li><a class="" href="diversidade-filogen%C3%A9tica.html"><span class="header-section-number">13</span> Diversidade filogenética</a></li>
-<li><a class="" href="diversidade-beta-filogen%C3%A9tica.html"><span class="header-section-number">14</span> Diversidade beta filogenética</a></li>
-<li><a class="" href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html"><span class="header-section-number">15</span> Seleção e composição fenotípica</a></li>
-<li><a class="" href="medidas-de-diversifica%C3%A7%C3%A3o.html"><span class="header-section-number">16</span> Medidas de diversificação</a></li>
+<li><a class="" href="estrutura-e-programa-da-disciplina.html">Estrutura e Programa da Disciplina</a></li>
+<li class="book-part">Módulo I</li>
+<li><a class="" href="manipulando-filogenias-no-r---sinal-filogen%C3%A9tico.html">1. Manipulando filogenias no R - Sinal Filogenético</a></li>
+<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos.html">2. Modelos para evolução de fenótipos contínuos</a></li>
+<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-discretos.html">3. Modelos para evolução de fenótipos discretos</a></li>
+<li><a class="active" href="regress%C3%A3o-filogen%C3%A9tica.html">4. Regressão Filogenética</a></li>
+<li><a class="" href="correla%C3%A7%C3%A3o-de-atributos-discretos.html">5. Correlação de atributos discretos</a></li>
+<li><a class="" href="modelos-multi-taxa-e-multi-regime.html">6. Modelos multi-taxa e multi-regime</a></li>
+<li><a class="" href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html">7. Métodos filogenéticos multivariados</a></li>
+<li><a class="" href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html">8. Diversificação de linhagens e fenotípica ao longo do tempo</a></li>
+<li><a class="" href="estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o.html">9. Estimativas de taxas de especiação e extinção</a></li>
+<li><a class="" href="diversifica%C3%A7%C3%A3o-dependente-de-estado.html">10. Diversificação dependente de estado</a></li>
+<li class="book-part">Módulo II</li>
+<li><a class="" href="manipulando-as-bases-de-dados.html">1. Manipulando as bases de dados</a></li>
+<li><a class="" href="diversidade-filogen%C3%A9tica.html">2. Diversidade filogenética</a></li>
+<li><a class="" href="diversidade-beta-filogen%C3%A9tica.html">3. Diversidade beta filogenética</a></li>
+<li><a class="" href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html">4. Seleção e composição fenotípica</a></li>
+<li><a class="" href="medidas-de-diversifica%C3%A7%C3%A3o.html">5. Medidas de diversificação</a></li>
 <li><a class="" href="refer%C3%AAncias-2.html">Referências</a></li>
 </ul>
 
@@ -71,9 +96,8 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="regressão-filogenética" class="section level1" number="5">
-<h1>
-<span class="header-section-number">Capítulo 5</span> Regressão Filogenética<a class="anchor" aria-label="anchor" href="#regress%C3%A3o-filogen%C3%A9tica"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="regressão-filogenética" class="section level1 unnumbered">
+<h1>4. Regressão Filogenética<a class="anchor" aria-label="anchor" href="#regress%C3%A3o-filogen%C3%A9tica"><i class="fas fa-link"></i></a>
 </h1>
 <p>Esse tutorial implementa os Contrastes Filogenéticos Independentes (PIC) (Felsenstein
 (1985), PGLS (Grafen 1989) e PVR (Diniz-Filho et al. 1998).
@@ -163,14 +187,14 @@ usar os contrastes independentes neste caso.</p>
 <span><span class="va">fit.pic</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">pic.y</span><span class="op">~</span><span class="va">pic.x</span><span class="op">+</span><span class="fl">0</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit.pic</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/summary.aov.html">summary.aov</a></span><span class="op">(</span><span class="va">fit.pic</span><span class="op">)</span></span></code></pre></div>
-<div id="regressão-filogenética-generalisada-por-quadrados" class="section level2" number="5.1">
+<div id="regressão-filogenética-generalisada-por-quadrados" class="section level2" number="0.24">
 <h2>
-<span class="header-section-number">5.1</span> Regressão Filogenética Generalisada por Quadrados<a class="anchor" aria-label="anchor" href="#regress%C3%A3o-filogen%C3%A9tica-generalisada-por-quadrados"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.24</span> Regressão Filogenética Generalisada por Quadrados<a class="anchor" aria-label="anchor" href="#regress%C3%A3o-filogen%C3%A9tica-generalisada-por-quadrados"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="mínimos-pgls" class="section level2" number="5.2">
+<div id="mínimos-pgls" class="section level2" number="0.25">
 <h2>
-<span class="header-section-number">5.2</span> Mínimos (PGLS)<a class="anchor" aria-label="anchor" href="#m%C3%ADnimos-pgls"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.25</span> Mínimos (PGLS)<a class="anchor" aria-label="anchor" href="#m%C3%ADnimos-pgls"><i class="fas fa-link"></i></a>
 </h2>
 <p>Nós usaremos novamente alguns dados de borboletas do artigo de Swanson et al 2016
 Proc R Soc B.</p>
@@ -264,9 +288,9 @@ preditores e número de termos estimados no modelo em relação ao número de
 observações (espécies). Uma “regra” simples é usar +- 10 vezes mais espécies do que
 termos estimados (incluindo intercepto, interações, e o parâmetro lambda, por exemplo).</p>
 </div>
-<div id="regressão-de-autovetores-filogenéticos-pvr" class="section level2" number="5.3">
+<div id="regressão-de-autovetores-filogenéticos-pvr" class="section level2" number="0.26">
 <h2>
-<span class="header-section-number">5.3</span> Regressão de Autovetores Filogenéticos (PVR)<a class="anchor" aria-label="anchor" href="#regress%C3%A3o-de-autovetores-filogen%C3%A9ticos-pvr"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.26</span> Regressão de Autovetores Filogenéticos (PVR)<a class="anchor" aria-label="anchor" href="#regress%C3%A3o-de-autovetores-filogen%C3%A9ticos-pvr"><i class="fas fa-link"></i></a>
 </h2>
 <p>Regressão de autovetores filogenéticos e Curva PSR.</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
@@ -284,9 +308,9 @@ termos estimados (incluindo intercepto, interações, e o parâmetro lambda, por
 <span>null.model<span class="op">=</span><span class="cn">TRUE</span>,Brownian.model<span class="op">=</span><span class="cn">TRUE</span>,times<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/PVR/man/PSRplot.html">PSRplot</a></span><span class="op">(</span><span class="va">psr_obj</span>,info<span class="op">=</span><span class="st">"both"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="exercício-4-contrastes-filogenéticos-independentes" class="section level2" number="5.4">
+<div id="exercício-4-contrastes-filogenéticos-independentes" class="section level2" number="0.27">
 <h2>
-<span class="header-section-number">5.4</span> Exercício 4 – Contrastes filogenéticos independentes<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio-4-contrastes-filogen%C3%A9ticos-independentes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.27</span> Exercício 4 – Contrastes filogenéticos independentes<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio-4-contrastes-filogen%C3%A9ticos-independentes"><i class="fas fa-link"></i></a>
 </h2>
 <p>Carregue os dois conjuntos de dados:
 pic-dados.txt
@@ -297,16 +321,16 @@ contrastes independentes. Quais foram os resultados? Qual a interpretação?</p>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-discretos.html"><span class="header-section-number">4</span> Modelos para evolução de fenótipos discretos</a></div>
-<div class="next"><a href="correla%C3%A7%C3%A3o-de-atributos-discretos.html"><span class="header-section-number">6</span> Correlação de atributos discretos</a></div>
+<div class="prev"><a href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-discretos.html">3. Modelos para evolução de fenótipos discretos</a></div>
+<div class="next"><a href="correla%C3%A7%C3%A3o-de-atributos-discretos.html">5. Correlação de atributos discretos</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#regress%C3%A3o-filogen%C3%A9tica"><span class="header-section-number">5</span> Regressão Filogenética</a></li>
-<li><a class="nav-link" href="#regress%C3%A3o-filogen%C3%A9tica-generalisada-por-quadrados"><span class="header-section-number">5.1</span> Regressão Filogenética Generalisada por Quadrados</a></li>
-<li><a class="nav-link" href="#m%C3%ADnimos-pgls"><span class="header-section-number">5.2</span> Mínimos (PGLS)</a></li>
-<li><a class="nav-link" href="#regress%C3%A3o-de-autovetores-filogen%C3%A9ticos-pvr"><span class="header-section-number">5.3</span> Regressão de Autovetores Filogenéticos (PVR)</a></li>
-<li><a class="nav-link" href="#exerc%C3%ADcio-4-contrastes-filogen%C3%A9ticos-independentes"><span class="header-section-number">5.4</span> Exercício 4 – Contrastes filogenéticos independentes</a></li>
+<li><a class="nav-link" href="#regress%C3%A3o-filogen%C3%A9tica">4. Regressão Filogenética</a></li>
+<li><a class="nav-link" href="#regress%C3%A3o-filogen%C3%A9tica-generalisada-por-quadrados"><span class="header-section-number">0.24</span> Regressão Filogenética Generalisada por Quadrados</a></li>
+<li><a class="nav-link" href="#m%C3%ADnimos-pgls"><span class="header-section-number">0.25</span> Mínimos (PGLS)</a></li>
+<li><a class="nav-link" href="#regress%C3%A3o-de-autovetores-filogen%C3%A9ticos-pvr"><span class="header-section-number">0.26</span> Regressão de Autovetores Filogenéticos (PVR)</a></li>
+<li><a class="nav-link" href="#exerc%C3%ADcio-4-contrastes-filogen%C3%A9ticos-independentes"><span class="header-section-number">0.27</span> Exercício 4 – Contrastes filogenéticos independentes</a></li>
 </ul>
 
       <div class="book-extra">

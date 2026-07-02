@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capítulo 13 Diversidade filogenética | Oficina de Ecologia Evolutiva</title>
+<title>2. Diversidade filogenética | Oficina de Ecologia Evolutiva</title>
 <meta name="author" content="Renan Maestri &amp; Leandro Duarte">
 <meta name="description" content="Existem diversas medidas de diversidade filogenética (PD), e várias delas apresentam correspondência com medidas de diversidade funcional. Além disso, algumas são correlacionadas com a riqueza de...">
 <meta name="generator" content="bookdown 0.47 with bs4_book()">
-<meta property="og:title" content="Capítulo 13 Diversidade filogenética | Oficina de Ecologia Evolutiva">
+<meta property="og:title" content="2. Diversidade filogenética | Oficina de Ecologia Evolutiva">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://renanmaestri.github.io/oee/diversidade-filogenética.html">
 <meta property="og:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
 <meta property="og:description" content="Existem diversas medidas de diversidade filogenética (PD), e várias delas apresentam correspondência com medidas de diversidade funcional. Além disso, algumas são correlacionadas com a riqueza de...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capítulo 13 Diversidade filogenética | Oficina de Ecologia Evolutiva">
+<meta name="twitter:title" content="2. Diversidade filogenética | Oficina de Ecologia Evolutiva">
 <meta name="twitter:description" content="Existem diversas medidas de diversidade filogenética (PD), e várias delas apresentam correspondência com medidas de diversidade funcional. Além disso, algumas são correlacionadas com a riqueza de...">
 <meta name="twitter:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,6 +23,29 @@
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
   </style>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -47,22 +70,24 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Prefácio</a></li>
-<li><a class="" href="estrutura-e-programa-da-disciplina.html"><span class="header-section-number">1</span> Estrutura e Programa da Disciplina</a></li>
-<li><a class="" href="manipulando-filogenias-no-r---sinal-filogen%C3%A9tico.html"><span class="header-section-number">2</span> Manipulando filogenias no R - Sinal Filogenético</a></li>
-<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos.html"><span class="header-section-number">3</span> Modelos para evolução de fenótipos contínuos</a></li>
-<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-discretos.html"><span class="header-section-number">4</span> Modelos para evolução de fenótipos discretos</a></li>
-<li><a class="" href="regress%C3%A3o-filogen%C3%A9tica.html"><span class="header-section-number">5</span> Regressão Filogenética</a></li>
-<li><a class="" href="correla%C3%A7%C3%A3o-de-atributos-discretos.html"><span class="header-section-number">6</span> Correlação de atributos discretos</a></li>
-<li><a class="" href="modelos-multi-taxa-e-multi-regime.html"><span class="header-section-number">7</span> Modelos multi-taxa e multi-regime</a></li>
-<li><a class="" href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html"><span class="header-section-number">8</span> Métodos filogenéticos multivariados</a></li>
-<li><a class="" href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html"><span class="header-section-number">9</span> Diversificação de linhagens e fenotípica ao longo do tempo</a></li>
-<li><a class="" href="estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o.html"><span class="header-section-number">10</span> Estimativas de taxas de especiação e extinção</a></li>
-<li><a class="" href="diversifica%C3%A7%C3%A3o-dependente-de-estado.html"><span class="header-section-number">11</span> Diversificação dependente de estado</a></li>
-<li><a class="" href="manipulando-as-bases-de-dados.html"><span class="header-section-number">12</span> Manipulando as bases de dados</a></li>
-<li><a class="active" href="diversidade-filogen%C3%A9tica.html"><span class="header-section-number">13</span> Diversidade filogenética</a></li>
-<li><a class="" href="diversidade-beta-filogen%C3%A9tica.html"><span class="header-section-number">14</span> Diversidade beta filogenética</a></li>
-<li><a class="" href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html"><span class="header-section-number">15</span> Seleção e composição fenotípica</a></li>
-<li><a class="" href="medidas-de-diversifica%C3%A7%C3%A3o.html"><span class="header-section-number">16</span> Medidas de diversificação</a></li>
+<li><a class="" href="estrutura-e-programa-da-disciplina.html">Estrutura e Programa da Disciplina</a></li>
+<li class="book-part">Módulo I</li>
+<li><a class="" href="manipulando-filogenias-no-r---sinal-filogen%C3%A9tico.html">1. Manipulando filogenias no R - Sinal Filogenético</a></li>
+<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos.html">2. Modelos para evolução de fenótipos contínuos</a></li>
+<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-discretos.html">3. Modelos para evolução de fenótipos discretos</a></li>
+<li><a class="" href="regress%C3%A3o-filogen%C3%A9tica.html">4. Regressão Filogenética</a></li>
+<li><a class="" href="correla%C3%A7%C3%A3o-de-atributos-discretos.html">5. Correlação de atributos discretos</a></li>
+<li><a class="" href="modelos-multi-taxa-e-multi-regime.html">6. Modelos multi-taxa e multi-regime</a></li>
+<li><a class="" href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html">7. Métodos filogenéticos multivariados</a></li>
+<li><a class="" href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html">8. Diversificação de linhagens e fenotípica ao longo do tempo</a></li>
+<li><a class="" href="estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o.html">9. Estimativas de taxas de especiação e extinção</a></li>
+<li><a class="" href="diversifica%C3%A7%C3%A3o-dependente-de-estado.html">10. Diversificação dependente de estado</a></li>
+<li class="book-part">Módulo II</li>
+<li><a class="" href="manipulando-as-bases-de-dados.html">1. Manipulando as bases de dados</a></li>
+<li><a class="active" href="diversidade-filogen%C3%A9tica.html">2. Diversidade filogenética</a></li>
+<li><a class="" href="diversidade-beta-filogen%C3%A9tica.html">3. Diversidade beta filogenética</a></li>
+<li><a class="" href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html">4. Seleção e composição fenotípica</a></li>
+<li><a class="" href="medidas-de-diversifica%C3%A7%C3%A3o.html">5. Medidas de diversificação</a></li>
 <li><a class="" href="refer%C3%AAncias-2.html">Referências</a></li>
 </ul>
 
@@ -71,9 +96,8 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="diversidade-filogenética" class="section level1" number="13">
-<h1>
-<span class="header-section-number">Capítulo 13</span> Diversidade filogenética<a class="anchor" aria-label="anchor" href="#diversidade-filogen%C3%A9tica"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="diversidade-filogenética" class="section level1 unnumbered">
+<h1>2. Diversidade filogenética<a class="anchor" aria-label="anchor" href="#diversidade-filogen%C3%A9tica"><i class="fas fa-link"></i></a>
 </h1>
 <p>Existem diversas medidas de diversidade filogenética (PD), e várias delas apresentam
 correspondência com medidas de diversidade funcional. Além disso, algumas são
@@ -107,9 +131,9 @@ função ses.pd disponibiliza várias opções de modelos nulos. Antes de rodar 
 avaliar qual modelo mais se adequa ao objetivo da análise. No manual do pacote picante
 (<a href="https://cran.r-project.org/web/packages/picante/picante.pdf" class="uri">https://cran.r-project.org/web/packages/picante/picante.pdf</a>), os diferentes modelos
 nulos são apresentados em detalhe.</p>
-<div id="mean-phylogenetic-distance-mpd" class="section level2" number="13.1">
+<div id="mean-phylogenetic-distance-mpd" class="section level2" number="0.45">
 <h2>
-<span class="header-section-number">13.1</span> Mean Phylogenetic Distance (MPD)<a class="anchor" aria-label="anchor" href="#mean-phylogenetic-distance-mpd"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.45</span> Mean Phylogenetic Distance (MPD)<a class="anchor" aria-label="anchor" href="#mean-phylogenetic-distance-mpd"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mpd_comm</span><span class="op">&lt;-</span><span class="fu">picante</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/picante/man/mpd.html">mpd</a></span><span class="op">(</span><span class="va">comm</span>,<span class="fu"><a href="https://rdrr.io/r/stats/cophenetic.html">cophenetic</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span>, abundance.weighted <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
@@ -118,9 +142,9 @@ nulos são apresentados em detalhe.</p>
 <p>Verificar a opção de modelo nulo mais adequada (<a href="https://cran.r-" class="uri">https://cran.r-</a>
 project.org/web/packages/picante/picante.pdf).</p>
 </div>
-<div id="mean-nearest-taxon-distance-mntd" class="section level2" number="13.2">
+<div id="mean-nearest-taxon-distance-mntd" class="section level2" number="0.46">
 <h2>
-<span class="header-section-number">13.2</span> Mean Nearest Taxon Distance (MNTD)<a class="anchor" aria-label="anchor" href="#mean-nearest-taxon-distance-mntd"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.46</span> Mean Nearest Taxon Distance (MNTD)<a class="anchor" aria-label="anchor" href="#mean-nearest-taxon-distance-mntd"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mntd_comm</span><span class="op">&lt;-</span><span class="fu">picante</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/picante/man/mntd.html">mntd</a></span><span class="op">(</span><span class="va">comm</span>,<span class="fu"><a href="https://rdrr.io/r/stats/cophenetic.html">cophenetic</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span>, abundance.weighted <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
@@ -129,16 +153,16 @@ project.org/web/packages/picante/picante.pdf).</p>
 <p>Verificar a opção de modelo nulo mais adequada (<a href="https://cran.r-" class="uri">https://cran.r-</a>
 project.org/web/packages/picante/picante.pdf</p>
 </div>
-<div id="pd-de-rao-raos-d" class="section level2" number="13.3">
+<div id="pd-de-rao-raos-d" class="section level2" number="0.47">
 <h2>
-<span class="header-section-number">13.3</span> PD de Rao (Rao’s D)<a class="anchor" aria-label="anchor" href="#pd-de-rao-raos-d"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.47</span> PD de Rao (Rao’s D)<a class="anchor" aria-label="anchor" href="#pd-de-rao-raos-d"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">raoD_comm</span><span class="op">&lt;-</span><span class="fu">picante</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/picante/man/raoD.html">raoD</a></span><span class="op">(</span><span class="va">comm</span>,<span class="va">tree</span><span class="op">)</span><span class="op">$</span><span class="va">Dkk</span></span></code></pre></div>
 </div>
-<div id="variabilidade-filogenética-psv" class="section level2" number="13.4">
+<div id="variabilidade-filogenética-psv" class="section level2" number="0.48">
 <h2>
-<span class="header-section-number">13.4</span> Variabilidade filogenética (PSV)<a class="anchor" aria-label="anchor" href="#variabilidade-filogen%C3%A9tica-psv"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.48</span> Variabilidade filogenética (PSV)<a class="anchor" aria-label="anchor" href="#variabilidade-filogen%C3%A9tica-psv"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">psv_comm</span><span class="op">&lt;-</span><span class="fu">picante</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/picante/man/psd.html">psv</a></span><span class="op">(</span><span class="va">comm</span>,<span class="va">tree</span>,compute.var<span class="op">=</span><span class="cn">TRUE</span>,scale.vcv<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
@@ -146,9 +170,9 @@ project.org/web/packages/picante/picante.pdf</p>
 <p>A função psr calcula uma medida de riqueza filogenética ao multiplicar a riqueza
 observada pelo valor de PSV.</p>
 </div>
-<div id="exercício" class="section level2" number="13.5">
+<div id="exercício" class="section level2" number="0.49">
 <h2>
-<span class="header-section-number">13.5</span> Exercício<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.49</span> Exercício<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio"><i class="fas fa-link"></i></a>
 </h2>
 <ol style="list-style-type: decimal">
 <li>Calcule as diferentes medidas de diversidade filogenética, e correlacione os
@@ -161,17 +185,17 @@ Por que alguns modelos dão resultados tão diferentes dos outros?</li>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="manipulando-as-bases-de-dados.html"><span class="header-section-number">12</span> Manipulando as bases de dados</a></div>
-<div class="next"><a href="diversidade-beta-filogen%C3%A9tica.html"><span class="header-section-number">14</span> Diversidade beta filogenética</a></div>
+<div class="prev"><a href="manipulando-as-bases-de-dados.html">1. Manipulando as bases de dados</a></div>
+<div class="next"><a href="diversidade-beta-filogen%C3%A9tica.html">3. Diversidade beta filogenética</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#diversidade-filogen%C3%A9tica"><span class="header-section-number">13</span> Diversidade filogenética</a></li>
-<li><a class="nav-link" href="#mean-phylogenetic-distance-mpd"><span class="header-section-number">13.1</span> Mean Phylogenetic Distance (MPD)</a></li>
-<li><a class="nav-link" href="#mean-nearest-taxon-distance-mntd"><span class="header-section-number">13.2</span> Mean Nearest Taxon Distance (MNTD)</a></li>
-<li><a class="nav-link" href="#pd-de-rao-raos-d"><span class="header-section-number">13.3</span> PD de Rao (Rao’s D)</a></li>
-<li><a class="nav-link" href="#variabilidade-filogen%C3%A9tica-psv"><span class="header-section-number">13.4</span> Variabilidade filogenética (PSV)</a></li>
-<li><a class="nav-link" href="#exerc%C3%ADcio"><span class="header-section-number">13.5</span> Exercício</a></li>
+<li><a class="nav-link" href="#diversidade-filogen%C3%A9tica">2. Diversidade filogenética</a></li>
+<li><a class="nav-link" href="#mean-phylogenetic-distance-mpd"><span class="header-section-number">0.45</span> Mean Phylogenetic Distance (MPD)</a></li>
+<li><a class="nav-link" href="#mean-nearest-taxon-distance-mntd"><span class="header-section-number">0.46</span> Mean Nearest Taxon Distance (MNTD)</a></li>
+<li><a class="nav-link" href="#pd-de-rao-raos-d"><span class="header-section-number">0.47</span> PD de Rao (Rao’s D)</a></li>
+<li><a class="nav-link" href="#variabilidade-filogen%C3%A9tica-psv"><span class="header-section-number">0.48</span> Variabilidade filogenética (PSV)</a></li>
+<li><a class="nav-link" href="#exerc%C3%ADcio"><span class="header-section-number">0.49</span> Exercício</a></li>
 </ul>
 
       <div class="book-extra">

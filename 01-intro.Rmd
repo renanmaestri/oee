@@ -1,10 +1,10 @@
-# Estrutura e Programa da Disciplina
+# Estrutura e Programa da Disciplina {-}
 
 ## Informações Gerais
 * **Duração**: 3 semanas (concentrada)
 * **Professores**: Renan Maestri e Leandro Duarte
 * **PPG**: Ecologia - UFRGS
-* **Créditos**: 10
+* **Créditos**: 9
 
 ---
 
@@ -27,7 +27,6 @@
 
 ### Módulo I
 * **Atividade 1**: Manipulação de filogenias e sinal filogenético
-* **Atividade 10**: Diversificação dependente de estado (BiSSE)
 * **Atividade 2**: Modelos para evolução de fenótipos contínuos e reconstrução ancestral
 * **Atividade 3**: Evolução de fenótipos discretos e reconstrução ancestral
 * **Atividade 4**: Regressão Filogenética (PGLS)
@@ -36,6 +35,7 @@
 * **Atividade 7**: Métodos filogenéticos comparativos multivariados (Morfometria)
 * **Atividade 8**: Diversificação de linhagens (LTT) e fenotípica (DTT) ao longo do tempo
 * **Atividade 9**: Especiação e extinção (RPANDA/BAMM)
+* **Atividade 10**: Diversificação dependente de estado (BiSSE)
 
 ### Módulo II
 * **Atividade 1**: Organização e manipulação de bases de dados eco-espaciais

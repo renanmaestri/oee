@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capítulo 14 Diversidade beta filogenética | Oficina de Ecologia Evolutiva</title>
+<title>3. Diversidade beta filogenética | Oficina de Ecologia Evolutiva</title>
 <meta name="author" content="Renan Maestri &amp; Leandro Duarte">
 <meta name="description" content="Da mesma forma que para as medidas de diversidade alfa filogenética, existem outras tantas equivalentes para avaliar diversidade beta filogenética (PBD). Para exercitarmos o cálculo de PBD,...">
 <meta name="generator" content="bookdown 0.47 with bs4_book()">
-<meta property="og:title" content="Capítulo 14 Diversidade beta filogenética | Oficina de Ecologia Evolutiva">
+<meta property="og:title" content="3. Diversidade beta filogenética | Oficina de Ecologia Evolutiva">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://renanmaestri.github.io/oee/diversidade-beta-filogenética.html">
 <meta property="og:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
 <meta property="og:description" content="Da mesma forma que para as medidas de diversidade alfa filogenética, existem outras tantas equivalentes para avaliar diversidade beta filogenética (PBD). Para exercitarmos o cálculo de PBD,...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capítulo 14 Diversidade beta filogenética | Oficina de Ecologia Evolutiva">
+<meta name="twitter:title" content="3. Diversidade beta filogenética | Oficina de Ecologia Evolutiva">
 <meta name="twitter:description" content="Da mesma forma que para as medidas de diversidade alfa filogenética, existem outras tantas equivalentes para avaliar diversidade beta filogenética (PBD). Para exercitarmos o cálculo de PBD,...">
 <meta name="twitter:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,6 +23,29 @@
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
   </style>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -47,22 +70,24 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Prefácio</a></li>
-<li><a class="" href="estrutura-e-programa-da-disciplina.html"><span class="header-section-number">1</span> Estrutura e Programa da Disciplina</a></li>
-<li><a class="" href="manipulando-filogenias-no-r---sinal-filogen%C3%A9tico.html"><span class="header-section-number">2</span> Manipulando filogenias no R - Sinal Filogenético</a></li>
-<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos.html"><span class="header-section-number">3</span> Modelos para evolução de fenótipos contínuos</a></li>
-<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-discretos.html"><span class="header-section-number">4</span> Modelos para evolução de fenótipos discretos</a></li>
-<li><a class="" href="regress%C3%A3o-filogen%C3%A9tica.html"><span class="header-section-number">5</span> Regressão Filogenética</a></li>
-<li><a class="" href="correla%C3%A7%C3%A3o-de-atributos-discretos.html"><span class="header-section-number">6</span> Correlação de atributos discretos</a></li>
-<li><a class="" href="modelos-multi-taxa-e-multi-regime.html"><span class="header-section-number">7</span> Modelos multi-taxa e multi-regime</a></li>
-<li><a class="" href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html"><span class="header-section-number">8</span> Métodos filogenéticos multivariados</a></li>
-<li><a class="" href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html"><span class="header-section-number">9</span> Diversificação de linhagens e fenotípica ao longo do tempo</a></li>
-<li><a class="" href="estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o.html"><span class="header-section-number">10</span> Estimativas de taxas de especiação e extinção</a></li>
-<li><a class="" href="diversifica%C3%A7%C3%A3o-dependente-de-estado.html"><span class="header-section-number">11</span> Diversificação dependente de estado</a></li>
-<li><a class="" href="manipulando-as-bases-de-dados.html"><span class="header-section-number">12</span> Manipulando as bases de dados</a></li>
-<li><a class="" href="diversidade-filogen%C3%A9tica.html"><span class="header-section-number">13</span> Diversidade filogenética</a></li>
-<li><a class="active" href="diversidade-beta-filogen%C3%A9tica.html"><span class="header-section-number">14</span> Diversidade beta filogenética</a></li>
-<li><a class="" href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html"><span class="header-section-number">15</span> Seleção e composição fenotípica</a></li>
-<li><a class="" href="medidas-de-diversifica%C3%A7%C3%A3o.html"><span class="header-section-number">16</span> Medidas de diversificação</a></li>
+<li><a class="" href="estrutura-e-programa-da-disciplina.html">Estrutura e Programa da Disciplina</a></li>
+<li class="book-part">Módulo I</li>
+<li><a class="" href="manipulando-filogenias-no-r---sinal-filogen%C3%A9tico.html">1. Manipulando filogenias no R - Sinal Filogenético</a></li>
+<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos.html">2. Modelos para evolução de fenótipos contínuos</a></li>
+<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-discretos.html">3. Modelos para evolução de fenótipos discretos</a></li>
+<li><a class="" href="regress%C3%A3o-filogen%C3%A9tica.html">4. Regressão Filogenética</a></li>
+<li><a class="" href="correla%C3%A7%C3%A3o-de-atributos-discretos.html">5. Correlação de atributos discretos</a></li>
+<li><a class="" href="modelos-multi-taxa-e-multi-regime.html">6. Modelos multi-taxa e multi-regime</a></li>
+<li><a class="" href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html">7. Métodos filogenéticos multivariados</a></li>
+<li><a class="" href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html">8. Diversificação de linhagens e fenotípica ao longo do tempo</a></li>
+<li><a class="" href="estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o.html">9. Estimativas de taxas de especiação e extinção</a></li>
+<li><a class="" href="diversifica%C3%A7%C3%A3o-dependente-de-estado.html">10. Diversificação dependente de estado</a></li>
+<li class="book-part">Módulo II</li>
+<li><a class="" href="manipulando-as-bases-de-dados.html">1. Manipulando as bases de dados</a></li>
+<li><a class="" href="diversidade-filogen%C3%A9tica.html">2. Diversidade filogenética</a></li>
+<li><a class="active" href="diversidade-beta-filogen%C3%A9tica.html">3. Diversidade beta filogenética</a></li>
+<li><a class="" href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html">4. Seleção e composição fenotípica</a></li>
+<li><a class="" href="medidas-de-diversifica%C3%A7%C3%A3o.html">5. Medidas de diversificação</a></li>
 <li><a class="" href="refer%C3%AAncias-2.html">Referências</a></li>
 </ul>
 
@@ -71,9 +96,8 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="diversidade-beta-filogenética" class="section level1" number="14">
-<h1>
-<span class="header-section-number">Capítulo 14</span> Diversidade beta filogenética<a class="anchor" aria-label="anchor" href="#diversidade-beta-filogen%C3%A9tica"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="diversidade-beta-filogenética" class="section level1 unnumbered">
+<h1>3. Diversidade beta filogenética<a class="anchor" aria-label="anchor" href="#diversidade-beta-filogen%C3%A9tica"><i class="fas fa-link"></i></a>
 </h1>
 <p>Da mesma forma que para as medidas de diversidade alfa filogenética, existem outras
 tantas equivalentes para avaliar diversidade beta filogenética (PBD).
@@ -104,9 +128,9 @@ nós mais terminais da árvore. Disponível apenas para matrizes de presença/au
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">picante</span><span class="op">)</span></span>
 <span><span class="va">phylosor_comm</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/picante/man/phylosor.html">phylosor</a></span><span class="op">(</span><span class="va">comm</span>,<span class="va">tree</span><span class="op">)</span></span>
 <span><span class="va">phylosor_comm</span></span></code></pre></div>
-<div id="unifrac" class="section level2" number="14.1">
+<div id="unifrac" class="section level2" number="0.50">
 <h2>
-<span class="header-section-number">14.1</span> UniFrac<a class="anchor" aria-label="anchor" href="#unifrac"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.50</span> UniFrac<a class="anchor" aria-label="anchor" href="#unifrac"><i class="fas fa-link"></i></a>
 </h2>
 <p>Medida de PBD equivalente ao índice de dissimilaridade de Jaccard. Medida sensível
 aos nós mais terminais da árvore. Pode ser empregado em matrizes de abundância ou
@@ -129,9 +153,9 @@ presença/ausência.</p>
 <p>Observação: Apesar de ser bastante correlacionado com o PhyloSor, a relação entre os
 dois índices não é totalmente linear.</p>
 </div>
-<div id="p-β-sim" class="section level2" number="14.2">
+<div id="p-β-sim" class="section level2" number="0.51">
 <h2>
-<span class="header-section-number">14.2</span> P β Sim<a class="anchor" aria-label="anchor" href="#p-%CE%B2-sim"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.51</span> P β Sim<a class="anchor" aria-label="anchor" href="#p-%CE%B2-sim"><i class="fas fa-link"></i></a>
 </h2>
 <p>Medida de PBD equivalente ao índice de dissimilaridade de Jaccard. Medida sensível
 aos nós mais terminais da árvore. Pode ser empregado em matrizes de abundância ou
@@ -142,14 +166,14 @@ presença/ausência.</p>
 <span><span class="va">beta_pd</span><span class="op">$</span><span class="va">betadiv</span></span></code></pre></div>
 <p>Observação: O argumento type aceita as opções “UniFrac”, “Phylosor” ou “both”.</p>
 </div>
-<div id="mean-phylogenetic-distance-between-communities" class="section level2" number="14.3">
+<div id="mean-phylogenetic-distance-between-communities" class="section level2" number="0.52">
 <h2>
-<span class="header-section-number">14.3</span> Mean Phylogenetic Distance Between Communities<a class="anchor" aria-label="anchor" href="#mean-phylogenetic-distance-between-communities"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.52</span> Mean Phylogenetic Distance Between Communities<a class="anchor" aria-label="anchor" href="#mean-phylogenetic-distance-between-communities"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="comdist" class="section level2" number="14.4">
+<div id="comdist" class="section level2" number="0.53">
 <h2>
-<span class="header-section-number">14.4</span> (COMDIST)<a class="anchor" aria-label="anchor" href="#comdist"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.53</span> (COMDIST)<a class="anchor" aria-label="anchor" href="#comdist"><i class="fas fa-link"></i></a>
 </h2>
 <p>Medida de PBD derivada do MPD. Medida sensível aos nós mais basais da árvore
 filogenética. Pode ser empregado em matrizes de abundância ou presença/ausência. No
@@ -159,9 +183,9 @@ primeiro caso, equivale à medida Rao D.</p>
 <span><span class="va">comdist_comm</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/picante/man/comdist.html">comdist</a></span><span class="op">(</span><span class="va">comm</span>, <span class="fu"><a href="https://rdrr.io/r/stats/cophenetic.html">cophenetic</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span>, abundance.weighted <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p>Observação: para incluir o efeito da abundância, usar abundance.weighted=TRUE).</p>
 </div>
-<div id="community-mean-nearest-taxon-distance-comdistnt" class="section level2" number="14.5">
+<div id="community-mean-nearest-taxon-distance-comdistnt" class="section level2" number="0.54">
 <h2>
-<span class="header-section-number">14.5</span> Community Mean Nearest Taxon Distance (COMDISTNT)<a class="anchor" aria-label="anchor" href="#community-mean-nearest-taxon-distance-comdistnt"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.54</span> Community Mean Nearest Taxon Distance (COMDISTNT)<a class="anchor" aria-label="anchor" href="#community-mean-nearest-taxon-distance-comdistnt"><i class="fas fa-link"></i></a>
 </h2>
 <p>Medida de PBD derivada do MNTD. Medida sensível aos nós mais terminais da árvore
 filogenética. Pode ser empregado em matrizes de abundância ou presença/ausência.</p>
@@ -171,9 +195,9 @@ filogenética. Pode ser empregado em matrizes de abundância ou presença/ausên
 <span><span class="cn">FALSE</span>, exclude.conspecifics <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p>Observação: para incluir o efeito da abundância, usar abundance.weighted=TRUE).</p>
 </div>
-<div id="pbd-de-rao-beta-raos-d-e-raos-h" class="section level2" number="14.6">
+<div id="pbd-de-rao-beta-raos-d-e-raos-h" class="section level2" number="0.55">
 <h2>
-<span class="header-section-number">14.6</span> PBD de Rao (Beta Rao’s D e Rao’s H)<a class="anchor" aria-label="anchor" href="#pbd-de-rao-beta-raos-d-e-raos-h"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.55</span> PBD de Rao (Beta Rao’s D e Rao’s H)<a class="anchor" aria-label="anchor" href="#pbd-de-rao-beta-raos-d-e-raos-h"><i class="fas fa-link"></i></a>
 </h2>
 <p>Medida de PBD derivada do índice de Rao. Medida sensível aos nós mais terminais da
 árvore filogenética, mas apenas no caso de Rao D. Pode ser empregado em matrizes de
@@ -187,20 +211,20 @@ COMDIST com argumento abundance.weighted = FALSE.</p>
 <span><span class="va">raoH_beta</span><span class="op">&lt;-</span> <span class="fu">picante</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/picante/man/raoD.html">raoD</a></span><span class="op">(</span><span class="va">comm</span>,<span class="va">tree</span><span class="op">)</span><span class="op">$</span><span class="va">H</span></span></code></pre></div>
 <p>Observação: Rao D equivale à COMDIST com argumento abundance.weighted=TRUE.</p>
 </div>
-<div id="phylogenetic-fuzzy-weighting" class="section level2" number="14.7">
+<div id="phylogenetic-fuzzy-weighting" class="section level2" number="0.56">
 <h2>
-<span class="header-section-number">14.7</span> Phylogenetic fuzzy weighting<a class="anchor" aria-label="anchor" href="#phylogenetic-fuzzy-weighting"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.56</span> Phylogenetic fuzzy weighting<a class="anchor" aria-label="anchor" href="#phylogenetic-fuzzy-weighting"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="o-método-de-ponderação-difusa-calcula-uma-matriz-p-que-descreve-as-comunidades" class="section level2" number="14.8">
+<div id="o-método-de-ponderação-difusa-calcula-uma-matriz-p-que-descreve-as-comunidades" class="section level2" number="0.57">
 <h2>
-<span class="header-section-number">14.8</span> O método de ponderação difusa calcula uma matriz P que descreve as comunidades<a class="anchor" aria-label="anchor" href="#o-m%C3%A9todo-de-pondera%C3%A7%C3%A3o-difusa-calcula-uma-matriz-p-que-descreve-as-comunidades"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.57</span> O método de ponderação difusa calcula uma matriz P que descreve as comunidades<a class="anchor" aria-label="anchor" href="#o-m%C3%A9todo-de-pondera%C3%A7%C3%A3o-difusa-calcula-uma-matriz-p-que-descreve-as-comunidades"><i class="fas fa-link"></i></a>
 </h2>
 <p>abundância das espécies ponderada pela filogenia, o que equivale a descrever
 comunidades pela abundância de linhagens filogenéticas.</p>
 <div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/devtools/man/install-deprecated.html">install_github</a></span><span class="op">(</span><span class="st">"vanderleidebastiani/PCPS"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://devtools.r-lib.org/reference/install-deprecated.html">install_github</a></span><span class="op">(</span><span class="st">"vanderleidebastiani/PCPS"</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">PCPS</span><span class="op">)</span></span>
 <span><span class="va">pcps_comm</span><span class="op">&lt;-</span><span class="fu">PCPS</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/PCPS/man/pcps.html">pcps</a></span><span class="op">(</span><span class="va">comm</span>,<span class="fu"><a href="https://rdrr.io/r/stats/cophenetic.html">cophenetic</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span>,method<span class="op">=</span><span class="st">"bray"</span>,squareroot <span class="op">=</span></span>
 <span><span class="cn">TRUE</span><span class="op">)</span></span>
@@ -221,19 +245,19 @@ comunidades pela abundância de linhagens filogenéticas.</p>
 <p>Observação: squareroot = TRUE é importante quando method=”bray” para evitar
 autovalores negativos.</p>
 </div>
-<div id="relacionando-matrizes-pareadas-de-pbd-com-variáveis" class="section level2" number="14.9">
+<div id="relacionando-matrizes-pareadas-de-pbd-com-variáveis" class="section level2" number="0.58">
 <h2>
-<span class="header-section-number">14.9</span> Relacionando matrizes pareadas de PBD com variáveis<a class="anchor" aria-label="anchor" href="#relacionando-matrizes-pareadas-de-pbd-com-vari%C3%A1veis"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.58</span> Relacionando matrizes pareadas de PBD com variáveis<a class="anchor" aria-label="anchor" href="#relacionando-matrizes-pareadas-de-pbd-com-vari%C3%A1veis"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="ambientais" class="section level2" number="14.10">
+<div id="ambientais" class="section level2" number="0.59">
 <h2>
-<span class="header-section-number">14.10</span> ambientais<a class="anchor" aria-label="anchor" href="#ambientais"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.59</span> ambientais<a class="anchor" aria-label="anchor" href="#ambientais"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Usando ADONIS - Matriz DP (fuzzy weighting):</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/devtools/man/install-deprecated.html">install_github</a></span><span class="op">(</span><span class="st">"vanderleidebastiani/PCPS"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://devtools.r-lib.org/reference/install-deprecated.html">install_github</a></span><span class="op">(</span><span class="st">"vanderleidebastiani/PCPS"</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">PCPS</span><span class="op">)</span></span>
 <span><span class="va">p.sig_comm</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/PCPS/man/pcps.sig.html">matrix.p.sig</a></span><span class="op">(</span><span class="va">comm</span>, phylodist<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/cophenetic.html">cophenetic</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span>,</span>
 <span>envir<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">env</span><span class="op">$</span><span class="va">E</span><span class="op">)</span>, formula<span class="op">=</span> <span class="va">p.dist</span><span class="op">~</span><span class="va">env</span><span class="op">$</span><span class="va">E</span>, FUN <span class="op">=</span> <span class="va">FUN.ADONIS2.margin</span>,</span>
@@ -249,9 +273,9 @@ autovalores negativos.</p>
 <p>Observação: No arquivo de ajuda do R são descritas outras modalidades de análises
 implementadas no argumento FUN.</p>
 </div>
-<div id="exercícios" class="section level2" number="14.11">
+<div id="exercícios" class="section level2" number="0.60">
 <h2>
-<span class="header-section-number">14.11</span> Exercícios<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcios"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.60</span> Exercícios<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcios"><i class="fas fa-link"></i></a>
 </h2>
 <p>Calcule as diferentes medidas de diversidade beta e correlacione as matrizes pareadas
 usando os diferentes métodos. Com quais medidas de PBD a matriz DP ( fuzzy
@@ -260,23 +284,23 @@ weighting ) mais se assemelha? O que isso significa?</p>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="diversidade-filogen%C3%A9tica.html"><span class="header-section-number">13</span> Diversidade filogenética</a></div>
-<div class="next"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html"><span class="header-section-number">15</span> Seleção e composição fenotípica</a></div>
+<div class="prev"><a href="diversidade-filogen%C3%A9tica.html">2. Diversidade filogenética</a></div>
+<div class="next"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html">4. Seleção e composição fenotípica</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#diversidade-beta-filogen%C3%A9tica"><span class="header-section-number">14</span> Diversidade beta filogenética</a></li>
-<li><a class="nav-link" href="#unifrac"><span class="header-section-number">14.1</span> UniFrac</a></li>
-<li><a class="nav-link" href="#p-%CE%B2-sim"><span class="header-section-number">14.2</span> P β Sim</a></li>
-<li><a class="nav-link" href="#mean-phylogenetic-distance-between-communities"><span class="header-section-number">14.3</span> Mean Phylogenetic Distance Between Communities</a></li>
-<li><a class="nav-link" href="#comdist"><span class="header-section-number">14.4</span> (COMDIST)</a></li>
-<li><a class="nav-link" href="#community-mean-nearest-taxon-distance-comdistnt"><span class="header-section-number">14.5</span> Community Mean Nearest Taxon Distance (COMDISTNT)</a></li>
-<li><a class="nav-link" href="#pbd-de-rao-beta-raos-d-e-raos-h"><span class="header-section-number">14.6</span> PBD de Rao (Beta Rao’s D e Rao’s H)</a></li>
-<li><a class="nav-link" href="#phylogenetic-fuzzy-weighting"><span class="header-section-number">14.7</span> Phylogenetic fuzzy weighting</a></li>
-<li><a class="nav-link" href="#o-m%C3%A9todo-de-pondera%C3%A7%C3%A3o-difusa-calcula-uma-matriz-p-que-descreve-as-comunidades"><span class="header-section-number">14.8</span> O método de ponderação difusa calcula uma matriz P que descreve as comunidades</a></li>
-<li><a class="nav-link" href="#relacionando-matrizes-pareadas-de-pbd-com-vari%C3%A1veis"><span class="header-section-number">14.9</span> Relacionando matrizes pareadas de PBD com variáveis</a></li>
-<li><a class="nav-link" href="#ambientais"><span class="header-section-number">14.10</span> ambientais</a></li>
-<li><a class="nav-link" href="#exerc%C3%ADcios"><span class="header-section-number">14.11</span> Exercícios</a></li>
+<li><a class="nav-link" href="#diversidade-beta-filogen%C3%A9tica">3. Diversidade beta filogenética</a></li>
+<li><a class="nav-link" href="#unifrac"><span class="header-section-number">0.50</span> UniFrac</a></li>
+<li><a class="nav-link" href="#p-%CE%B2-sim"><span class="header-section-number">0.51</span> P β Sim</a></li>
+<li><a class="nav-link" href="#mean-phylogenetic-distance-between-communities"><span class="header-section-number">0.52</span> Mean Phylogenetic Distance Between Communities</a></li>
+<li><a class="nav-link" href="#comdist"><span class="header-section-number">0.53</span> (COMDIST)</a></li>
+<li><a class="nav-link" href="#community-mean-nearest-taxon-distance-comdistnt"><span class="header-section-number">0.54</span> Community Mean Nearest Taxon Distance (COMDISTNT)</a></li>
+<li><a class="nav-link" href="#pbd-de-rao-beta-raos-d-e-raos-h"><span class="header-section-number">0.55</span> PBD de Rao (Beta Rao’s D e Rao’s H)</a></li>
+<li><a class="nav-link" href="#phylogenetic-fuzzy-weighting"><span class="header-section-number">0.56</span> Phylogenetic fuzzy weighting</a></li>
+<li><a class="nav-link" href="#o-m%C3%A9todo-de-pondera%C3%A7%C3%A3o-difusa-calcula-uma-matriz-p-que-descreve-as-comunidades"><span class="header-section-number">0.57</span> O método de ponderação difusa calcula uma matriz P que descreve as comunidades</a></li>
+<li><a class="nav-link" href="#relacionando-matrizes-pareadas-de-pbd-com-vari%C3%A1veis"><span class="header-section-number">0.58</span> Relacionando matrizes pareadas de PBD com variáveis</a></li>
+<li><a class="nav-link" href="#ambientais"><span class="header-section-number">0.59</span> ambientais</a></li>
+<li><a class="nav-link" href="#exerc%C3%ADcios"><span class="header-section-number">0.60</span> Exercícios</a></li>
 </ul>
 
       <div class="book-extra">

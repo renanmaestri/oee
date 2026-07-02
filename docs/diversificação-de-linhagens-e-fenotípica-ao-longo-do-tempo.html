@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capítulo 9 Diversificação de linhagens e fenotípica ao longo do tempo | Oficina de Ecologia Evolutiva</title>
+<title>8. Diversificação de linhagens e fenotípica ao longo do tempo | Oficina de Ecologia Evolutiva</title>
 <meta name="author" content="Renan Maestri &amp; Leandro Duarte">
 <meta name="description" content='Vamos carregar a hipótese filogenética para roedores sigmodontíneos. require(ape) require(geiger) require(phytools) # Filogenia tree&lt;-read.nexus("dados/sigmodontinae-tree.tre")...'>
 <meta name="generator" content="bookdown 0.47 with bs4_book()">
-<meta property="og:title" content="Capítulo 9 Diversificação de linhagens e fenotípica ao longo do tempo | Oficina de Ecologia Evolutiva">
+<meta property="og:title" content="8. Diversificação de linhagens e fenotípica ao longo do tempo | Oficina de Ecologia Evolutiva">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://renanmaestri.github.io/oee/diversificação-de-linhagens-e-fenotípica-ao-longo-do-tempo.html">
 <meta property="og:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
 <meta property="og:description" content='Vamos carregar a hipótese filogenética para roedores sigmodontíneos. require(ape) require(geiger) require(phytools) # Filogenia tree&lt;-read.nexus("dados/sigmodontinae-tree.tre")...'>
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capítulo 9 Diversificação de linhagens e fenotípica ao longo do tempo | Oficina de Ecologia Evolutiva">
+<meta name="twitter:title" content="8. Diversificação de linhagens e fenotípica ao longo do tempo | Oficina de Ecologia Evolutiva">
 <meta name="twitter:description" content='Vamos carregar a hipótese filogenética para roedores sigmodontíneos. require(ape) require(geiger) require(phytools) # Filogenia tree&lt;-read.nexus("dados/sigmodontinae-tree.tre")...'>
 <meta name="twitter:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,6 +23,29 @@
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
   </style>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -47,22 +70,24 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Prefácio</a></li>
-<li><a class="" href="estrutura-e-programa-da-disciplina.html"><span class="header-section-number">1</span> Estrutura e Programa da Disciplina</a></li>
-<li><a class="" href="manipulando-filogenias-no-r---sinal-filogen%C3%A9tico.html"><span class="header-section-number">2</span> Manipulando filogenias no R - Sinal Filogenético</a></li>
-<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos.html"><span class="header-section-number">3</span> Modelos para evolução de fenótipos contínuos</a></li>
-<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-discretos.html"><span class="header-section-number">4</span> Modelos para evolução de fenótipos discretos</a></li>
-<li><a class="" href="regress%C3%A3o-filogen%C3%A9tica.html"><span class="header-section-number">5</span> Regressão Filogenética</a></li>
-<li><a class="" href="correla%C3%A7%C3%A3o-de-atributos-discretos.html"><span class="header-section-number">6</span> Correlação de atributos discretos</a></li>
-<li><a class="" href="modelos-multi-taxa-e-multi-regime.html"><span class="header-section-number">7</span> Modelos multi-taxa e multi-regime</a></li>
-<li><a class="" href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html"><span class="header-section-number">8</span> Métodos filogenéticos multivariados</a></li>
-<li><a class="active" href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html"><span class="header-section-number">9</span> Diversificação de linhagens e fenotípica ao longo do tempo</a></li>
-<li><a class="" href="estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o.html"><span class="header-section-number">10</span> Estimativas de taxas de especiação e extinção</a></li>
-<li><a class="" href="diversifica%C3%A7%C3%A3o-dependente-de-estado.html"><span class="header-section-number">11</span> Diversificação dependente de estado</a></li>
-<li><a class="" href="manipulando-as-bases-de-dados.html"><span class="header-section-number">12</span> Manipulando as bases de dados</a></li>
-<li><a class="" href="diversidade-filogen%C3%A9tica.html"><span class="header-section-number">13</span> Diversidade filogenética</a></li>
-<li><a class="" href="diversidade-beta-filogen%C3%A9tica.html"><span class="header-section-number">14</span> Diversidade beta filogenética</a></li>
-<li><a class="" href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html"><span class="header-section-number">15</span> Seleção e composição fenotípica</a></li>
-<li><a class="" href="medidas-de-diversifica%C3%A7%C3%A3o.html"><span class="header-section-number">16</span> Medidas de diversificação</a></li>
+<li><a class="" href="estrutura-e-programa-da-disciplina.html">Estrutura e Programa da Disciplina</a></li>
+<li class="book-part">Módulo I</li>
+<li><a class="" href="manipulando-filogenias-no-r---sinal-filogen%C3%A9tico.html">1. Manipulando filogenias no R - Sinal Filogenético</a></li>
+<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos.html">2. Modelos para evolução de fenótipos contínuos</a></li>
+<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-discretos.html">3. Modelos para evolução de fenótipos discretos</a></li>
+<li><a class="" href="regress%C3%A3o-filogen%C3%A9tica.html">4. Regressão Filogenética</a></li>
+<li><a class="" href="correla%C3%A7%C3%A3o-de-atributos-discretos.html">5. Correlação de atributos discretos</a></li>
+<li><a class="" href="modelos-multi-taxa-e-multi-regime.html">6. Modelos multi-taxa e multi-regime</a></li>
+<li><a class="" href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html">7. Métodos filogenéticos multivariados</a></li>
+<li><a class="active" href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html">8. Diversificação de linhagens e fenotípica ao longo do tempo</a></li>
+<li><a class="" href="estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o.html">9. Estimativas de taxas de especiação e extinção</a></li>
+<li><a class="" href="diversifica%C3%A7%C3%A3o-dependente-de-estado.html">10. Diversificação dependente de estado</a></li>
+<li class="book-part">Módulo II</li>
+<li><a class="" href="manipulando-as-bases-de-dados.html">1. Manipulando as bases de dados</a></li>
+<li><a class="" href="diversidade-filogen%C3%A9tica.html">2. Diversidade filogenética</a></li>
+<li><a class="" href="diversidade-beta-filogen%C3%A9tica.html">3. Diversidade beta filogenética</a></li>
+<li><a class="" href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html">4. Seleção e composição fenotípica</a></li>
+<li><a class="" href="medidas-de-diversifica%C3%A7%C3%A3o.html">5. Medidas de diversificação</a></li>
 <li><a class="" href="refer%C3%AAncias-2.html">Referências</a></li>
 </ul>
 
@@ -71,9 +96,8 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="diversificação-de-linhagens-e-fenotípica-ao-longo-do-tempo" class="section level1" number="9">
-<h1>
-<span class="header-section-number">Capítulo 9</span> Diversificação de linhagens e fenotípica ao longo do tempo<a class="anchor" aria-label="anchor" href="#diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="diversificação-de-linhagens-e-fenotípica-ao-longo-do-tempo" class="section level1 unnumbered">
+<h1>8. Diversificação de linhagens e fenotípica ao longo do tempo<a class="anchor" aria-label="anchor" href="#diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo"><i class="fas fa-link"></i></a>
 </h1>
 <p>Vamos carregar a hipótese filogenética para roedores sigmodontíneos.</p>
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
@@ -85,9 +109,9 @@
 <span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.html">plotTree</a></span><span class="op">(</span><span class="va">tree</span>,fsize<span class="op">=</span><span class="fl">0.4</span>,ftype<span class="op">=</span><span class="st">"i"</span>,type<span class="op">=</span><span class="st">"fan"</span>,lwd<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p>A árvore tem 279 espécies, de um total de 400 (70%). Idealmente deveria haver 100%
 de amostragem.</p>
-<div id="lineage-through-time-plots" class="section level2" number="9.1">
+<div id="lineage-through-time-plots" class="section level2" number="0.31">
 <h2>
-<span class="header-section-number">9.1</span> Lineage through time plots<a class="anchor" aria-label="anchor" href="#lineage-through-time-plots"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.31</span> Lineage through time plots<a class="anchor" aria-label="anchor" href="#lineage-through-time-plots"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># LTT plot</span></span>
@@ -120,9 +144,9 @@ número de espécies que a nossa árvore de interesse.</p>
 <span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/ltt95.html">ltt95</a></span><span class="op">(</span><span class="va">trees</span>,log<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">obj.ltt</span>,add<span class="op">=</span><span class="cn">TRUE</span>,col<span class="op">=</span><span class="st">"red"</span>,lty<span class="op">=</span><span class="st">"dashed"</span>,lwd<span class="op">=</span><span class="fl">2</span>,log.lineages<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="estatística-γ" class="section level2" number="9.2">
+<div id="estatística-γ" class="section level2" number="0.32">
 <h2>
-<span class="header-section-number">9.2</span> Estatística γ<a class="anchor" aria-label="anchor" href="#estat%C3%ADstica-%CE%B3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.32</span> Estatística γ<a class="anchor" aria-label="anchor" href="#estat%C3%ADstica-%CE%B3"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Estatística gamma</span></span>
@@ -142,9 +166,9 @@ número de espécies que a nossa árvore de interesse.</p>
 <span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/ltt95.html">ltt95</a></span><span class="op">(</span><span class="va">trees</span>,log<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/ltt.html">ltt</a></span><span class="op">(</span><span class="va">coal.tree</span>,add<span class="op">=</span><span class="cn">TRUE</span>,log.lineages<span class="op">=</span><span class="cn">FALSE</span>,col<span class="op">=</span><span class="st">"red"</span>,lwd<span class="op">=</span><span class="fl">2</span>,lty<span class="op">=</span><span class="st">"dashed"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="disparity-though-time-plots-dtt" class="section level2" number="9.3">
+<div id="disparity-though-time-plots-dtt" class="section level2" number="0.33">
 <h2>
-<span class="header-section-number">9.3</span> Disparity though time plots (DTT)<a class="anchor" aria-label="anchor" href="#disparity-though-time-plots-dtt"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.33</span> Disparity though time plots (DTT)<a class="anchor" aria-label="anchor" href="#disparity-though-time-plots-dtt"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html#cb72-1" tabindex="-1"></a><span class="co"># Dados morfológicos</span></span>
 <span id="cb72-2"><a href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html#cb72-2" tabindex="-1"></a>dados<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">"dados/sigmodontinae-atributos.txt"</span>,<span class="at">h=</span>T,<span class="at">row.names=</span><span class="dv">1</span>)</span>
@@ -167,25 +191,25 @@ número de espécies que a nossa árvore de interesse.</p>
 <span id="cb72-19"><a href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html#cb72-19" tabindex="-1"></a>dtt.shape<span class="sc">$</span>MDI</span>
 <span id="cb72-20"><a href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html#cb72-20" tabindex="-1"></a>dtt.shape<span class="sc">$</span>MDIpVal</span></code></pre></div>
 </div>
-<div id="exercício-8---livre" class="section level2" number="9.4">
+<div id="exercício-8---livre" class="section level2" number="0.34">
 <h2>
-<span class="header-section-number">9.4</span> Exercício 8 - Livre<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio-8---livre"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.34</span> Exercício 8 - Livre<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio-8---livre"><i class="fas fa-link"></i></a>
 </h2>
 <p>Livre.</p>
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html"><span class="header-section-number">8</span> Métodos filogenéticos multivariados</a></div>
-<div class="next"><a href="estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o.html"><span class="header-section-number">10</span> Estimativas de taxas de especiação e extinção</a></div>
+<div class="prev"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html">7. Métodos filogenéticos multivariados</a></div>
+<div class="next"><a href="estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o.html">9. Estimativas de taxas de especiação e extinção</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo"><span class="header-section-number">9</span> Diversificação de linhagens e fenotípica ao longo do tempo</a></li>
-<li><a class="nav-link" href="#lineage-through-time-plots"><span class="header-section-number">9.1</span> Lineage through time plots</a></li>
-<li><a class="nav-link" href="#estat%C3%ADstica-%CE%B3"><span class="header-section-number">9.2</span> Estatística γ</a></li>
-<li><a class="nav-link" href="#disparity-though-time-plots-dtt"><span class="header-section-number">9.3</span> Disparity though time plots (DTT)</a></li>
-<li><a class="nav-link" href="#exerc%C3%ADcio-8---livre"><span class="header-section-number">9.4</span> Exercício 8 - Livre</a></li>
+<li><a class="nav-link" href="#diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo">8. Diversificação de linhagens e fenotípica ao longo do tempo</a></li>
+<li><a class="nav-link" href="#lineage-through-time-plots"><span class="header-section-number">0.31</span> Lineage through time plots</a></li>
+<li><a class="nav-link" href="#estat%C3%ADstica-%CE%B3"><span class="header-section-number">0.32</span> Estatística γ</a></li>
+<li><a class="nav-link" href="#disparity-though-time-plots-dtt"><span class="header-section-number">0.33</span> Disparity though time plots (DTT)</a></li>
+<li><a class="nav-link" href="#exerc%C3%ADcio-8---livre"><span class="header-section-number">0.34</span> Exercício 8 - Livre</a></li>
 </ul>
 
       <div class="book-extra">

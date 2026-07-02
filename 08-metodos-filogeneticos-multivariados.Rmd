@@ -1,4 +1,4 @@
-# Métodos filogenéticos multivariados
+# 7. Métodos filogenéticos multivariados {-}
 
 Vamos carregar uma matriz contendo 26 colunas com coordenadas de Procrustes 
 que descrevem a forma da mandíbula de 176 espécies de roedores sigmodontineos. 

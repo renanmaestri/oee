@@ -1,4 +1,4 @@
-# Seleção e composição fenotípica
+# 4. Seleção e composição fenotípica {-}
 
 Análises de diversidade e/ou composição funcional envolvem calcular medidas que 
 consideram conjuntos de espécies descritas tanto por um ou mais atributos quanto sua 

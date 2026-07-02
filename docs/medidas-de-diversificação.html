@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 16 Medidas de diversificação | Oficina de Ecologia Evolutiva</title>
+<meta name="author" content="Renan Maestri &amp; Leandro Duarte">
+<meta name="description" content="Indicadores de taxa de diversificação média em assembleias são excelentes fontes de informação sobre a história de formação das assembleias, e podem explicar a variação nos níveis de diversidade...">
+<meta name="generator" content="bookdown 0.47 with bs4_book()">
+<meta property="og:title" content="Capítulo 16 Medidas de diversificação | Oficina de Ecologia Evolutiva">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://renanmaestri.github.io/oee/medidas-de-diversificação.html">
+<meta property="og:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
+<meta property="og:description" content="Indicadores de taxa de diversificação média em assembleias são excelentes fontes de informação sobre a história de formação das assembleias, e podem explicar a variação nos níveis de diversidade...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 16 Medidas de diversificação | Oficina de Ecologia Evolutiva">
+<meta name="twitter:description" content="Indicadores de taxa de diversificação média em assembleias são excelentes fontes de informação sobre a história de formação das assembleias, e podem explicar a variação nos níveis de diversidade...">
+<meta name="twitter:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Oficina de Ecologia Evolutiva</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefácio</a></li>
+<li><a class="" href="estrutura-e-programa-da-disciplina.html"><span class="header-section-number">1</span> Estrutura e Programa da Disciplina</a></li>
+<li><a class="" href="manipulando-filogenias-no-r---sinal-filogen%C3%A9tico.html"><span class="header-section-number">2</span> Manipulando filogenias no R - Sinal Filogenético</a></li>
+<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos.html"><span class="header-section-number">3</span> Modelos para evolução de fenótipos contínuos</a></li>
+<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-discretos.html"><span class="header-section-number">4</span> Modelos para evolução de fenótipos discretos</a></li>
+<li><a class="" href="regress%C3%A3o-filogen%C3%A9tica.html"><span class="header-section-number">5</span> Regressão Filogenética</a></li>
+<li><a class="" href="correla%C3%A7%C3%A3o-de-atributos-discretos.html"><span class="header-section-number">6</span> Correlação de atributos discretos</a></li>
+<li><a class="" href="modelos-multi-taxa-e-multi-regime.html"><span class="header-section-number">7</span> Modelos multi-taxa e multi-regime</a></li>
+<li><a class="" href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html"><span class="header-section-number">8</span> Métodos filogenéticos multivariados</a></li>
+<li><a class="" href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html"><span class="header-section-number">9</span> Diversificação de linhagens e fenotípica ao longo do tempo</a></li>
+<li><a class="" href="estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o.html"><span class="header-section-number">10</span> Estimativas de taxas de especiação e extinção</a></li>
+<li><a class="" href="diversifica%C3%A7%C3%A3o-dependente-de-estado.html"><span class="header-section-number">11</span> Diversificação dependente de estado</a></li>
+<li><a class="" href="manipulando-as-bases-de-dados.html"><span class="header-section-number">12</span> Manipulando as bases de dados</a></li>
+<li><a class="" href="diversidade-filogen%C3%A9tica.html"><span class="header-section-number">13</span> Diversidade filogenética</a></li>
+<li><a class="" href="diversidade-beta-filogen%C3%A9tica.html"><span class="header-section-number">14</span> Diversidade beta filogenética</a></li>
+<li><a class="" href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html"><span class="header-section-number">15</span> Seleção e composição fenotípica</a></li>
+<li><a class="active" href="medidas-de-diversifica%C3%A7%C3%A3o.html"><span class="header-section-number">16</span> Medidas de diversificação</a></li>
+<li><a class="" href="refer%C3%AAncias-2.html">Referências</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/renanmaestri/oee">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="medidas-de-diversificação" class="section level1" number="16">
+<h1>
+<span class="header-section-number">Capítulo 16</span> Medidas de diversificação<a class="anchor" aria-label="anchor" href="#medidas-de-diversifica%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
+</h1>
+<p>Indicadores de taxa de diversificação média em assembleias são excelentes fontes de
+informação sobre a história de formação das assembleias, e podem explicar a variação
+nos níveis de diversidade observados em diferentes regiões, biomas, continentes, etc.</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb136-1" tabindex="-1"></a><span class="co"># require(phytools) ou require(ape)</span></span>
+<span id="cb136-2"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb136-2" tabindex="-1"></a><span class="co"># Carregar dados</span></span>
+<span id="cb136-3"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb136-3" tabindex="-1"></a>comm<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">"dados/community.txt"</span>,<span class="at">h=</span>T)</span>
+<span id="cb136-4"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb136-4" tabindex="-1"></a><span class="fu">dim</span>(comm)</span>
+<span id="cb136-5"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb136-5" tabindex="-1"></a>comm</span>
+<span id="cb136-6"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb136-6" tabindex="-1"></a><span class="co"># Carregar filogenia (duas alternativas):</span></span>
+<span id="cb136-7"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb136-7" tabindex="-1"></a>tree<span class="ot">&lt;-</span>phytools<span class="sc">::</span><span class="fu">read.newick</span>(<span class="st">"bird_orders.new"</span>)</span>
+<span id="cb136-8"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb136-8" tabindex="-1"></a>tree<span class="ot">&lt;-</span>ape<span class="sc">::</span><span class="fu">read.tree</span>(<span class="st">"dados/bird_orders.txt"</span>)<span class="fu">plot</span>(tree)</span>
+<span id="cb136-9"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb136-9" tabindex="-1"></a><span class="fu">plotTree</span>(tree,<span class="at">fsize=</span><span class="fl">0.4</span>,<span class="at">ftype=</span><span class="st">"i"</span>,<span class="at">type=</span><span class="st">"fan"</span>,<span class="at">lwd=</span><span class="dv">1</span>)</span></code></pre></div>
+<p>Para verificar a correspondência entre espécies nos dados e na filogenia usar a função
+match.phylo.comm.</p>
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">picante</span><span class="op">)</span></span>
+<span><span class="va">match.species</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/picante/man/data.checking.html">match.phylo.comm</a></span><span class="op">(</span><span class="va">tree</span>,<span class="va">comm</span><span class="op">)</span></span>
+<span><span class="va">tree</span><span class="op">&lt;-</span><span class="va">match.species</span><span class="op">$</span><span class="va">phy</span></span>
+<span><span class="va">comm</span><span class="op">&lt;-</span> <span class="va">match.species</span><span class="op">$</span><span class="va">comm</span></span></code></pre></div>
+<p>Para usar o pacote ade4, é necessário converter o objeto tree da classe phylo para classe
+phylog. Função newick2phylog às vezes não reconhece o objeto phylo diretamente. A
+solução abaixo resolve o problema de forma manual:</p>
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span> <span class="op">(</span><span class="va"><a href="https://adeverse.github.io/ade4/">ade4</a></span><span class="op">)</span></span>
+<span><span class="va">tree</span><span class="op">&lt;-</span></span>
+<span><span class="op">(</span><span class="st">"(((Struthioniformes:21.8,Tinamiformes:21.8):4.1,((Craciformes:21.6,Galliformes:2</span></span>
+<span><span class="st">1.6):1.3,Anseriformes:22.9):3)A:2.1,(Turniciformes:27,(Piciformes:26.3,((Galbulifor</span></span>
+<span><span class="st">mes:24.4,((Bucerotiformes:20.8,Upupiformes:20.8):2.6,(Trogoniformes:22.1,Coraciif</span></span>
+<span><span class="st">ormes:22.1):1.3):1)B:0.6,(Coliiformes:24.5,(Cuculiformes:23.7,(Psittaciformes:23.1,(</span></span>
+<span><span class="st">((Apodiformes:21.3,Trochiliformes:21.3):0.6,(Musophagiformes:20.4,Strigiformes:2</span></span>
+<span><span class="st">0.4):1.5):0.6,((Columbiformes:20.8,(Gruiformes:20.1,Ciconiiformes:20.1):0.7):0.8,Pa</span></span>
+<span><span class="st">sseriformes:21.6):0.9):0.6):0.6):0.8):0.5):1.3):0.7):1);"</span><span class="op">)</span></span>
+<span><span class="va">tree.phylog</span><span class="op">&lt;-</span><span class="fu"><a href="https://adeverse.github.io/ade4/reference/newick2phylog.html">newick2phylog</a></span><span class="op">(</span><span class="va">tree</span>,add.tools <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb139-1" tabindex="-1"></a><span class="fu">require</span>(ade4)</span>
+<span id="cb139-2"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb139-2" tabindex="-1"></a>ori<span class="ot">&lt;-</span><span class="fu">originality</span>(tree.phylog,<span class="at">method=</span><span class="dv">5</span>)</span>
+<span id="cb139-3"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb139-3" tabindex="-1"></a><span class="co"># method = 1 = Vane-Wright et al.'s (1991) node-counting index</span></span>
+<span id="cb139-4"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb139-4" tabindex="-1"></a><span class="co"># 2 = May's (1990) branch-counting index</span></span>
+<span id="cb139-5"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb139-5" tabindex="-1"></a><span class="co"># 3 = Nixon and Wheeler's (1991) unweighted index, based on the sum of units in</span></span>
+<span id="cb139-6"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb139-6" tabindex="-1"></a>binary values</span>
+<span id="cb139-7"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb139-7" tabindex="-1"></a><span class="co"># 4 = Nixon and Wheeler's (1991) weighted index</span></span>
+<span id="cb139-8"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb139-8" tabindex="-1"></a><span class="co"># 5 = QE-based index</span></span>
+<span id="cb139-9"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb139-9" tabindex="-1"></a><span class="co"># 6 = Isaac et al. (2007) ED index</span></span>
+<span id="cb139-10"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb139-10" tabindex="-1"></a><span class="co"># 7 = Redding et al. (2006) Equal-split index</span></span>
+<span id="cb139-11"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb139-11" tabindex="-1"></a><span class="co"># Ou</span></span>
+<span id="cb139-12"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb139-12" tabindex="-1"></a><span class="fu">require</span> (picante)</span>
+<span id="cb139-13"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb139-13" tabindex="-1"></a>es.spp<span class="ot">&lt;-</span><span class="fu">evol.distinct</span>(tree,<span class="at">type=</span><span class="st">"equal.splits"</span>,<span class="at">scale =</span> <span class="cn">FALSE</span>,<span class="at">use.branch.lengths =</span></span>
+<span id="cb139-14"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb139-14" tabindex="-1"></a><span class="cn">TRUE</span>)[,<span class="dv">2</span>]</span>
+<span id="cb139-15"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb139-15" tabindex="-1"></a><span class="co"># type = equal.splits (opção 7 da função anterior) ou fair.proportion (opção 6 da</span></span>
+<span id="cb139-16"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb139-16" tabindex="-1"></a>função anterior<span class="er">)</span>.</span></code></pre></div>
+<div id="net-diversification-rate-jetz-et-al.-2012" class="section level2" number="16.1">
+<h2>
+<span class="header-section-number">16.1</span> Net diversification rate (Jetz et al. 2012)<a class="anchor" aria-label="anchor" href="#net-diversification-rate-jetz-et-al.-2012"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb140-1" tabindex="-1"></a><span class="fu">require</span>(picante)</span>
+<span id="cb140-2"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb140-2" tabindex="-1"></a><span class="fu">require</span>(SYNCSA)</span>
+<span id="cb140-3"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb140-3" tabindex="-1"></a>ES.spp<span class="ot">&lt;-</span> <span class="fu">evol.distinct</span>(tree,<span class="at">type=</span><span class="st">"equal.splits"</span>,<span class="at">scale=</span><span class="cn">FALSE</span>,<span class="at">use.branch.lengths =</span></span>
+<span id="cb140-4"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb140-4" tabindex="-1"></a><span class="cn">TRUE</span>)[,<span class="dv">2</span>]</span>
+<span id="cb140-5"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb140-5" tabindex="-1"></a>DR.spp<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">/</span>ES.spp</span>
+<span id="cb140-6"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb140-6" tabindex="-1"></a>DR.comm<span class="ot">&lt;-</span><span class="fu">matrix.t</span>(comm, <span class="at">traits=</span> <span class="fu">as.data.frame</span>(DR.spp),</span>
+<span id="cb140-7"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb140-7" tabindex="-1"></a><span class="at">ranks=</span><span class="cn">FALSE</span>,<span class="at">notification=</span><span class="cn">FALSE</span>)</span>
+<span id="cb140-8"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb140-8" tabindex="-1"></a><span class="co"># Usando o pacote Herodotools é possível calcular essas métricas incorporando</span></span>
+<span id="cb140-9"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb140-9" tabindex="-1"></a>diversificação <span class="cf">in</span> situ<span class="sc">:</span></span>
+<span id="cb140-10"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb140-10" tabindex="-1"></a><span class="fu">require</span>(Herodotools)</span>
+<span id="cb140-11"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb140-11" tabindex="-1"></a><span class="co"># Carregar objeto descrevendo sítios por região biogeográfica</span></span>
+<span id="cb140-12"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb140-12" tabindex="-1"></a>biogeo<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">"dados/biogeo.txt"</span>,<span class="at">h=</span>T)</span>
+<span id="cb140-13"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb140-13" tabindex="-1"></a><span class="co"># Carregar objeto descrevendo os nós da filogenia por região biogeográfica, a partir</span></span>
+<span id="cb140-14"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb140-14" tabindex="-1"></a><span class="co"># de uma reconstrução ancestral, via BioGeoBears ou alguma outra ferramenta de</span></span>
+<span id="cb140-15"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb140-15" tabindex="-1"></a><span class="co"># reconstrução de caracteres ancestrais (e.g. função ace do pacote ape):</span></span>
+<span id="cb140-16"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb140-16" tabindex="-1"></a>ancestral.area<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">"dados/node_biogeo.txt"</span>,<span class="at">h=</span>T)</span>
+<span id="cb140-17"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb140-17" tabindex="-1"></a>Div.insitu<span class="ot">&lt;-</span><span class="fu">calc_insitu_diversification</span>(comm, tree, ancestral.area,</span>
+<span id="cb140-18"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb140-18" tabindex="-1"></a>biogeo,<span class="at">diversification =</span> <span class="st">"jetz"</span>,<span class="at">type =</span> <span class="st">"equal.splits"</span>)</span></code></pre></div>
+</div>
+<div id="diversidade-filogenética-e-endemismo-filogenético" class="section level2" number="16.2">
+<h2>
+<span class="header-section-number">16.2</span> Diversidade filogenética e endemismo filogenético<a class="anchor" aria-label="anchor" href="#diversidade-filogen%C3%A9tica-e-endemismo-filogen%C3%A9tico"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="incorporando-diversificação-in-situ-rosauer-et-al.-2009" class="section level2" number="16.3">
+<h2>
+<span class="header-section-number">16.3</span> incorporando diversificação in situ (Rosauer et al. 2009)<a class="anchor" aria-label="anchor" href="#incorporando-diversifica%C3%A7%C3%A3o-in-situ-rosauer-et-al.-2009"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span> <span class="op">(</span><span class="va"><a href="https://gabrielnakamura.github.io/Herodotools/">Herodotools</a></span><span class="op">)</span></span>
+<span><span class="co"># Carregar objeto descrevendo sítios por região biogeográfica</span></span>
+<span><span class="va">biogeo</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="st">"dados/biogeo.txt"</span>,h<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span>
+<span><span class="co"># Carregar objeto descrevendo os nós da filogenia por região biogeográfica, a partir</span></span>
+<span><span class="co"># de uma reconstrução ancestral, via BioGeoBears ou alguma outra ferramenta de</span></span>
+<span><span class="co"># reconstrução de caracteres ancestrais (e.g. função ace do pacote ape):</span></span>
+<span><span class="va">ancestral.area</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="st">"dados/node_biogeo.txt"</span>,h<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span>
+<span><span class="co"># Calcula PD e PE:</span></span>
+<span><span class="va">Res_metricas</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/Herodotools/man/calc_insitu_metrics.html">calc_insitu_metrics</a></span><span class="op">(</span><span class="va">comm</span>, <span class="va">tree</span>, <span class="va">ancestral.area</span>, <span class="va">biogeo</span>, PD <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>PE <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="idade-das-assembleias-van-dijk-et-al.-2021" class="section level2" number="16.4">
+<h2>
+<span class="header-section-number">16.4</span> Idade das assembleias (Van Dijk et al. 2021)<a class="anchor" aria-label="anchor" href="#idade-das-assembleias-van-dijk-et-al.-2021"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span> <span class="op">(</span><span class="va"><a href="https://gabrielnakamura.github.io/Herodotools/">Herodotools</a></span><span class="op">)</span></span>
+<span><span class="co"># Carregar objeto descrevendo sítios por região biogeográfica</span></span>
+<span><span class="va">biogeo</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="st">"dados/biogeo.txt"</span>,h<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span>
+<span><span class="co"># Carregar objeto descrevendo os nós da filogenia por região biogeográfica, a partir</span></span>
+<span><span class="co"># de uma reconstrução ancestral, via BioGeoBears ou alguma outra ferramenta de</span></span>
+<span><span class="co"># reconstrução de caracteres ancestrais (e.g. função ace do pacote ape):</span></span>
+<span><span class="va">ancestral.area</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="st">"dados/node_biogeo.txt"</span>,h<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span>
+<span><span class="co"># Calcula a idade das assembleias baseada na chegada do clado:</span></span>
+<span><span class="va">Idade</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Herodotools/man/calc_age_arrival.html">calc_age_arrival</a></span><span class="op">(</span><span class="va">comm</span>, <span class="va">tree</span>, <span class="va">ancestral.area</span>, <span class="va">biogeo</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="evoregions" class="section level2" number="16.5">
+<h2>
+<span class="header-section-number">16.5</span> Evoregions<a class="anchor" aria-label="anchor" href="#evoregions"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb143-1" tabindex="-1"></a><span class="fu">require</span>(Herodotools)</span>
+<span id="cb143-2"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb143-2" tabindex="-1"></a><span class="fu">require</span>(PCPS)</span>
+<span id="cb143-3"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb143-3" tabindex="-1"></a><span class="fu">source</span>(“find_max_nclust.R”)</span>
+<span id="cb143-4"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb143-4" tabindex="-1"></a><span class="co"># Definir número máximo de clusters a serem analisados (argumento max.n.clust da</span></span>
+<span id="cb143-5"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb143-5" tabindex="-1"></a>função calc_evoregions<span class="er">)</span><span class="sc">:</span></span>
+<span id="cb143-6"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb143-6" tabindex="-1"></a>pcps_comm<span class="ot">&lt;-</span>PCPS<span class="sc">::</span><span class="fu">pcps</span>(comm,<span class="fu">cophenetic</span>(tree),<span class="at">method=</span><span class="st">"bray"</span>,<span class="at">squareroot =</span></span>
+<span id="cb143-7"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb143-7" tabindex="-1"></a><span class="cn">TRUE</span>)</span>
+<span id="cb143-8"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb143-8" tabindex="-1"></a>Val<span class="ot">&lt;-</span>pcps_comm<span class="sc">$</span>values</span>
+<span id="cb143-9"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb143-9" tabindex="-1"></a><span class="co"># Quatro eixos de pcps apresentam autovalores &gt; 5% da variação total em P.</span></span>
+<span id="cb143-10"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb143-10" tabindex="-1"></a>Vec<span class="ot">&lt;-</span> pcps_comm<span class="sc">$</span>vectors</span>
+<span id="cb143-11"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb143-11" tabindex="-1"></a>n.clust3<span class="ot">&lt;-</span><span class="fu">find_max_nclust</span>(<span class="at">x=</span>Vec, <span class="at">threshold=</span> <span class="dv">4</span>,<span class="at">max.nclust=</span><span class="dv">3</span>)</span>
+<span id="cb143-12"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb143-12" tabindex="-1"></a>n.clust4<span class="ot">&lt;-</span><span class="fu">find_max_nclust</span>(<span class="at">x=</span>Vec, <span class="at">threshold=</span> <span class="dv">4</span>,<span class="at">max.nclust=</span><span class="dv">4</span>)</span>
+<span id="cb143-13"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb143-13" tabindex="-1"></a>n.clust5<span class="ot">&lt;-</span><span class="fu">find_max_nclust</span>(<span class="at">x=</span>Vec, <span class="at">threshold=</span> <span class="dv">4</span>,<span class="at">max.nclust=</span><span class="dv">5</span>)</span>
+<span id="cb143-14"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb143-14" tabindex="-1"></a>n.clust6<span class="ot">&lt;-</span><span class="fu">find_max_nclust</span>(<span class="at">x=</span>Vec, <span class="at">threshold=</span> <span class="dv">4</span>,<span class="at">max.nclust=</span><span class="dv">6</span>)</span>
+<span id="cb143-15"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb143-15" tabindex="-1"></a>n.clust7<span class="ot">&lt;-</span><span class="fu">find_max_nclust</span>(<span class="at">x=</span>Vec, <span class="at">threshold=</span> <span class="dv">4</span>,<span class="at">max.nclust=</span><span class="dv">7</span>)</span>
+<span id="cb143-16"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb143-16" tabindex="-1"></a>n.clust8<span class="ot">&lt;-</span><span class="fu">find_max_nclust</span>(<span class="at">x=</span>Vec, <span class="at">threshold=</span> <span class="dv">4</span>,<span class="at">max.nclust=</span><span class="dv">8</span>)</span>
+<span id="cb143-17"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb143-17" tabindex="-1"></a>n.clust9<span class="ot">&lt;-</span><span class="fu">find_max_nclust</span>(<span class="at">x=</span>Vec, <span class="at">threshold=</span> <span class="dv">4</span>,<span class="at">max.nclust=</span><span class="dv">9</span>)</span>
+<span id="cb143-18"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb143-18" tabindex="-1"></a><span class="co"># A análise com 8 grupos é a mais estável.</span></span>
+<span id="cb143-19"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb143-19" tabindex="-1"></a><span class="co"># Estimar evoregions:</span></span>
+<span id="cb143-20"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html#cb143-20" tabindex="-1"></a>evoreg<span class="ot">&lt;-</span><span class="fu">calc_evoregions</span>(comm, tree, <span class="at">max.n.clust =</span> <span class="dv">8</span>)</span></code></pre></div>
+</div>
+<div id="exercício-2" class="section level2" number="16.6">
+<h2>
+<span class="header-section-number">16.6</span> Exercício<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>Calcule a taxa de diversificação líquida (net diversification rate) e o endemismo
+filogenético para as comunidades. Estes indicadores biogeográficos se relacionam
+melhor com a variável ambiental E ou com a latitude? Como responder esta pergunta?
+Ambos os preditores estão disponíveis no arquivo environment.txt.</p>
+</div>
+<div id="referências-1" class="section level2" number="16.7">
+<h2>
+<span class="header-section-number">16.7</span> Referências<a class="anchor" aria-label="anchor" href="#refer%C3%AAncias-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Jetz, W., G. Thomas, J. Joy, K. Hartmann, and A. Mooers. 2012. The global diversity of
+birds in space and time. Nature 491:444.
+Rosauer, D., S. W. Laffan, M. D. Crisp, S. C. Donnellan, and L. G. Cook. 2009.
+Phylogenetic endemism: a new approach for identifying geographical
+concentrations of evolutionary history. Molecular Ecology 18:4061-4072.
+Van Dijk, A., G. Nakamura, A. V. Rodrigues, R. Maestri, and L. Duarte. 2021. Imprints
+of tropical niche conservatism and historical dispersal in the radiation of
+Tyrannidae (Aves: Passeriformes). Biological Journal of the Linnean Society
+134:57-67.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html"><span class="header-section-number">15</span> Seleção e composição fenotípica</a></div>
+<div class="next"><a href="refer%C3%AAncias-2.html">Referências</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#medidas-de-diversifica%C3%A7%C3%A3o"><span class="header-section-number">16</span> Medidas de diversificação</a></li>
+<li><a class="nav-link" href="#net-diversification-rate-jetz-et-al.-2012"><span class="header-section-number">16.1</span> Net diversification rate (Jetz et al. 2012)</a></li>
+<li><a class="nav-link" href="#diversidade-filogen%C3%A9tica-e-endemismo-filogen%C3%A9tico"><span class="header-section-number">16.2</span> Diversidade filogenética e endemismo filogenético</a></li>
+<li><a class="nav-link" href="#incorporando-diversifica%C3%A7%C3%A3o-in-situ-rosauer-et-al.-2009"><span class="header-section-number">16.3</span> incorporando diversificação in situ (Rosauer et al. 2009)</a></li>
+<li><a class="nav-link" href="#idade-das-assembleias-van-dijk-et-al.-2021"><span class="header-section-number">16.4</span> Idade das assembleias (Van Dijk et al. 2021)</a></li>
+<li><a class="nav-link" href="#evoregions"><span class="header-section-number">16.5</span> Evoregions</a></li>
+<li><a class="nav-link" href="#exerc%C3%ADcio-2"><span class="header-section-number">16.6</span> Exercício</a></li>
+<li><a class="nav-link" href="#refer%C3%AAncias-1"><span class="header-section-number">16.7</span> Referências</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/renanmaestri/oee/blob/master/16-diversificacao.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/renanmaestri/oee/edit/master/16-diversificacao.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Oficina de Ecologia Evolutiva</strong>" was written by Renan Maestri &amp; Leandro Duarte. It was last built on 2026-07-02.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

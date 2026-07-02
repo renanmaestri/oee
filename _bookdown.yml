@@ -1,0 +1,29 @@
+output_dir: "docs"
+book_filename: "oee"
+new_session: true
+delete_merged_file: true
+rmd_files:
+- "index.Rmd"
+- "01-intro.Rmd"
+- "02-manipulando-filogenias.Rmd"
+- "03-modelos-continuos.Rmd"
+- "04-modelos-discretos.Rmd"
+- "05-regressao-filogenetica.Rmd"
+- "06-correlacao-atributos-discretos.Rmd"
+- "07-modelos-multi-taxa-multi-regime.Rmd"
+- "08-metodos-filogeneticos-multivariados.Rmd"
+- "09-diversificacao-linhagens-fenotipica.Rmd"
+- "10-estimativas-especiacao-extincao.Rmd"
+- "11-diversificacao-dependente-estado.Rmd"
+- "12-dados-espaciais.Rmd"
+- "13-diversidade-filogenetica.Rmd"
+- "14-filobetadiversidade.Rmd"
+- "15-selecao.Rmd"
+- "16-diversificacao.Rmd"
+- "17-references.Rmd"
+language:
+  label:
+    fig: "Figura "
+    tab: "Tabela "
+  ui:
+    chapter_name: "Capítulo "

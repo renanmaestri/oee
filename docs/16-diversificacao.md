@@ -1,0 +1,189 @@
+# Medidas de diversificação
+
+Indicadores de taxa de diversificação média em assembleias são excelentes fontes de 
+informação sobre a história de formação das assembleias, e podem explicar a variação 
+nos níveis de diversidade observados em diferentes regiões, biomas, continentes, etc. 
+
+
+
+``` r
+# require(phytools) ou require(ape)
+# Carregar dados
+comm<-read.table("dados/community.txt",h=T)
+dim(comm)
+comm
+# Carregar filogenia (duas alternativas):
+tree<-phytools::read.newick("bird_orders.new")
+tree<-ape::read.tree("dados/bird_orders.txt")plot(tree)
+plotTree(tree,fsize=0.4,ftype="i",type="fan",lwd=1)
+```
+
+Para verificar a correspondência entre espécies nos dados e na filogenia usar a função 
+match.phylo.comm. 
+
+
+
+``` r
+require(picante)
+match.species<-match.phylo.comm(tree,comm)
+tree<-match.species$phy
+comm<- match.species$comm
+```
+
+Para usar o pacote ade4, é necessário converter o objeto tree da classe phylo para classe 
+phylog. Função newick2phylog às vezes não reconhece o objeto phylo diretamente. A 
+solução abaixo resolve o problema de forma manual: 
+
+
+
+``` r
+require (ade4)
+tree<-
+("(((Struthioniformes:21.8,Tinamiformes:21.8):4.1,((Craciformes:21.6,Galliformes:2
+1.6):1.3,Anseriformes:22.9):3)A:2.1,(Turniciformes:27,(Piciformes:26.3,((Galbulifor
+mes:24.4,((Bucerotiformes:20.8,Upupiformes:20.8):2.6,(Trogoniformes:22.1,Coraciif
+ormes:22.1):1.3):1)B:0.6,(Coliiformes:24.5,(Cuculiformes:23.7,(Psittaciformes:23.1,(
+((Apodiformes:21.3,Trochiliformes:21.3):0.6,(Musophagiformes:20.4,Strigiformes:2
+0.4):1.5):0.6,((Columbiformes:20.8,(Gruiformes:20.1,Ciconiiformes:20.1):0.7):0.8,Pa
+sseriformes:21.6):0.9):0.6):0.6):0.8):0.5):1.3):0.7):1);")
+tree.phylog<-newick2phylog(tree,add.tools = T)
+```
+
+
+
+
+``` r
+require(ade4)
+ori<-originality(tree.phylog,method=5)
+# method = 1 = Vane-Wright et al.'s (1991) node-counting index
+# 2 = May's (1990) branch-counting index
+# 3 = Nixon and Wheeler's (1991) unweighted index, based on the sum of units in
+binary values
+# 4 = Nixon and Wheeler's (1991) weighted index
+# 5 = QE-based index
+# 6 = Isaac et al. (2007) ED index
+# 7 = Redding et al. (2006) Equal-split index
+# Ou
+require (picante)
+es.spp<-evol.distinct(tree,type="equal.splits",scale = FALSE,use.branch.lengths =
+TRUE)[,2]
+# type = equal.splits (opção 7 da função anterior) ou fair.proportion (opção 6 da
+função anterior).
+```
+
+
+## Net diversification rate (Jetz et al. 2012)
+
+
+
+
+``` r
+require(picante)
+require(SYNCSA)
+ES.spp<- evol.distinct(tree,type="equal.splits",scale=FALSE,use.branch.lengths =
+TRUE)[,2]
+DR.spp<-1/ES.spp
+DR.comm<-matrix.t(comm, traits= as.data.frame(DR.spp),
+ranks=FALSE,notification=FALSE)
+# Usando o pacote Herodotools é possível calcular essas métricas incorporando
+diversificação in situ:
+require(Herodotools)
+# Carregar objeto descrevendo sítios por região biogeográfica
+biogeo<-read.table("dados/biogeo.txt",h=T)
+# Carregar objeto descrevendo os nós da filogenia por região biogeográfica, a partir
+# de uma reconstrução ancestral, via BioGeoBears ou alguma outra ferramenta de
+# reconstrução de caracteres ancestrais (e.g. função ace do pacote ape):
+ancestral.area<-read.table("dados/node_biogeo.txt",h=T)
+Div.insitu<-calc_insitu_diversification(comm, tree, ancestral.area,
+biogeo,diversification = "jetz",type = "equal.splits")
+```
+
+
+## Diversidade filogenética e endemismo filogenético
+
+
+## incorporando diversificação in situ (Rosauer et al. 2009)
+
+
+
+
+``` r
+require (Herodotools)
+# Carregar objeto descrevendo sítios por região biogeográfica
+biogeo<-read.table("dados/biogeo.txt",h=T)
+# Carregar objeto descrevendo os nós da filogenia por região biogeográfica, a partir
+# de uma reconstrução ancestral, via BioGeoBears ou alguma outra ferramenta de
+# reconstrução de caracteres ancestrais (e.g. função ace do pacote ape):
+ancestral.area<-read.table("dados/node_biogeo.txt",h=T)
+# Calcula PD e PE:
+Res_metricas<-calc_insitu_metrics(comm, tree, ancestral.area, biogeo, PD = TRUE,
+PE = TRUE)
+```
+
+
+## Idade das assembleias (Van Dijk et al. 2021)
+
+
+
+
+``` r
+require (Herodotools)
+# Carregar objeto descrevendo sítios por região biogeográfica
+biogeo<-read.table("dados/biogeo.txt",h=T)
+# Carregar objeto descrevendo os nós da filogenia por região biogeográfica, a partir
+# de uma reconstrução ancestral, via BioGeoBears ou alguma outra ferramenta de
+# reconstrução de caracteres ancestrais (e.g. função ace do pacote ape):
+ancestral.area<-read.table("dados/node_biogeo.txt",h=T)
+# Calcula a idade das assembleias baseada na chegada do clado:
+Idade<- calc_age_arrival(comm, tree, ancestral.area, biogeo)
+```
+
+
+## Evoregions
+
+
+
+
+``` r
+require(Herodotools)
+require(PCPS)
+source(“find_max_nclust.R”)
+# Definir número máximo de clusters a serem analisados (argumento max.n.clust da
+função calc_evoregions):
+pcps_comm<-PCPS::pcps(comm,cophenetic(tree),method="bray",squareroot =
+TRUE)
+Val<-pcps_comm$values
+# Quatro eixos de pcps apresentam autovalores > 5% da variação total em P.
+Vec<- pcps_comm$vectors
+n.clust3<-find_max_nclust(x=Vec, threshold= 4,max.nclust=3)
+n.clust4<-find_max_nclust(x=Vec, threshold= 4,max.nclust=4)
+n.clust5<-find_max_nclust(x=Vec, threshold= 4,max.nclust=5)
+n.clust6<-find_max_nclust(x=Vec, threshold= 4,max.nclust=6)
+n.clust7<-find_max_nclust(x=Vec, threshold= 4,max.nclust=7)
+n.clust8<-find_max_nclust(x=Vec, threshold= 4,max.nclust=8)
+n.clust9<-find_max_nclust(x=Vec, threshold= 4,max.nclust=9)
+# A análise com 8 grupos é a mais estável.
+# Estimar evoregions:
+evoreg<-calc_evoregions(comm, tree, max.n.clust = 8)
+```
+
+
+## Exercício
+
+Calcule a taxa de diversificação líquida (net diversification rate) e o endemismo 
+filogenético para as comunidades. Estes indicadores biogeográficos se relacionam 
+melhor com a variável ambiental E ou com a latitude? Como responder esta pergunta? 
+Ambos os preditores estão disponíveis no arquivo environment.txt. 
+
+## Referências
+
+Jetz, W., G. Thomas, J. Joy, K. Hartmann, and A. Mooers. 2012. The global diversity of 
+birds in space and time. Nature 491:444. 
+Rosauer, D., S. W. Laffan, M. D. Crisp, S. C. Donnellan, and L. G. Cook. 2009. 
+Phylogenetic endemism: a new approach for identifying geographical 
+concentrations of evolutionary history. Molecular Ecology 18:4061-4072. 
+Van Dijk, A., G. Nakamura, A. V. Rodrigues, R. Maestri, and L. Duarte. 2021. Imprints 
+of tropical niche conservatism and historical dispersal in the radiation of 
+Tyrannidae (Aves: Passeriformes). Biological Journal of the Linnean Society 
+134:57-67. 
+

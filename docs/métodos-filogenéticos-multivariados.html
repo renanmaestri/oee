@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 8 Métodos filogenéticos multivariados | Oficina de Ecologia Evolutiva</title>
+<meta name="author" content="Renan Maestri &amp; Leandro Duarte">
+<meta name="description" content="Vamos carregar uma matriz contendo 26 colunas com coordenadas de Procrustes que descrevem a forma da mandíbula de 176 espécies de roedores sigmodontineos. require(ape) require(geiger)...">
+<meta name="generator" content="bookdown 0.47 with bs4_book()">
+<meta property="og:title" content="Capítulo 8 Métodos filogenéticos multivariados | Oficina de Ecologia Evolutiva">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://renanmaestri.github.io/oee/métodos-filogenéticos-multivariados.html">
+<meta property="og:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
+<meta property="og:description" content="Vamos carregar uma matriz contendo 26 colunas com coordenadas de Procrustes que descrevem a forma da mandíbula de 176 espécies de roedores sigmodontineos. require(ape) require(geiger)...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 8 Métodos filogenéticos multivariados | Oficina de Ecologia Evolutiva">
+<meta name="twitter:description" content="Vamos carregar uma matriz contendo 26 colunas com coordenadas de Procrustes que descrevem a forma da mandíbula de 176 espécies de roedores sigmodontineos. require(ape) require(geiger)...">
+<meta name="twitter:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Oficina de Ecologia Evolutiva</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefácio</a></li>
+<li><a class="" href="estrutura-e-programa-da-disciplina.html"><span class="header-section-number">1</span> Estrutura e Programa da Disciplina</a></li>
+<li><a class="" href="manipulando-filogenias-no-r---sinal-filogen%C3%A9tico.html"><span class="header-section-number">2</span> Manipulando filogenias no R - Sinal Filogenético</a></li>
+<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos.html"><span class="header-section-number">3</span> Modelos para evolução de fenótipos contínuos</a></li>
+<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-discretos.html"><span class="header-section-number">4</span> Modelos para evolução de fenótipos discretos</a></li>
+<li><a class="" href="regress%C3%A3o-filogen%C3%A9tica.html"><span class="header-section-number">5</span> Regressão Filogenética</a></li>
+<li><a class="" href="correla%C3%A7%C3%A3o-de-atributos-discretos.html"><span class="header-section-number">6</span> Correlação de atributos discretos</a></li>
+<li><a class="" href="modelos-multi-taxa-e-multi-regime.html"><span class="header-section-number">7</span> Modelos multi-taxa e multi-regime</a></li>
+<li><a class="active" href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html"><span class="header-section-number">8</span> Métodos filogenéticos multivariados</a></li>
+<li><a class="" href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html"><span class="header-section-number">9</span> Diversificação de linhagens e fenotípica ao longo do tempo</a></li>
+<li><a class="" href="estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o.html"><span class="header-section-number">10</span> Estimativas de taxas de especiação e extinção</a></li>
+<li><a class="" href="diversifica%C3%A7%C3%A3o-dependente-de-estado.html"><span class="header-section-number">11</span> Diversificação dependente de estado</a></li>
+<li><a class="" href="manipulando-as-bases-de-dados.html"><span class="header-section-number">12</span> Manipulando as bases de dados</a></li>
+<li><a class="" href="diversidade-filogen%C3%A9tica.html"><span class="header-section-number">13</span> Diversidade filogenética</a></li>
+<li><a class="" href="diversidade-beta-filogen%C3%A9tica.html"><span class="header-section-number">14</span> Diversidade beta filogenética</a></li>
+<li><a class="" href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html"><span class="header-section-number">15</span> Seleção e composição fenotípica</a></li>
+<li><a class="" href="medidas-de-diversifica%C3%A7%C3%A3o.html"><span class="header-section-number">16</span> Medidas de diversificação</a></li>
+<li><a class="" href="refer%C3%AAncias-2.html">Referências</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/renanmaestri/oee">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="métodos-filogenéticos-multivariados" class="section level1" number="8">
+<h1>
+<span class="header-section-number">Capítulo 8</span> Métodos filogenéticos multivariados<a class="anchor" aria-label="anchor" href="#m%C3%A9todos-filogen%C3%A9ticos-multivariados"><i class="fas fa-link"></i></a>
+</h1>
+<p>Vamos carregar uma matriz contendo 26 colunas com coordenadas de Procrustes
+que descrevem a forma da mandíbula de 176 espécies de roedores sigmodontineos.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb63-1" tabindex="-1"></a><span class="fu">require</span>(ape)</span>
+<span id="cb63-2"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb63-2" tabindex="-1"></a><span class="fu">require</span>(geiger)</span>
+<span id="cb63-3"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb63-3" tabindex="-1"></a><span class="fu">require</span>(phytools)</span>
+<span id="cb63-4"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb63-4" tabindex="-1"></a><span class="fu">require</span>(geomorph)</span>
+<span id="cb63-5"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb63-5" tabindex="-1"></a><span class="co"># Carregar dados</span></span>
+<span id="cb63-6"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb63-6" tabindex="-1"></a>dados<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">"dados/sigmodontinae-shape.txt"</span>,<span class="at">h=</span>T,<span class="at">row.names=</span><span class="dv">1</span>)</span>
+<span id="cb63-7"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb63-7" tabindex="-1"></a><span class="fu">head</span>(dados)</span>
+<span id="cb63-8"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb63-8" tabindex="-1"></a>diet<span class="ot">&lt;-</span><span class="fu">as.factor</span>(dados<span class="sc">$</span>Diet) <span class="co"># A dieta é um código (Onivoro-1; Herbivoro-2;</span></span>
+<span id="cb63-9"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb63-9" tabindex="-1"></a>Insetivoro<span class="dv">-3</span><span class="er">)</span></span>
+<span id="cb63-10"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb63-10" tabindex="-1"></a><span class="fu">names</span>(diet)<span class="ot">=</span><span class="fu">rownames</span>(dados)</span>
+<span id="cb63-11"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb63-11" tabindex="-1"></a>forma<span class="ot">&lt;-</span>dados[,<span class="dv">3</span><span class="sc">:</span><span class="dv">28</span>]</span>
+<span id="cb63-12"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb63-12" tabindex="-1"></a>forma</span></code></pre></div>
+<p>E uma hipótese filogenética.</p>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Carregar filogenia</span></span>
+<span><span class="va">tree</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/read.nexus.html">read.nexus</a></span><span class="op">(</span><span class="st">"dados/sigmodontinae-tree.tre"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.html">plotTree</a></span><span class="op">(</span><span class="va">tree</span>,fsize<span class="op">=</span><span class="fl">0.4</span>,ftype<span class="op">=</span><span class="st">"i"</span>,type<span class="op">=</span><span class="st">"fan"</span>,lwd<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co"># Match Species</span></span>
+<span><span class="va">match.species</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/geiger/man/treedata.html">treedata</a></span><span class="op">(</span><span class="va">tree</span>,<span class="va">dados</span><span class="op">)</span></span>
+<span><span class="va">tree</span><span class="op">&lt;-</span><span class="va">match.species</span><span class="op">$</span><span class="va">phy</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.html">plotTree</a></span><span class="op">(</span><span class="va">tree</span>,fsize<span class="op">=</span><span class="fl">0.5</span>,ftype<span class="op">=</span><span class="st">"i"</span>,type<span class="op">=</span><span class="st">"fan"</span>,lwd<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co"># Sinal filogenético multivariado</span></span>
+<span><span class="fu">physignal</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">forma</span><span class="op">)</span>,<span class="va">tree</span><span class="op">)</span></span>
+<span><span class="co"># Phylomorphospace</span></span>
+<span><span class="va">PCA</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/princomp.html">princomp</a></span><span class="op">(</span><span class="va">forma</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">4</span>,<span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/phylomorphospace.html">phylomorphospace</a></span><span class="op">(</span><span class="va">tree</span>,<span class="va">PCA</span><span class="op">$</span><span class="va">scores</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>,label<span class="op">=</span><span class="st">"off"</span>,control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># terminais com cores</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/phylomorphospace.html">phylomorphospace</a></span><span class="op">(</span><span class="va">tree</span>,<span class="va">PCA</span><span class="op">$</span><span class="va">scores</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>,label<span class="op">=</span><span class="st">"off"</span>,control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>col.node<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">cores</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"blue"</span>,<span class="st">"red"</span>,<span class="st">"green"</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">diet</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">col.group</span><span class="op">&lt;-</span><span class="va">cores</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/match.html">match</a></span><span class="op">(</span><span class="va">diet</span>,<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">cores</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span><span class="va">PCA</span><span class="op">$</span><span class="va">scores</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>,<span class="va">PCA</span><span class="op">$</span><span class="va">scores</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span>,col<span class="op">=</span><span class="va">col.group</span>,pch<span class="op">=</span><span class="fl">16</span>,cex<span class="op">=</span><span class="fl">1.7</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.10</span>,<span class="op">-</span><span class="fl">0.06</span>,legend<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"On"</span>,<span class="st">"Hb"</span>,<span class="st">"In"</span><span class="op">)</span>,pch<span class="op">=</span><span class="fl">19</span>,col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"blue"</span>,<span class="st">"red"</span>,<span class="st">"green"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># 3D</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/phylomorphospace3d.html">phylomorphospace3d</a></span><span class="op">(</span><span class="va">tree</span>,<span class="va">PCA</span><span class="op">$</span><span class="va">scores</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>,control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>ftype<span class="op">=</span><span class="st">"off"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># PCA filogenética</span></span>
+<span><span class="va">pPCA</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/phyl.pca.html">phyl.pca</a></span><span class="op">(</span><span class="va">tree</span>,<span class="va">forma</span>,method<span class="op">=</span><span class="st">"lambda"</span>,opt<span class="op">=</span><span class="st">"REML"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/phylomorphospace.html">phylomorphospace</a></span><span class="op">(</span><span class="va">tree</span>,<span class="va">pPCA</span><span class="op">$</span><span class="va">S</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>,label<span class="op">=</span><span class="st">"off"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span><span class="va">pPCA</span><span class="op">$</span><span class="va">S</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>,<span class="va">pPCA</span><span class="op">$</span><span class="va">S</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span>,col<span class="op">=</span><span class="va">col.group</span>,pch<span class="op">=</span><span class="fl">16</span>,cex<span class="op">=</span><span class="fl">1.7</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.10</span>,<span class="op">-</span><span class="fl">0.05</span>,legend<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"On"</span>,<span class="st">"Hb"</span>,<span class="st">"In"</span><span class="op">)</span>,pch<span class="op">=</span><span class="fl">19</span>,col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"blue"</span>,<span class="st">"red"</span>,<span class="st">"green"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># PGLS Multivariada</span></span>
+<span><span class="co"># Ajuste de formato da matriz para tornar compatível com o geomorph</span></span>
+<span><span class="va">forma.array</span><span class="op">&lt;-</span><span class="fu">arrayspecs</span><span class="op">(</span><span class="va">forma</span>,p<span class="op">=</span><span class="fl">13</span>,k<span class="op">=</span><span class="fl">2</span><span class="op">)</span> <span class="co"># transformação em array</span></span>
+<span><span class="va">forma</span><span class="op">&lt;-</span><span class="fu">two.d.array</span><span class="op">(</span><span class="va">forma.array</span><span class="op">)</span> <span class="co"># transformar de volta em matriz 2D</span></span>
+<span><span class="co"># PGLS</span></span>
+<span><span class="va">fit.pgls</span><span class="op">&lt;-</span><span class="fu">procD.pgls</span><span class="op">(</span><span class="va">forma</span><span class="op">~</span><span class="va">diet</span>,<span class="va">tree</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit.pgls</span><span class="op">)</span></span>
+<span><span class="co"># Comparar taxas evolutivas</span></span>
+<span><span class="va">forma.array</span><span class="op">&lt;-</span><span class="fu">arrayspecs</span><span class="op">(</span><span class="va">forma</span>,p<span class="op">=</span><span class="fl">13</span>,k<span class="op">=</span><span class="fl">2</span><span class="op">)</span> <span class="co"># transformação em array</span></span>
+<span><span class="fu">compare.evol.rates</span><span class="op">(</span><span class="va">forma.array</span>,<span class="va">tree</span>,<span class="va">diet</span><span class="op">)</span></span></code></pre></div>
+<p>O pacote mvMORPH (Clavel et al. 2015) permite ajustar modelos evolutivos (e.g. 
+BM,OU,EB) onde a variável de interesse é multivariada, e comparar os modelos usando
+likelihood e AIC.
+De forma mais acentuada do que no caso univariado, o número de parâmetros estimados
+pelo modelo pode ser um problema quando a variável de interesse é multi-dimensional
+( highly-dimensional datasets ), como no caso de dados obtidos por morfometria
+geométrica. A confiabilidade do ajuste de modelos para Componentes Principais (PCs)
+individuais é baixa e pode ser enganosa, levando ao suporte incorreto para EB e OU
+(Uyeda et al. 2015). A confiabilidade do ajuste de modelos para um conjunto de PCs
+selecionados sob algum critério ainda é debatida. Atualmente não existem métodos
+totalmente adequados para ajustar modelos complexos para dados multidimensionais
+(Adams &amp; Collyer 2018).
+Como exemplo, e para reduzir o tempo computacional, vamos considerar os dois
+primeiros componentes principais da forma PCA$scores[,1:2].
+Vamos trabalhar com modelos que são análogos ao univariados:
+1. BM1 - Browniano taxa única
+2. BMM - Browniano múltiplas taxas
+3. EB - Early Burst (taxas evolutivas desaceleram com o tempo)
+4. OU1 - OU com único ótimo adaptativo
+5. OUM - OU com múltiplos ótimos</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-1" tabindex="-1"></a><span class="fu">require</span>(mvMORPH)</span>
+<span id="cb65-2"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-2" tabindex="-1"></a><span class="co"># Árvore filogenética com reconstrução em formato SIMMAP</span></span>
+<span id="cb65-3"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-3" tabindex="-1"></a>anc.tree<span class="ot">&lt;-</span><span class="fu">make.simmap</span>(tree,diet,<span class="at">model=</span><span class="st">"ER"</span>,<span class="at">nsim=</span><span class="dv">1</span>)</span>
+<span id="cb65-4"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-4" tabindex="-1"></a>anc.tree</span>
+<span id="cb65-5"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-5" tabindex="-1"></a><span class="fu">plot</span>(anc.tree,cores,<span class="at">fsize=</span><span class="fl">0.5</span>,<span class="at">ftype=</span><span class="st">"i"</span>)</span>
+<span id="cb65-6"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-6" tabindex="-1"></a><span class="co"># Ajuste modelos evolutivos multivariados</span></span>
+<span id="cb65-7"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-7" tabindex="-1"></a><span class="co"># BM taxa única</span></span>
+<span id="cb65-8"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-8" tabindex="-1"></a>multi.BM1<span class="ot">&lt;-</span><span class="fu">mvBM</span>(anc.tree,PCA<span class="sc">$</span>scores[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],<span class="at">model=</span><span class="st">"BM1"</span>)</span>
+<span id="cb65-9"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-9" tabindex="-1"></a>multi.BM1</span>
+<span id="cb65-10"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-10" tabindex="-1"></a><span class="co"># BM múltiplas taxas</span></span>
+<span id="cb65-11"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-11" tabindex="-1"></a>multi.BMM<span class="ot">&lt;-</span><span class="fu">mvBM</span>(anc.tree,PCA<span class="sc">$</span>scores[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],<span class="at">model=</span><span class="st">"BMM"</span>)</span>
+<span id="cb65-12"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-12" tabindex="-1"></a>multi.BMM</span>
+<span id="cb65-13"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-13" tabindex="-1"></a>multi.BMM<span class="sc">$</span>param<span class="sc">$</span>nparam</span>
+<span id="cb65-14"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-14" tabindex="-1"></a><span class="co"># Early-Burst</span></span>
+<span id="cb65-15"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-15" tabindex="-1"></a>multi.EB<span class="ot">&lt;-</span><span class="fu">mvEB</span>(anc.tree,PCA<span class="sc">$</span>scores[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span>
+<span id="cb65-16"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-16" tabindex="-1"></a>multi.EB</span>
+<span id="cb65-17"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-17" tabindex="-1"></a><span class="co"># OU otimo unico</span></span>
+<span id="cb65-18"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-18" tabindex="-1"></a>multi.OU1<span class="ot">&lt;-</span><span class="fu">mvOU</span>(anc.tree,PCA<span class="sc">$</span>scores[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],<span class="at">model=</span><span class="st">"OU1"</span>)</span>
+<span id="cb65-19"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-19" tabindex="-1"></a>multi.OU1</span>
+<span id="cb65-20"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-20" tabindex="-1"></a><span class="co"># OU otimos multiplos</span></span>
+<span id="cb65-21"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-21" tabindex="-1"></a>multi.OUM<span class="ot">&lt;-</span><span class="fu">mvOU</span>(anc.tree,PCA<span class="sc">$</span>scores[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],<span class="at">model=</span><span class="st">"OUM"</span>)</span>
+<span id="cb65-22"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-22" tabindex="-1"></a>multi.OUM</span>
+<span id="cb65-23"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-23" tabindex="-1"></a><span class="co"># Comparando modelos</span></span>
+<span id="cb65-24"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-24" tabindex="-1"></a>aic.scores<span class="ot">&lt;-</span></span>
+<span id="cb65-25"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-25" tabindex="-1"></a><span class="fu">setNames</span>(<span class="fu">c</span>(multi.BM1<span class="sc">$</span>AICc,multi.BMM<span class="sc">$</span>AICc,multi.EB<span class="sc">$</span>AICc,multi.OU1<span class="sc">$</span>AICc,mul</span>
+<span id="cb65-26"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-26" tabindex="-1"></a>ti.OUM<span class="sc">$</span>AICc),</span>
+<span id="cb65-27"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-27" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"BM1"</span>,<span class="st">"BMM"</span>,<span class="st">"EB"</span>,<span class="st">"OU1"</span>,<span class="st">"OUM"</span>))</span>
+<span id="cb65-28"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-28" tabindex="-1"></a>aic.scores</span>
+<span id="cb65-29"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-29" tabindex="-1"></a><span class="fu">aicw</span>(aic.scores) <span class="co"># Delta AICc e AICc weights</span></span>
+<span id="cb65-30"><a href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html#cb65-30" tabindex="-1"></a><span class="fu">aic.w</span>(aic.scores)</span></code></pre></div>
+<div id="exercício-7---modelos-multivariados" class="section level2" number="8.1">
+<h2>
+<span class="header-section-number">8.1</span> Exercício 7 - Modelos multivariados<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio-7---modelos-multivariados"><i class="fas fa-link"></i></a>
+</h2>
+<p>Com os mesmos dados de forma e dieta para roedores sigmodontíneos:
+sigmodontinae-shape.txt
+sigmodontinae-tree.tre
+Simule 10 estimativas de estado ancestral para o caráter dieta.
+Usando 2 componentes principais da forma da mandíbula, ajuste modelos (com
+mvMORPH) brownianos com múltiplas taxas (BMM) e OU com múltiplos ótimos
+(OUM) usando os regimes reconstruídos em cada uma das 10 simulações. Calcule a
+média de AICc para cada simulação e compare o ajuste entre todos os modelos
+(BM1,BMM,EB,OU1,OUM).
+Você pode usar, por exemplo:
+list.AIC&lt;-matrix(NA,length(trees),2)
+for(i in 1:length(trees)){
+fit.BMM&lt;-mvBM(trees[[i]],PCA<span class="math inline">\(scores[,1:2],model="BMM")
+fit.OUM&lt;-mvOU(trees[[i]],PCA\)</span>scores[,1:2],model=“OUM”)
+list.AIC[i,1]&lt;-fit.BMM<span class="math inline">\(AICc
+list.AIC[i,2]&lt;-fit.OUM\)</span>AICc
+}
+E a função apply para calcular a média do AICc.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="modelos-multi-taxa-e-multi-regime.html"><span class="header-section-number">7</span> Modelos multi-taxa e multi-regime</a></div>
+<div class="next"><a href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html"><span class="header-section-number">9</span> Diversificação de linhagens e fenotípica ao longo do tempo</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#m%C3%A9todos-filogen%C3%A9ticos-multivariados"><span class="header-section-number">8</span> Métodos filogenéticos multivariados</a></li>
+<li><a class="nav-link" href="#exerc%C3%ADcio-7---modelos-multivariados"><span class="header-section-number">8.1</span> Exercício 7 - Modelos multivariados</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/renanmaestri/oee/blob/master/08-metodos-filogeneticos-multivariados.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/renanmaestri/oee/edit/master/08-metodos-filogeneticos-multivariados.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Oficina de Ecologia Evolutiva</strong>" was written by Renan Maestri &amp; Leandro Duarte. It was last built on 2026-07-02.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

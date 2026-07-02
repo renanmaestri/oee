@@ -1,0 +1,23 @@
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+li.appendix span, li.part span {
+  margin-top: 1em;
+  color: #1c3b57 !important;
+  opacity: 1 !important;
+  text-transform: uppercase;
+}
+.part + li[data-level=""] { 
+  text-transform: uppercase;
+}

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 11 Diversificação dependente de estado | Oficina de Ecologia Evolutiva</title>
+<meta name="author" content="Renan Maestri &amp; Leandro Duarte">
+<meta name="description" content="11.1 Diversificação dependente de estado Vamos carregar a filogenia e atributos para as espécies de primatas. require(ape) require(phytools) require(geiger) require(diversitree) # Filogenia...">
+<meta name="generator" content="bookdown 0.47 with bs4_book()">
+<meta property="og:title" content="Capítulo 11 Diversificação dependente de estado | Oficina de Ecologia Evolutiva">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://renanmaestri.github.io/oee/diversificação-dependente-de-estado.html">
+<meta property="og:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
+<meta property="og:description" content="11.1 Diversificação dependente de estado Vamos carregar a filogenia e atributos para as espécies de primatas. require(ape) require(phytools) require(geiger) require(diversitree) # Filogenia...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 11 Diversificação dependente de estado | Oficina de Ecologia Evolutiva">
+<meta name="twitter:description" content="11.1 Diversificação dependente de estado Vamos carregar a filogenia e atributos para as espécies de primatas. require(ape) require(phytools) require(geiger) require(diversitree) # Filogenia...">
+<meta name="twitter:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Oficina de Ecologia Evolutiva</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefácio</a></li>
+<li><a class="" href="estrutura-e-programa-da-disciplina.html"><span class="header-section-number">1</span> Estrutura e Programa da Disciplina</a></li>
+<li><a class="" href="manipulando-filogenias-no-r---sinal-filogen%C3%A9tico.html"><span class="header-section-number">2</span> Manipulando filogenias no R - Sinal Filogenético</a></li>
+<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos.html"><span class="header-section-number">3</span> Modelos para evolução de fenótipos contínuos</a></li>
+<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-discretos.html"><span class="header-section-number">4</span> Modelos para evolução de fenótipos discretos</a></li>
+<li><a class="" href="regress%C3%A3o-filogen%C3%A9tica.html"><span class="header-section-number">5</span> Regressão Filogenética</a></li>
+<li><a class="" href="correla%C3%A7%C3%A3o-de-atributos-discretos.html"><span class="header-section-number">6</span> Correlação de atributos discretos</a></li>
+<li><a class="" href="modelos-multi-taxa-e-multi-regime.html"><span class="header-section-number">7</span> Modelos multi-taxa e multi-regime</a></li>
+<li><a class="" href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html"><span class="header-section-number">8</span> Métodos filogenéticos multivariados</a></li>
+<li><a class="" href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html"><span class="header-section-number">9</span> Diversificação de linhagens e fenotípica ao longo do tempo</a></li>
+<li><a class="" href="estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o.html"><span class="header-section-number">10</span> Estimativas de taxas de especiação e extinção</a></li>
+<li><a class="active" href="diversifica%C3%A7%C3%A3o-dependente-de-estado.html"><span class="header-section-number">11</span> Diversificação dependente de estado</a></li>
+<li><a class="" href="manipulando-as-bases-de-dados.html"><span class="header-section-number">12</span> Manipulando as bases de dados</a></li>
+<li><a class="" href="diversidade-filogen%C3%A9tica.html"><span class="header-section-number">13</span> Diversidade filogenética</a></li>
+<li><a class="" href="diversidade-beta-filogen%C3%A9tica.html"><span class="header-section-number">14</span> Diversidade beta filogenética</a></li>
+<li><a class="" href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html"><span class="header-section-number">15</span> Seleção e composição fenotípica</a></li>
+<li><a class="" href="medidas-de-diversifica%C3%A7%C3%A3o.html"><span class="header-section-number">16</span> Medidas de diversificação</a></li>
+<li><a class="" href="refer%C3%AAncias-2.html">Referências</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/renanmaestri/oee">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="diversificação-dependente-de-estado" class="section level1" number="11">
+<h1>
+<span class="header-section-number">Capítulo 11</span> Diversificação dependente de estado<a class="anchor" aria-label="anchor" href="#diversifica%C3%A7%C3%A3o-dependente-de-estado"><i class="fas fa-link"></i></a>
+</h1>
+<div id="diversificação-dependente-de-estado-1" class="section level2" number="11.1">
+<h2>
+<span class="header-section-number">11.1</span> Diversificação dependente de estado<a class="anchor" aria-label="anchor" href="#diversifica%C3%A7%C3%A3o-dependente-de-estado-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Vamos carregar a filogenia e atributos para as espécies de primatas.</p>
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/emmanuelparadis/ape">ape</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/liamrevell/phytools">phytools</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">geiger</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://www.zoology.ubc.ca/prog/diversitree/">diversitree</a></span><span class="op">)</span></span>
+<span><span class="co"># Filogenia</span></span>
+<span><span class="va">tree</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/read.tree.html">read.tree</a></span><span class="op">(</span><span class="st">"dados/primate-tree.txt"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.html">plotTree</a></span><span class="op">(</span><span class="va">tree</span>,fsize<span class="op">=</span><span class="fl">0.4</span>,ftype<span class="op">=</span><span class="st">"i"</span>,type<span class="op">=</span><span class="st">"fan"</span>,lwd<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co"># Atributos</span></span>
+<span><span class="va">dados</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="st">"dados/primate-data.txt"</span>,h<span class="op">=</span><span class="cn">T</span>,row.names<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span></span>
+<span><span class="co"># Recortar filogenia</span></span>
+<span><span class="va">match.species</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/geiger/man/treedata.html">treedata</a></span><span class="op">(</span><span class="va">tree</span>,<span class="va">dados</span><span class="op">)</span></span>
+<span><span class="va">tree</span><span class="op">&lt;-</span><span class="va">match.species</span><span class="op">$</span><span class="va">phy</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.html">plotTree</a></span><span class="op">(</span><span class="va">tree</span>,fsize<span class="op">=</span><span class="fl">0.5</span>,ftype<span class="op">=</span><span class="st">"i"</span>,type<span class="op">=</span><span class="st">"fan"</span>,lwd<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<p>Vamos utilizar o BiSSE (binary-state speciation and extinction) para testar hipóteses
+sobre a diversificação de primatas e o tamanho do grupo social.
+Considere a variável binária, que possui dois estados: Solitary vs. Social.
+&lt; 4 ind = solitary
+&gt; 4 ind = social</p>
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">binsocial</span><span class="op">&lt;-</span><span class="va">dados</span><span class="op">$</span><span class="va">BinSocial</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">binsocial</span><span class="op">)</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span></span>
+<span><span class="va">binsocial</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">binsocial</span><span class="op">)</span></span>
+<span><span class="va">binsocial</span></span></code></pre></div>
+<p>Uma dessas categorias promove maior diversificação em primatas?</p>
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># O diversitree requer que os códigos sejam numéricos.</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">binsocial</span><span class="op">)</span> <span class="co"># 1-Social, 2-Solitário</span></span>
+<span><span class="va">binsocial</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">binsocial</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span> <span class="co"># valores tem que ser 0 e 1</span></span>
+<span><span class="va">binsocial</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">binsocial</span><span class="op">)</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span></span>
+<span><span class="va">binsocial</span> <span class="co"># 0-Social, 1-Solitário</span></span></code></pre></div>
+<p>O BiSSE tem uma função para estimar valores iniciais ‘razoáveis’ dos parâmetros
+de interesse.</p>
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/make.bisse.html">starting.point.bisse</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span></span>
+<span><span class="va">p</span></span></code></pre></div>
+<p>Para rodar o BiSSE temos que criar a função de likelihood para posteriormente otimizar
+os parâmetros.</p>
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">lik.bisse</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/make.bisse.html">make.bisse</a></span><span class="op">(</span><span class="va">tree</span>,<span class="va">binsocial</span><span class="op">)</span></span>
+<span><span class="va">lik.bisse</span></span></code></pre></div>
+<p>Agora podemos restringir a função geral para criar diferentes modelos.
+Por exemplo, podemos criar um modelo “nulo” onde as taxas de especiação e extinção
+sejam iguais entre estados (b0<sub>b1;d0</sub>d1) e que existe uma única taxa de transição
+(q01=q10).</p>
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">lik.null</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/constrain.html">constrain</a></span><span class="op">(</span><span class="va">lik.bisse</span>,<span class="va">lambda0</span><span class="op">~</span><span class="va">lambda1</span>,<span class="va">mu0</span><span class="op">~</span><span class="va">mu1</span>,<span class="va">q10</span><span class="op">~</span><span class="va">q01</span><span class="op">)</span></span>
+<span><span class="va">lik.null</span></span></code></pre></div>
+<p>Ajustar os modelos.</p>
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Ajustar modelo nulo</span></span>
+<span><span class="va">p</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/argnames.html">argnames</a></span><span class="op">(</span><span class="va">lik.null</span><span class="op">)</span><span class="op">]</span> <span class="co"># ajustar número de parâmetros inicial</span></span>
+<span><span class="va">fit.null</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/find.mle.html">find.mle</a></span><span class="op">(</span><span class="va">lik.null</span>,x.init<span class="op">=</span><span class="va">p</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/argnames.html">argnames</a></span><span class="op">(</span><span class="va">lik.null</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">fit.null</span></span>
+<span><span class="co"># Ajustar o modelo mais complexo, onde as taxas de especiação e extinção dependem #</span></span>
+<span><span class="co"># do estado do fenótipo</span></span>
+<span><span class="va">fit.full</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/find.mle.html">find.mle</a></span><span class="op">(</span><span class="va">lik.bisse</span>,x.init<span class="op">=</span><span class="va">p</span><span class="op">)</span></span>
+<span><span class="va">fit.full</span></span></code></pre></div>
+<p>Outros modelos podem ser ajustados entre o mais simples e o mais complexo,
+dependendo das hipóteses biológicas a priori . Em um estudo empírico, especialmente
+com múltiplos estados (MuSSE), os modelos devem ser identificados a priori ao invés
+de ajustar todos os modelos possíveis para identificar aqueles com melhor ajuste.
+Como exemplo, vamos ajustar um modelo onde somente a taxa de especiação varie ente
+estados, um modelo onde somente a taxa de extinção varie, e um modelo com b e d
+constantes, mas com taxas de transição diferentes entre estados.</p>
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># especiação variável</span></span>
+<span><span class="va">lik.lambda</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/constrain.html">constrain</a></span><span class="op">(</span><span class="va">lik.bisse</span>,<span class="va">mu0</span><span class="op">~</span><span class="va">mu1</span>,<span class="va">q10</span><span class="op">~</span><span class="va">q01</span><span class="op">)</span></span>
+<span><span class="va">lik.lambda</span></span>
+<span><span class="co"># ajuste</span></span>
+<span><span class="va">fit.lambda</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/find.mle.html">find.mle</a></span><span class="op">(</span><span class="va">lik.lambda</span>,x.init<span class="op">=</span><span class="va">p</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/argnames.html">argnames</a></span><span class="op">(</span><span class="va">lik.lambda</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">fit.lambda</span></span>
+<span><span class="co"># extinção variável</span></span>
+<span><span class="va">lik.mu</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/constrain.html">constrain</a></span><span class="op">(</span><span class="va">lik.bisse</span>,<span class="va">lambda0</span><span class="op">~</span><span class="va">lambda1</span>,<span class="va">q10</span><span class="op">~</span><span class="va">q01</span><span class="op">)</span></span>
+<span><span class="va">lik.mu</span></span>
+<span><span class="co"># ajuste</span></span>
+<span><span class="va">fit.mu</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/find.mle.html">find.mle</a></span><span class="op">(</span><span class="va">lik.mu</span>,x.init<span class="op">=</span><span class="va">p</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/argnames.html">argnames</a></span><span class="op">(</span><span class="va">lik.mu</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">fit.mu</span></span>
+<span><span class="co"># especiação e extinção variável, única taxa de transição entre estados</span></span>
+<span><span class="va">lik.lambda.mu</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/constrain.html">constrain</a></span><span class="op">(</span><span class="va">lik.bisse</span>,<span class="va">q10</span><span class="op">~</span><span class="va">q01</span><span class="op">)</span></span>
+<span><span class="va">lik.lambda.mu</span></span>
+<span><span class="co"># ajuste</span></span>
+<span><span class="va">fit.lambda.mu</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/find.mle.html">find.mle</a></span><span class="op">(</span><span class="va">lik.lambda.mu</span>,x.init<span class="op">=</span><span class="va">p</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/argnames.html">argnames</a></span><span class="op">(</span><span class="va">lik.lambda.mu</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">fit.lambda.mu</span></span>
+<span><span class="co"># b e d constantes, taxas de transição flexíveis</span></span>
+<span><span class="va">lik.q</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/constrain.html">constrain</a></span><span class="op">(</span><span class="va">lik.bisse</span>,<span class="va">lambda0</span><span class="op">~</span><span class="va">lambda1</span>,<span class="va">mu0</span><span class="op">~</span><span class="va">mu1</span><span class="op">)</span></span>
+<span><span class="va">lik.q</span></span>
+<span><span class="co"># ajuste</span></span>
+<span><span class="va">fit.q</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/find.mle.html">find.mle</a></span><span class="op">(</span><span class="va">lik.q</span>,x.init<span class="op">=</span><span class="va">p</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/argnames.html">argnames</a></span><span class="op">(</span><span class="va">lik.q</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">fit.q</span></span></code></pre></div>
+<p>Agora podemos comparar os modelos ajustados. A função genérica anova permite
+obter os valores de AIC para uma lista.</p>
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Comparando os modelos</span></span>
+<span><span class="va">resultados</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">fit.null</span>,</span>
+<span>completo<span class="op">=</span><span class="va">fit.full</span>,</span>
+<span>lambda.variavel<span class="op">=</span><span class="va">fit.lambda</span>,</span>
+<span>mu.variavel<span class="op">=</span><span class="va">fit.mu</span>,</span>
+<span>lambda.mu.variavel<span class="op">=</span><span class="va">fit.lambda.mu</span>,</span>
+<span>q.variavel<span class="op">=</span><span class="va">fit.q</span><span class="op">)</span></span>
+<span><span class="va">resultados</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/geiger/man/aicw.html">aicw</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="va">resultados</span><span class="op">$</span><span class="va">AIC</span>,<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">resultados</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/aic.w.html">aic.w</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="va">resultados</span><span class="op">$</span><span class="va">AIC</span>,<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">resultados</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>Os modelos com especiação variável e com especiação e extinção variável (e taxa de
+transição única) receberam maior suporte.</p>
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit.lambda.mu</span><span class="op">)</span></span></code></pre></div>
+<p>Parece que tanto as taxas de especiação como de extinção são maiores para o estado 0
+(social) do que para o estado 1 (solitário).
+E a taxa de diversificação?</p>
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">lambda0</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit.lambda.mu</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="va">mu0</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit.lambda.mu</span><span class="op">)</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="va">r.0</span><span class="op">&lt;-</span><span class="va">lambda0</span><span class="op">-</span><span class="va">mu0</span></span>
+<span><span class="va">r.0</span></span>
+<span><span class="va">lambda1</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit.lambda.mu</span><span class="op">)</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="va">mu1</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit.lambda.mu</span><span class="op">)</span><span class="op">[[</span><span class="fl">4</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="va">r.1</span><span class="op">&lt;-</span><span class="va">lambda1</span><span class="op">-</span><span class="va">mu1</span></span>
+<span><span class="va">r.1</span></span></code></pre></div>
+<p>Como as taxas de extinção estimadas são muito baixas, as taxas de diversificação
+são próximas das de especiação.
+Assim como vimos no modelo bd simples, com o pacote diversitree podemos rodar
+análises bayesianas com os nossos modelos. Vamos fazer isso para o nosso melhor
+modelo para estimar os valores dos parâmetros.</p>
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># MCMC</span></span>
+<span><span class="va">mcmc.lambda.mu</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/mcmc.html">mcmc</a></span><span class="op">(</span><span class="va">lik.lambda.mu</span>,<span class="va">fit.lambda.mu</span><span class="op">$</span><span class="va">par</span>, nsteps <span class="op">=</span> <span class="fl">1000</span>, w <span class="op">=</span></span>
+<span><span class="fl">1</span>,print.every<span class="op">=</span><span class="fl">100</span><span class="op">)</span></span>
+<span><span class="co"># visualizar probabilidades</span></span>
+<span><span class="va">colors</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>,<span class="st">"blue"</span><span class="op">)</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">4</span>,<span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># especiação</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/profiles.plot.html">profiles.plot</a></span><span class="op">(</span><span class="va">mcmc.lambda.mu</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"lambda"</span>,<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">mcmc.lambda.mu</span><span class="op">)</span><span class="op">)</span><span class="op">]</span>,</span>
+<span>col.line<span class="op">=</span><span class="va">colors</span>, las<span class="op">=</span><span class="fl">1</span>, legend.pos<span class="op">=</span><span class="st">"topright"</span><span class="op">)</span></span>
+<span><span class="co"># extinção</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/profiles.plot.html">profiles.plot</a></span><span class="op">(</span><span class="va">mcmc.lambda.mu</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"mu"</span>,<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">mcmc.lambda.mu</span><span class="op">)</span><span class="op">)</span><span class="op">]</span>,</span>
+<span>col.line<span class="op">=</span><span class="va">colors</span>, las<span class="op">=</span><span class="fl">1</span>, legend.pos<span class="op">=</span><span class="st">"topright"</span><span class="op">)</span></span>
+<span><span class="co"># diversificação líquida</span></span>
+<span><span class="va">div</span><span class="op">&lt;-</span><span class="va">mcmc.lambda.mu</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"lambda"</span>,<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">mcmc.lambda.mu</span><span class="op">)</span><span class="op">)</span><span class="op">]</span><span class="op">-</span></span>
+<span><span class="va">mcmc.lambda.mu</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"mu"</span>,<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">mcmc.lambda.mu</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">div</span><span class="op">)</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"lambda-mu("</span>,<span class="fl">0</span><span class="op">:</span><span class="fl">1</span>,<span class="st">")"</span>,sep<span class="op">=</span><span class="st">""</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/profiles.plot.html">profiles.plot</a></span><span class="op">(</span><span class="va">div</span>,</span>
+<span>xlab<span class="op">=</span><span class="st">"Net diversification rate"</span>, ylab<span class="op">=</span><span class="st">"Probability density"</span>,</span>
+<span>legend.pos<span class="op">=</span><span class="st">"topleft"</span>,col.line<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="va">colors</span>,<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">div</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>lty<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="diversificação-por-terminais-tip-speciation" class="section level2" number="11.2">
+<h2>
+<span class="header-section-number">11.2</span> Diversificação por terminais (tip-speciation)<a class="anchor" aria-label="anchor" href="#diversifica%C3%A7%C3%A3o-por-terminais-tip-speciation"><i class="fas fa-link"></i></a>
+</h2>
+<p>Tip Rate Diversification. Uma das medidas mais comuns de taxa de diversificação nos
+terminais (tipDR) é a de Jetz et al. (2012), que é o inverso da medida equal splits de
+Redding &amp; Mooers (2006).</p>
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">picante</span><span class="op">)</span></span>
+<span><span class="va">ES</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/picante/man/evol.distinct.html">evol.distinct</a></span><span class="op">(</span><span class="va">tree</span>, type <span class="op">=</span> <span class="st">"equal.splits"</span><span class="op">)</span><span class="op">$</span><span class="va">w</span></span>
+<span><span class="va">DR</span> <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="va">ES</span></span>
+<span><span class="co"># Plot</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">DR</span><span class="op">)</span><span class="op">=</span><span class="va">tree</span><span class="op">$</span><span class="va">tip.label</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/contMap.html">contMap</a></span><span class="op">(</span><span class="va">tree</span>,<span class="va">DR</span><span class="op">)</span></span></code></pre></div>
+<p>O tamanho corporal influencia a diversificação?</p>
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Massa corporal</span></span>
+<span><span class="va">massa</span><span class="op">&lt;-</span><span class="va">dados</span><span class="op">$</span><span class="va">AdultBodyMass_g</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">massa</span><span class="op">)</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/contMap.html">contMap</a></span><span class="op">(</span><span class="va">tree</span>,<span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">massa</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># Correlação</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">DR</span>,<span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">massa</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">massa</span><span class="op">)</span>,<span class="va">DR</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="co-diversificação" class="section level2" number="11.3">
+<h2>
+<span class="header-section-number">11.3</span> Co-Diversificação<a class="anchor" aria-label="anchor" href="#co-diversifica%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
+</h2>
+<p>Análises cofilogenéticas investigam a associação/dependência entre a diversificação de
+dois clados, normalmente um clado de parasitas e um clado de hospedeiros; para uma
+revisão veja Perez-Lamarque &amp; Morlon (2022). Aqui, usaremos um teste baseado em
+Mantel para testar o sinal filogenético na associação entre dois clados (Perez-Lamarque
+et al. 2023). Vamos carregar dados de associação entre coronavirus (parasitas) e
+mamíferos (hospedeiros) de Maestri, Perez-Lamarque, Zhukova &amp; Morlon (2023).</p>
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Carregar árvore de Coronaviridae</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/emmanuelparadis/ape">ape</a></span><span class="op">)</span></span>
+<span><span class="va">cov_tree</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/read.nexus.html">read.nexus</a></span><span class="op">(</span><span class="st">"dados/combined_alignment_cov_trimal_tree_35.tre"</span><span class="op">)</span></span>
+<span><span class="co"># Carregar matriz de associação</span></span>
+<span><span class="va">hosts_matrix</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="st">"dados/association_matrix.txt"</span><span class="op">)</span></span>
+<span><span class="co"># Carregar árvore de mamíferos hospedeiros</span></span>
+<span><span class="va">hostmammaltree</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/read.tree.html">read.tree</a></span><span class="op">(</span><span class="st">"dados/hostsMammalTree.tre"</span><span class="op">)</span></span>
+<span><span class="co"># Sinal filogenético na associação</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">RPANDA</span><span class="op">)</span></span>
+<span><span class="co"># Calcular sinal filogenético para a interação entre espécies</span></span>
+<span><span class="co"># com permutações mantendo constante o número de parceiros</span></span>
+<span><span class="va">psuni_n</span><span class="op">&lt;-</span><span class="fu">phylosignal_network</span><span class="op">(</span><span class="va">hosts_matrix</span>, tree_A <span class="op">=</span> <span class="va">cov_tree</span>,</span>
+<span>tree_B <span class="op">=</span> <span class="va">hostmammaltree</span>,</span>
+<span>method <span class="op">=</span> <span class="st">"GUniFrac"</span>,</span>
+<span>correlation <span class="op">=</span> <span class="st">"Pearson"</span>,</span>
+<span>nperm<span class="op">=</span><span class="fl">1000</span>, permutation <span class="op">=</span> <span class="st">"nbpartners"</span><span class="op">)</span></span>
+<span><span class="va">psuni_n</span></span></code></pre></div>
+<p>Coronavirus próximos filogenéticamente tendem a se associar (infectar) mamíferos
+proximos filogenéticamente (r=0.377) e vice-versa (r=0.295).
+Também podemos testar se parasitas proximamente relacionados tendem a infectar um
+número de hospeiros similar.</p>
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Sinal filogenético no número de parceiros</span></span>
+<span><span class="va">npart_cov</span><span class="op">&lt;-</span><span class="fu">phylosignal_network</span><span class="op">(</span><span class="va">hosts_matrix</span>,</span>
+<span>tree_A <span class="op">=</span> <span class="va">cov_tree</span>,</span>
+<span>method <span class="op">=</span> <span class="st">"degree"</span>,</span>
+<span>correlation <span class="op">=</span> <span class="st">"Pearson"</span>, nperm <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span></span>
+<span><span class="va">npart_mammals</span><span class="op">&lt;-</span><span class="fu">phylosignal_network</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">hosts_matrix</span><span class="op">)</span>,</span>
+<span>tree_A <span class="op">=</span> <span class="va">hostmammaltree</span>,</span>
+<span>method <span class="op">=</span> <span class="st">"degree"</span>,</span>
+<span>correlation <span class="op">=</span> <span class="st">"Pearson"</span>, nperm <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span></span>
+<span><span class="va">npart_cov</span></span>
+<span><span class="va">npart_mammals</span></span></code></pre></div>
+<p>Coronavirus próximos filogenéticamente tendem a infectar um número de hospeiros
+similar, porém, mamíferos proximos filogenéticamente não tendem a hospedar um
+número similar de coronavirus. Isso sugere que a especificidade de coronavírus em
+relação aos seus hospedeiros é conservada evolutivamente, enquanto que a
+suscetibilidade dos hospedeiros aos coronavírus não é.
+Por fim, podemos testar em que escala filogenética o sinal é mais forte.</p>
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calcular sinal filogenético por subclados</span></span>
+<span><span class="co"># Para parasitas</span></span>
+<span><span class="va">results_clade_A</span> <span class="op">&lt;-</span> <span class="fu">phylosignal_sub_network</span><span class="op">(</span><span class="va">hosts_matrix</span>,</span>
+<span>tree_A <span class="op">=</span> <span class="va">cov_tree</span>,</span>
+<span>tree_B <span class="op">=</span> <span class="va">hostmammaltree</span>,</span>
+<span>method <span class="op">=</span> <span class="st">"GUniFrac"</span>,</span>
+<span>correlation <span class="op">=</span> <span class="st">"Pearson"</span>,</span>
+<span>nperm<span class="op">=</span><span class="fl">1000</span>,</span>
+<span>minimum<span class="op">=</span><span class="fl">10</span>, degree<span class="op">=</span><span class="cn">F</span>,</span>
+<span>permutation <span class="op">=</span> <span class="st">"shuffle"</span><span class="op">)</span></span>
+<span><span class="fu">plot_phylosignal_sub_network</span><span class="op">(</span>tree_A <span class="op">=</span> <span class="va">cov_tree</span>, <span class="va">results_clade_A</span>,</span>
+<span>network <span class="op">=</span> <span class="va">hosts_matrix</span><span class="op">)</span></span>
+<span><span class="co"># Para hospedeiros</span></span>
+<span><span class="va">results_clade_B</span> <span class="op">&lt;-</span> <span class="fu">phylosignal_sub_network</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">hosts_matrix</span><span class="op">)</span>,</span>
+<span>tree_A <span class="op">=</span> <span class="va">hostmammaltree</span>,</span>
+<span>tree_B <span class="op">=</span> <span class="va">cov_tree</span>,</span>
+<span>method <span class="op">=</span> <span class="st">"GUniFrac"</span>,</span>
+<span>correlation <span class="op">=</span> <span class="st">"Pearson"</span>,</span>
+<span>nperm<span class="op">=</span><span class="fl">1000</span>,</span>
+<span>minimum<span class="op">=</span><span class="fl">10</span>, degree<span class="op">=</span><span class="cn">F</span>,</span>
+<span>permutation <span class="op">=</span> <span class="st">"shuffle"</span><span class="op">)</span></span>
+<span><span class="fu">plot_phylosignal_sub_network</span><span class="op">(</span>tree_A <span class="op">=</span> <span class="va">hostmammaltree</span>, <span class="va">results_clade_B</span>,</span>
+<span>network <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">hosts_matrix</span><span class="op">)</span>,</span>
+<span>legend<span class="op">=</span><span class="cn">FALSE</span>,where <span class="op">=</span> <span class="st">"topleft"</span><span class="op">)</span></span>
+<span><span class="co"># Plot conjunto</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/layout.html">layout</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>,<span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>,widths<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.5</span>,<span class="fl">0.5</span><span class="op">)</span>,heights<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">plot_phylosignal_sub_network</span><span class="op">(</span>tree_A <span class="op">=</span> <span class="va">cov_tree</span>, <span class="va">results_clade_A</span>,</span>
+<span>network <span class="op">=</span> <span class="va">hosts_matrix</span><span class="op">)</span></span>
+<span><span class="fu">plot_phylosignal_sub_network</span><span class="op">(</span>tree_A <span class="op">=</span> <span class="va">hostmammaltree</span>, <span class="va">results_clade_B</span>,</span>
+<span>network <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">hosts_matrix</span><span class="op">)</span>,</span>
+<span>legend<span class="op">=</span><span class="cn">FALSE</span>,where <span class="op">=</span> <span class="st">"topleft"</span><span class="op">)</span></span></code></pre></div>
+<p>Em geral, o sinal filogenético é mais forte nos nós mais antigos das duas filogenias.</p>
+</div>
+<div id="exercício-10---livre" class="section level2" number="11.4">
+<h2>
+<span class="header-section-number">11.4</span> Exercício 10 - Livre<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio-10---livre"><i class="fas fa-link"></i></a>
+</h2>
+<p>Livre.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o.html"><span class="header-section-number">10</span> Estimativas de taxas de especiação e extinção</a></div>
+<div class="next"><a href="manipulando-as-bases-de-dados.html"><span class="header-section-number">12</span> Manipulando as bases de dados</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#diversifica%C3%A7%C3%A3o-dependente-de-estado"><span class="header-section-number">11</span> Diversificação dependente de estado</a></li>
+<li><a class="nav-link" href="#diversifica%C3%A7%C3%A3o-dependente-de-estado-1"><span class="header-section-number">11.1</span> Diversificação dependente de estado</a></li>
+<li><a class="nav-link" href="#diversifica%C3%A7%C3%A3o-por-terminais-tip-speciation"><span class="header-section-number">11.2</span> Diversificação por terminais (tip-speciation)</a></li>
+<li><a class="nav-link" href="#co-diversifica%C3%A7%C3%A3o"><span class="header-section-number">11.3</span> Co-Diversificação</a></li>
+<li><a class="nav-link" href="#exerc%C3%ADcio-10---livre"><span class="header-section-number">11.4</span> Exercício 10 - Livre</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/renanmaestri/oee/blob/master/11-diversificacao-dependente-estado.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/renanmaestri/oee/edit/master/11-diversificacao-dependente-estado.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Oficina de Ecologia Evolutiva</strong>" was written by Renan Maestri &amp; Leandro Duarte. It was last built on 2026-07-02.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

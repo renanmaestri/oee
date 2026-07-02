@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 10 Estimativas de taxas de especiação e extinção | Oficina de Ecologia Evolutiva</title>
+<meta name="author" content="Renan Maestri &amp; Leandro Duarte">
+<meta name="description" content='10.1 Diversificação Constante Vamos usar os dados de primatas que já vimos antes. require(ape) require(phytools) # Filogenia tree&lt;-read.tree("dados/primate-tree.txt")...'>
+<meta name="generator" content="bookdown 0.47 with bs4_book()">
+<meta property="og:title" content="Capítulo 10 Estimativas de taxas de especiação e extinção | Oficina de Ecologia Evolutiva">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://renanmaestri.github.io/oee/estimativas-de-taxas-de-especiação-e-extinção.html">
+<meta property="og:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
+<meta property="og:description" content='10.1 Diversificação Constante Vamos usar os dados de primatas que já vimos antes. require(ape) require(phytools) # Filogenia tree&lt;-read.tree("dados/primate-tree.txt")...'>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 10 Estimativas de taxas de especiação e extinção | Oficina de Ecologia Evolutiva">
+<meta name="twitter:description" content='10.1 Diversificação Constante Vamos usar os dados de primatas que já vimos antes. require(ape) require(phytools) # Filogenia tree&lt;-read.tree("dados/primate-tree.txt")...'>
+<meta name="twitter:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Oficina de Ecologia Evolutiva</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefácio</a></li>
+<li><a class="" href="estrutura-e-programa-da-disciplina.html"><span class="header-section-number">1</span> Estrutura e Programa da Disciplina</a></li>
+<li><a class="" href="manipulando-filogenias-no-r---sinal-filogen%C3%A9tico.html"><span class="header-section-number">2</span> Manipulando filogenias no R - Sinal Filogenético</a></li>
+<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos.html"><span class="header-section-number">3</span> Modelos para evolução de fenótipos contínuos</a></li>
+<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-discretos.html"><span class="header-section-number">4</span> Modelos para evolução de fenótipos discretos</a></li>
+<li><a class="" href="regress%C3%A3o-filogen%C3%A9tica.html"><span class="header-section-number">5</span> Regressão Filogenética</a></li>
+<li><a class="" href="correla%C3%A7%C3%A3o-de-atributos-discretos.html"><span class="header-section-number">6</span> Correlação de atributos discretos</a></li>
+<li><a class="" href="modelos-multi-taxa-e-multi-regime.html"><span class="header-section-number">7</span> Modelos multi-taxa e multi-regime</a></li>
+<li><a class="" href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html"><span class="header-section-number">8</span> Métodos filogenéticos multivariados</a></li>
+<li><a class="" href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html"><span class="header-section-number">9</span> Diversificação de linhagens e fenotípica ao longo do tempo</a></li>
+<li><a class="active" href="estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o.html"><span class="header-section-number">10</span> Estimativas de taxas de especiação e extinção</a></li>
+<li><a class="" href="diversifica%C3%A7%C3%A3o-dependente-de-estado.html"><span class="header-section-number">11</span> Diversificação dependente de estado</a></li>
+<li><a class="" href="manipulando-as-bases-de-dados.html"><span class="header-section-number">12</span> Manipulando as bases de dados</a></li>
+<li><a class="" href="diversidade-filogen%C3%A9tica.html"><span class="header-section-number">13</span> Diversidade filogenética</a></li>
+<li><a class="" href="diversidade-beta-filogen%C3%A9tica.html"><span class="header-section-number">14</span> Diversidade beta filogenética</a></li>
+<li><a class="" href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html"><span class="header-section-number">15</span> Seleção e composição fenotípica</a></li>
+<li><a class="" href="medidas-de-diversifica%C3%A7%C3%A3o.html"><span class="header-section-number">16</span> Medidas de diversificação</a></li>
+<li><a class="" href="refer%C3%AAncias-2.html">Referências</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/renanmaestri/oee">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="estimativas-de-taxas-de-especiação-e-extinção" class="section level1" number="10">
+<h1>
+<span class="header-section-number">Capítulo 10</span> Estimativas de taxas de especiação e extinção<a class="anchor" aria-label="anchor" href="#estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
+</h1>
+<div id="diversificação-constante" class="section level2" number="10.1">
+<h2>
+<span class="header-section-number">10.1</span> Diversificação Constante<a class="anchor" aria-label="anchor" href="#diversifica%C3%A7%C3%A3o-constante"><i class="fas fa-link"></i></a>
+</h2>
+<p>Vamos usar os dados de primatas que já vimos antes.</p>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/emmanuelparadis/ape">ape</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/liamrevell/phytools">phytools</a></span><span class="op">)</span></span>
+<span><span class="co"># Filogenia</span></span>
+<span><span class="va">tree</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/read.tree.html">read.tree</a></span><span class="op">(</span><span class="st">"dados/primate-tree.txt"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.html">plotTree</a></span><span class="op">(</span><span class="va">tree</span>,fsize<span class="op">=</span><span class="fl">0.4</span>,ftype<span class="op">=</span><span class="st">"i"</span>,type<span class="op">=</span><span class="st">"fan"</span>,lwd<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<p>Primeiro vamos calcular uma diversificação líquida esperada sob um modelo pure-birth
+(de Magallón &amp; Sanderson 2001).</p>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Número de espécies</span></span>
+<span><span class="va">n_sp</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">tree</span><span class="op">$</span><span class="va">tip.label</span><span class="op">)</span></span>
+<span><span class="co"># Stem age</span></span>
+<span><span class="va">stem_age</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/nodeHeights.html">nodeHeights</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># Diversificação (Magallon &amp; Sanderson 2001)</span></span>
+<span><span class="va">r1</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">n_sp</span><span class="op">)</span><span class="op">/</span><span class="va">stem_age</span></span>
+<span><span class="co"># Com essa diversificação obtemos o número de espécies visto na árvore</span></span>
+<span><span class="va">r1</span><span class="op">*</span><span class="va">stem_age</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">n_sp</span><span class="op">)</span></span></code></pre></div>
+<p>Ajustando modelo Birth-death.
+No pacote ape, a função birthdeath estima taxas de extinção e especiação em uma
+filogenia (método de Nee et al 1994). As estimativas são confiáveis se a premissas do
+modelo forem reais (especiação e extinção constantes no tempo). O método também
+assume uma filogenia completa. b é a taxa de especiação e d é a taxa de extinção.</p>
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">nee</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/birthdeath.html">birthdeath</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span></span></code></pre></div>
+<p>A árvore contem algumas politomias. Vamos resolver as politomias e tentar novamente.</p>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tree</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/multi2di.html">multi2di</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/is.binary.tree.html">is.binary</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span></span>
+<span><span class="va">nee</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/birthdeath.html">birthdeath</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span></span>
+<span><span class="va">nee</span></span></code></pre></div>
+<p>Por motivos computacionais, a função birthdeath estima os parâmetros derivados
+b-d e d/b (a diferença entre espec e extin [ net diversification ] e a razão
+entre extinção e especiação [ extinction rate ], respectivamente).
+Para encontrar b e d podemos usar a função bd do phytools:</p>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/bd.html">bd</a></span><span class="op">(</span><span class="va">nee</span><span class="op">)</span></span></code></pre></div>
+<p>As unidades dos valores dependem da unidade do comprimento dos ramos (ln para
+número de espécies).
+Só é possível comparar árvores diferentes quando o comprimento dos ramos está na
+mesma unidade.
+Pacote diversitree.
+O pacote diversitree possui múltiplas funções para realizar vários tipos de análises de
+diversificação com filogenias.
+Uma das vantagens do diversitree é que ele permite levar em consideração a
+incompletude no número de espécies amostradas. Na nossa filogenia dos primatas,
+existem 226 espécies amostradas de um total de ~300 (o número varia de 190 até 350, a
+taxonomia de primatas é uma bagunça! vamos considerar 300 para exemplo). Isso é
+cerca de 75% de espécies presentes. O diversitree também permite ajustar modelos
+pure-birth (Yule) e birth-death (BD) e compará-los.</p>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://www.zoology.ubc.ca/prog/diversitree/">diversitree</a></span><span class="op">)</span></span>
+<span><span class="co"># Yule (pure-birth -- somente especiação)</span></span>
+<span><span class="va">modelo.pb</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/make.bd.html">make.yule</a></span><span class="op">(</span><span class="va">tree</span>,sampling.f <span class="op">=</span> <span class="fl">226</span><span class="op">/</span><span class="fl">300</span><span class="op">)</span></span>
+<span><span class="va">param.pb</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/find.mle.html">find.mle</a></span><span class="op">(</span><span class="va">modelo.pb</span>,x.init<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span> <span class="co"># Estimar os valores dos parâmetros por</span></span>
+<span><span class="va">ML</span> <span class="co"># x.init é um valor arbitrário para iniciar o otimização</span></span>
+<span><span class="va">param.pb</span></span></code></pre></div>
+<p>lambda = taxa de especiação; mu = taxa de extinção.</p>
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Modelo birth-death (especiação + extinção)</span></span>
+<span><span class="va">modelo.bd</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/make.bd.html">make.bd</a></span><span class="op">(</span><span class="va">tree</span>,sampling.f <span class="op">=</span> <span class="fl">226</span><span class="op">/</span><span class="fl">300</span><span class="op">)</span></span>
+<span><span class="va">param.bd</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/find.mle.html">find.mle</a></span><span class="op">(</span><span class="va">modelo.bd</span>,x.init<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>,<span class="fl">0.05</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">param.bd</span></span>
+<span><span class="co"># Comparar modelos</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">param.bd</span>,pure.birth<span class="op">=</span><span class="va">param.pb</span><span class="op">)</span></span></code></pre></div>
+<p>O modelo que incluí extinção (birth-death) aumentou significativamente o seu ajuste
+em comparação com o modelo pure-birth. Esse é essencialmente um sinal de que
+a extinção é importante (o parâmetro adicional d se justifica).
+MCMC.
+O diversitree também permite rodar analises bayesianas para estimar os parâmetros de
+diversificação usando a distribuição posterior probabilidades.</p>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">bd.amostras</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/mcmc.html">mcmc</a></span><span class="op">(</span><span class="va">modelo.bd</span>, <span class="va">param.bd</span><span class="op">$</span><span class="va">par</span>, nsteps <span class="op">=</span> <span class="fl">1e+05</span>, lower <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>,</span>
+<span>upper <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">Inf</span>,<span class="cn">Inf</span><span class="op">)</span>, w <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">0.1</span><span class="op">)</span>, fail.value <span class="op">=</span> <span class="op">-</span><span class="cn">Inf</span>,</span>
+<span>print.every <span class="op">=</span> <span class="fl">10000</span><span class="op">)</span></span>
+<span><span class="co"># visualizar distribuição</span></span>
+<span><span class="va">postSamples</span><span class="op">&lt;-</span><span class="va">bd.amostras</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"lambda"</span>, <span class="st">"mu"</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">4</span>,<span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/profiles.plot.html">profiles.plot</a></span><span class="op">(</span><span class="va">postSamples</span>,col.line<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span><span class="op">)</span>,las<span class="op">=</span><span class="fl">1</span>,legend <span class="op">=</span><span class="st">"topright"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="diversificação-time-dependent" class="section level2" number="10.2">
+<h2>
+<span class="header-section-number">10.2</span> Diversificação Time-dependent<a class="anchor" aria-label="anchor" href="#diversifica%C3%A7%C3%A3o-time-dependent"><i class="fas fa-link"></i></a>
+</h2>
+<p>Vamos carregar uma filogenia de marsupiais.</p>
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/emmanuelparadis/ape">ape</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/liamrevell/phytools">phytools</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">geiger</span><span class="op">)</span></span>
+<span><span class="co"># Arvore marsupiais</span></span>
+<span><span class="va">tree</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/read.tree.html">read.tree</a></span><span class="op">(</span><span class="st">"dados/marsupial-tree.tre"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">tree</span>,cex<span class="op">=</span><span class="fl">0.4</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/axisPhylo.html">axisPhylo</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>O RPANDA (Morlon et al 2016) é um pacote que permite ajustar modelos com taxas de
+especiação e/ou extinção variáveis, e comparar os modelos usando verossimilhança.</p>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">RPANDA</span><span class="op">)</span></span></code></pre></div>
+<p>Nós vamos ajustar modelos com combinações de lambda e mu constante e variável.
+Os modelos podem ser consultados no help do RPANDA.</p>
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">lambda.cst</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">t</span>,<span class="va">y</span><span class="op">)</span><span class="op">{</span><span class="va">y</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">}</span> <span class="co"># lambda constante</span></span>
+<span><span class="va">lambda.var</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">t</span>,<span class="va">y</span><span class="op">)</span><span class="op">{</span><span class="va">y</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">y</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">*</span><span class="va">t</span><span class="op">)</span><span class="op">}</span> <span class="co"># lambda com variação exponencial (em</span></span>
+<span><span class="co"># função do tempo t)</span></span>
+<span><span class="va">mu.cst</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">t</span>,<span class="va">y</span><span class="op">)</span><span class="op">{</span><span class="va">y</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">}</span></span>
+<span><span class="va">mu.var</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">t</span>,<span class="va">y</span><span class="op">)</span><span class="op">{</span><span class="va">y</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">y</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">*</span><span class="va">t</span><span class="op">)</span><span class="op">}</span></span></code></pre></div>
+<p>Os modelos vão se parecer com isso:</p>
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Ajustando modelos para toda a árvore</span></span>
+<span><span class="co"># birth-death especiação e extinção constante</span></span>
+<span><span class="va">bcdc</span><span class="op">&lt;-</span><span class="fu">fit_bd</span><span class="op">(</span><span class="va">tree</span>,tot_time<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/branching.times.html">branching.times</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span><span class="op">)</span>,f.lamb<span class="op">=</span><span class="va">lambda.cst</span>,f.mu<span class="op">=</span><span class="va">mu.cst</span>,</span>
+<span>lamb_par<span class="op">=</span><span class="fl">0.01</span>,mu_par<span class="op">=</span><span class="fl">0.001</span>,cst.lamb<span class="op">=</span><span class="cn">TRUE</span>,cst.mu<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">bcdc</span><span class="op">$</span><span class="va">model</span><span class="op">&lt;-</span><span class="st">"birth-death taxa de especiação e extinção constantes"</span></span>
+<span><span class="va">bcdc</span></span>
+<span><span class="co"># birth-death especiação exponencial e extinção constante</span></span>
+<span><span class="va">bvdc</span><span class="op">&lt;-</span><span class="fu">fit_bd</span><span class="op">(</span><span class="va">tree</span>,tot_time<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/branching.times.html">branching.times</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span><span class="op">)</span>,f.lamb<span class="op">=</span><span class="va">lambda.var</span>,f.mu<span class="op">=</span><span class="va">mu.cst</span>,</span>
+<span>lamb_par<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.05</span>,<span class="fl">0.01</span><span class="op">)</span>,mu_par<span class="op">=</span><span class="fl">0.001</span>,expo.lamb<span class="op">=</span><span class="cn">TRUE</span>,cst.mu<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">bvdc</span><span class="op">$</span><span class="va">model</span><span class="op">&lt;-</span><span class="st">"birth-death taxa de especiação exponencial e extinção constante"</span></span>
+<span><span class="co"># birth-death especiação constante e extinção exponencial</span></span>
+<span><span class="va">bcdv</span><span class="op">&lt;-</span><span class="fu">fit_bd</span><span class="op">(</span><span class="va">tree</span>,tot_time<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/branching.times.html">branching.times</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span><span class="op">)</span>,f.lamb<span class="op">=</span><span class="va">lambda.cst</span>,f.mu<span class="op">=</span><span class="va">mu.var</span>,</span>
+<span>lamb_par<span class="op">=</span><span class="fl">0.01</span>,mu_par<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.005</span>,<span class="fl">0.001</span><span class="op">)</span>,cst.lamb<span class="op">=</span><span class="cn">TRUE</span>,expo.mu<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">bcdv</span><span class="op">$</span><span class="va">model</span><span class="op">&lt;-</span><span class="st">"birth-death taxa de especiação constante e extinção exponencial"</span></span>
+<span><span class="co"># birth-death especiação e extinção exponencial</span></span>
+<span><span class="va">bvdv</span><span class="op">&lt;-</span><span class="fu">fit_bd</span><span class="op">(</span><span class="va">tree</span>,tot_time<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/branching.times.html">branching.times</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span><span class="op">)</span>,f.lamb<span class="op">=</span><span class="va">lambda.var</span>,f.mu<span class="op">=</span><span class="va">mu.var</span>,</span>
+<span>lamb_par<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.05</span>,<span class="fl">0.01</span><span class="op">)</span>,mu_par<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.005</span>,<span class="fl">0.001</span><span class="op">)</span>,expo.lamb<span class="op">=</span><span class="cn">TRUE</span>,expo.mu<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">bvdv</span><span class="op">$</span><span class="va">model</span><span class="op">&lt;-</span><span class="st">"birth-death taxa de especiação e extinção exponencial"</span></span>
+<span><span class="co"># Comparando modelos</span></span>
+<span><span class="va">aic.scores</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">bcdc</span><span class="op">$</span><span class="va">aicc</span>,<span class="va">bvdc</span><span class="op">$</span><span class="va">aicc</span>,<span class="va">bcdv</span><span class="op">$</span><span class="va">aicc</span>,<span class="va">bvdv</span><span class="op">$</span><span class="va">aicc</span><span class="op">)</span>,</span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"bcdc"</span>,<span class="st">"bvdc"</span>,<span class="st">"bcdv"</span>,<span class="st">"bvdv"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">aic.scores</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/aic.w.html">aic.w</a></span><span class="op">(</span><span class="va">aic.scores</span><span class="op">)</span></span></code></pre></div>
+<p>Resultados um pouco ambíguos, mas sugerem que taxas constantes são improváveis.
+É possível ajustar os modelos para toda a árvore como acima, ou definir partes da árvore
+a priori (clados) e testar diferenças nas taxas entre clados.
+Se não temos uma hipótese a priori de quais clados tem diversificação mais rápida,
+podemos identificar mudanças rápidas olhando pra árvore, ou usando métodos como o
+MEDUSA ou o BAMM para detectar mudanças na diversificação.</p>
+</div>
+<div id="diversificação-clade-dependent" class="section level2" number="10.3">
+<h2>
+<span class="header-section-number">10.3</span> Diversificação Clade-dependent<a class="anchor" aria-label="anchor" href="#diversifica%C3%A7%C3%A3o-clade-dependent"><i class="fas fa-link"></i></a>
+</h2>
+<p>MEDUSA</p>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mar</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/geiger/man/medusa.html">medusa</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span></span>
+<span><span class="va">mar</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">mar</span><span class="op">)</span></span></code></pre></div>
+<p>Pelo menos dois grandes ‘shifts’ de diversificação podem ser percebidos. Um no clado
+dos Macropodidae (cangurus e afins - nó 301) e outro no clado dos Dasyuromorpha
+(marsupiais carnívoros - nó 355). r= net diversification rate.
+Agora podemos hipotetizar, como exemplo, que o clado dos cangurus e aliados
+(Macropodidae) parece ter evoluído mais rapidamente.</p>
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">4</span>,<span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">mar</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/nodelabels.html">nodelabels</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">macropodidae.tree</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ape/man/drop.tip.html">extract.clade</a></span><span class="op">(</span><span class="va">tree</span>, <span class="fl">301</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">macropodidae.tree</span><span class="op">)</span></span>
+<span><span class="va">resto.tree</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/drop.tip.html">drop.tip</a></span><span class="op">(</span><span class="va">tree</span>,<span class="va">macropodidae.tree</span><span class="op">$</span><span class="va">tip.label</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">resto.tree</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="diversificação-clade-dependent-e-time-dependent" class="section level2" number="10.4">
+<h2>
+<span class="header-section-number">10.4</span> Diversificação Clade-dependent e Time-dependent<a class="anchor" aria-label="anchor" href="#diversifica%C3%A7%C3%A3o-clade-dependent-e-time-dependent"><i class="fas fa-link"></i></a>
+</h2>
+<p>Vamos usar RPANDA para ajustar modelos com taxas variáveis entre clados.
+Para facilitar, vamos unir os modelos em uma função.</p>
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">fit.multi.rpanda</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">tree</span><span class="op">)</span><span class="op">{</span></span>
+<span><span class="va">bcdc</span><span class="op">&lt;-</span><span class="fu">fit_bd</span><span class="op">(</span><span class="va">tree</span>,tot_time<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/branching.times.html">branching.times</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span><span class="op">)</span>,f.lamb<span class="op">=</span><span class="va">lambda.cst</span>,f.mu<span class="op">=</span><span class="va">mu.cst</span>,</span>
+<span>lamb_par<span class="op">=</span><span class="fl">0.01</span>,mu_par<span class="op">=</span><span class="fl">0.001</span>,cst.lamb<span class="op">=</span><span class="cn">TRUE</span>,cst.mu<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">bvdc</span><span class="op">&lt;-</span><span class="fu">fit_bd</span><span class="op">(</span><span class="va">tree</span>,tot_time<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/branching.times.html">branching.times</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span><span class="op">)</span>,f.lamb<span class="op">=</span><span class="va">lambda.var</span>,f.mu<span class="op">=</span><span class="va">mu.cst</span>,</span>
+<span>lamb_par<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.05</span>,<span class="fl">0.01</span><span class="op">)</span>,mu_par<span class="op">=</span><span class="fl">0.001</span>,expo.lamb<span class="op">=</span><span class="cn">TRUE</span>,cst.mu<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">bcdv</span><span class="op">&lt;-</span><span class="fu">fit_bd</span><span class="op">(</span><span class="va">tree</span>,tot_time<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/branching.times.html">branching.times</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span><span class="op">)</span>,f.lamb<span class="op">=</span><span class="va">lambda.cst</span>,f.mu<span class="op">=</span><span class="va">mu.var</span>,</span>
+<span>lamb_par<span class="op">=</span><span class="fl">0.01</span>,mu_par<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.005</span>,<span class="fl">0.001</span><span class="op">)</span>,cst.lamb<span class="op">=</span><span class="cn">TRUE</span>,expo.mu<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">bvdv</span><span class="op">&lt;-</span></span>
+<span><span class="fu">fit_bd</span><span class="op">(</span><span class="va">tree</span>,tot_time<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/branching.times.html">branching.times</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span><span class="op">)</span>,f.lamb<span class="op">=</span><span class="va">lambda.var</span>,f.mu<span class="op">=</span><span class="va">mu.var</span>,</span>
+<span>lamb_par<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.05</span>,<span class="fl">0.01</span><span class="op">)</span>,mu_par<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.005</span>,<span class="fl">0.001</span><span class="op">)</span>,expo.lamb<span class="op">=</span><span class="cn">TRUE</span>,expo.mu<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"bcdc"</span><span class="op">=</span><span class="va">bcdc</span>,<span class="st">"bvdc"</span><span class="op">=</span><span class="va">bvdc</span>,<span class="st">"bcdv"</span><span class="op">=</span><span class="va">bcdv</span>,<span class="st">"bvdv"</span><span class="op">=</span><span class="va">bvdv</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="va">macropodidae_panda</span><span class="op">&lt;-</span><span class="fu">fit.multi.rpanda</span><span class="op">(</span><span class="va">macropodidae.tree</span><span class="op">)</span></span>
+<span><span class="va">resto_panda</span><span class="op">&lt;-</span><span class="fu">fit.multi.rpanda</span><span class="op">(</span><span class="va">resto.tree</span><span class="op">)</span></span>
+<span><span class="co"># Comparando modelos</span></span>
+<span><span class="co"># Extraindo aicc</span></span>
+<span><span class="va">macro_aic</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span> <span class="co">#vetor vazio</span></span>
+<span><span class="va">resto_aic</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">macro_aic</span><span class="op">)</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"bcdc"</span>, <span class="st">"bvdc"</span>, <span class="st">"bcdv"</span>, <span class="st">"bvdv"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">resto_aic</span><span class="op">)</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">macro_aic</span><span class="op">)</span></span>
+<span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span> <span class="op">{</span></span>
+<span><span class="va">macro_aic</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">&lt;-</span><span class="va">macropodidae_panda</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">aicc</span></span>
+<span><span class="va">resto_aic</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">&lt;-</span><span class="va">resto_panda</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">aicc</span></span>
+<span><span class="op">}</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/aic.w.html">aic.w</a></span><span class="op">(</span><span class="va">macro_aic</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/aic.w.html">aic.w</a></span><span class="op">(</span><span class="va">resto_aic</span><span class="op">)</span></span></code></pre></div>
+<p>Novamente os resultados são um pouco inconclusivos. Parece haver maior suporte para
+modelos com taxas variáveis do que constantes. Para o clado Macropodidae uma
+variação exponencial nas taxas de especiação parece bem provável, enquanto que para o
+resto da árvore, uma variação em ambas as taxas (especiação e extinção) é mais
+provável.
+Podemos plotar as taxas de especiação, extinção, e diversificação (b-d) ao longo do
+tempo para os modelos mais prováveis de cada clado.</p>
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">plot_fit_bd</span><span class="op">(</span><span class="va">macropodidae_panda</span><span class="op">$</span><span class="va">bvdc</span>,<span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/branching.times.html">branching.times</a></span><span class="op">(</span><span class="va">macropodidae.tree</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">plot_fit_bd</span><span class="op">(</span><span class="va">resto_panda</span><span class="op">$</span><span class="va">bvdv</span>,<span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/branching.times.html">branching.times</a></span><span class="op">(</span><span class="va">resto.tree</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">macropodidae.tree</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">resto.tree</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="exercício-9-diversificação-dependente-de-variável" class="section level2" number="10.5">
+<h2>
+<span class="header-section-number">10.5</span> Exercício 9 – Diversificação dependente de variável<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio-9-diversifica%C3%A7%C3%A3o-dependente-de-vari%C3%A1vel"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="ambiental" class="section level2" number="10.6">
+<h2>
+<span class="header-section-number">10.6</span> ambiental<a class="anchor" aria-label="anchor" href="#ambiental"><i class="fas fa-link"></i></a>
+</h2>
+<p>RPANDA pode ser usado para ajustar modelos de diversificação dependente de
+variável ambiental (fit_env). Como variável adicional, esse modelo requer uma
+estimativa da variação em uma variável ambiental de interesse ao longo do tempo.
+Zachos et al (2008) fornecem uma estimativa de variação de temperatura ao longo do
+Cenozóico baseada em isótopos de oxigênio.
+Baseado nos dados:
+Árvore para roedores sigmodontíneos:
+sigmodontinae-tree.tre
+Dados de temperatura, duas colunas com tempo e temperatura:
+Cenozoic_Temp.txt
+Ajuste um modelo com variação nas taxas de especiação dependentes da temperatura,
+sem dependência temporal e sem extinção:
+lambda.env&lt;-function(t,x,y){y[1]<em>exp(y[2]</em>x)}
+e
+mu.zero&lt;-function(t,x,y){0}
+Com os parâmetros iniciais:
+lamb_par_init&lt;-c(0.10,0.01)
+mu_par_init&lt;-c()
+O modelo deve ser ajustado com a função fit_env do pacote RPANDA.
+Plote os resultados com plot_fit_env e interprete os resultados.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html"><span class="header-section-number">9</span> Diversificação de linhagens e fenotípica ao longo do tempo</a></div>
+<div class="next"><a href="diversifica%C3%A7%C3%A3o-dependente-de-estado.html"><span class="header-section-number">11</span> Diversificação dependente de estado</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o"><span class="header-section-number">10</span> Estimativas de taxas de especiação e extinção</a></li>
+<li><a class="nav-link" href="#diversifica%C3%A7%C3%A3o-constante"><span class="header-section-number">10.1</span> Diversificação Constante</a></li>
+<li><a class="nav-link" href="#diversifica%C3%A7%C3%A3o-time-dependent"><span class="header-section-number">10.2</span> Diversificação Time-dependent</a></li>
+<li><a class="nav-link" href="#diversifica%C3%A7%C3%A3o-clade-dependent"><span class="header-section-number">10.3</span> Diversificação Clade-dependent</a></li>
+<li><a class="nav-link" href="#diversifica%C3%A7%C3%A3o-clade-dependent-e-time-dependent"><span class="header-section-number">10.4</span> Diversificação Clade-dependent e Time-dependent</a></li>
+<li><a class="nav-link" href="#exerc%C3%ADcio-9-diversifica%C3%A7%C3%A3o-dependente-de-vari%C3%A1vel"><span class="header-section-number">10.5</span> Exercício 9 – Diversificação dependente de variável</a></li>
+<li><a class="nav-link" href="#ambiental"><span class="header-section-number">10.6</span> ambiental</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/renanmaestri/oee/blob/master/10-estimativas-especiacao-extincao.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/renanmaestri/oee/edit/master/10-estimativas-especiacao-extincao.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Oficina de Ecologia Evolutiva</strong>" was written by Renan Maestri &amp; Leandro Duarte. It was last built on 2026-07-02.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

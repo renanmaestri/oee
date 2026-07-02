@@ -1,0 +1,12 @@
+# Bookdown and R files to ignore
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+_bookdown_files/
+*.knit.md
+*.utf8.md
+oee.rds
+oee.md
+Thumbs.db
+.DS_Store

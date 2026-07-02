@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 2 Manipulando filogenias no R - Sinal Filogenético | Oficina de Ecologia Evolutiva</title>
+<meta name="author" content="Renan Maestri &amp; Leandro Duarte">
+<meta name="description" content="2.1 O ambiente R O R pode ser instalado a partir do website: https://www.r-project.org/ Nós vamos usar também o RStudio: https://www.rstudio.com/ R é o programa estatístico predominante em...">
+<meta name="generator" content="bookdown 0.47 with bs4_book()">
+<meta property="og:title" content="Capítulo 2 Manipulando filogenias no R - Sinal Filogenético | Oficina de Ecologia Evolutiva">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://renanmaestri.github.io/oee/manipulando-filogenias-no-r---sinal-filogenético.html">
+<meta property="og:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
+<meta property="og:description" content="2.1 O ambiente R O R pode ser instalado a partir do website: https://www.r-project.org/ Nós vamos usar também o RStudio: https://www.rstudio.com/ R é o programa estatístico predominante em...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 2 Manipulando filogenias no R - Sinal Filogenético | Oficina de Ecologia Evolutiva">
+<meta name="twitter:description" content="2.1 O ambiente R O R pode ser instalado a partir do website: https://www.r-project.org/ Nós vamos usar também o RStudio: https://www.rstudio.com/ R é o programa estatístico predominante em...">
+<meta name="twitter:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Oficina de Ecologia Evolutiva</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefácio</a></li>
+<li><a class="" href="estrutura-e-programa-da-disciplina.html"><span class="header-section-number">1</span> Estrutura e Programa da Disciplina</a></li>
+<li><a class="active" href="manipulando-filogenias-no-r---sinal-filogen%C3%A9tico.html"><span class="header-section-number">2</span> Manipulando filogenias no R - Sinal Filogenético</a></li>
+<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos.html"><span class="header-section-number">3</span> Modelos para evolução de fenótipos contínuos</a></li>
+<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-discretos.html"><span class="header-section-number">4</span> Modelos para evolução de fenótipos discretos</a></li>
+<li><a class="" href="regress%C3%A3o-filogen%C3%A9tica.html"><span class="header-section-number">5</span> Regressão Filogenética</a></li>
+<li><a class="" href="correla%C3%A7%C3%A3o-de-atributos-discretos.html"><span class="header-section-number">6</span> Correlação de atributos discretos</a></li>
+<li><a class="" href="modelos-multi-taxa-e-multi-regime.html"><span class="header-section-number">7</span> Modelos multi-taxa e multi-regime</a></li>
+<li><a class="" href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html"><span class="header-section-number">8</span> Métodos filogenéticos multivariados</a></li>
+<li><a class="" href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html"><span class="header-section-number">9</span> Diversificação de linhagens e fenotípica ao longo do tempo</a></li>
+<li><a class="" href="estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o.html"><span class="header-section-number">10</span> Estimativas de taxas de especiação e extinção</a></li>
+<li><a class="" href="diversifica%C3%A7%C3%A3o-dependente-de-estado.html"><span class="header-section-number">11</span> Diversificação dependente de estado</a></li>
+<li><a class="" href="manipulando-as-bases-de-dados.html"><span class="header-section-number">12</span> Manipulando as bases de dados</a></li>
+<li><a class="" href="diversidade-filogen%C3%A9tica.html"><span class="header-section-number">13</span> Diversidade filogenética</a></li>
+<li><a class="" href="diversidade-beta-filogen%C3%A9tica.html"><span class="header-section-number">14</span> Diversidade beta filogenética</a></li>
+<li><a class="" href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html"><span class="header-section-number">15</span> Seleção e composição fenotípica</a></li>
+<li><a class="" href="medidas-de-diversifica%C3%A7%C3%A3o.html"><span class="header-section-number">16</span> Medidas de diversificação</a></li>
+<li><a class="" href="refer%C3%AAncias-2.html">Referências</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/renanmaestri/oee">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="manipulando-filogenias-no-r---sinal-filogenético" class="section level1" number="2">
+<h1>
+<span class="header-section-number">Capítulo 2</span> Manipulando filogenias no R - Sinal Filogenético<a class="anchor" aria-label="anchor" href="#manipulando-filogenias-no-r---sinal-filogen%C3%A9tico"><i class="fas fa-link"></i></a>
+</h1>
+<div id="o-ambiente-r" class="section level2" number="2.1">
+<h2>
+<span class="header-section-number">2.1</span> O ambiente R<a class="anchor" aria-label="anchor" href="#o-ambiente-r"><i class="fas fa-link"></i></a>
+</h2>
+<p>O R pode ser instalado a partir do website: <a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>
+Nós vamos usar também o RStudio: <a href="https://www.rstudio.com/" class="uri">https://www.rstudio.com/</a>
+R é o programa estatístico predominante em ecologia e evolução, em larga medida
+porque é flexível e adaptável para várias necessidades, e existe uma comunidade grande
+de indivíduos dispostos a fornecer ajuda. No contexto de análises comparativas, o R tem
+sido a área primária de desenvolvimento de novos métodos.</p>
+</div>
+<div id="set-working-directory" class="section level2" number="2.2">
+<h2>
+<span class="header-section-number">2.2</span> Set working directory<a class="anchor" aria-label="anchor" href="#set-working-directory"><i class="fas fa-link"></i></a>
+</h2>
+<p>É conveniente criar uma pasta única com todos os arquivos das aulas práticas.
+Nós vamos informar ao R para carregar os dados a partir desta pasta.
+Isso pode ser feito no RStudio com o menu: Session&gt;Set Working Directory&gt;Choose
+Directory.
+Ou com o código setwd().</p>
+</div>
+<div id="scripts" class="section level2" number="2.3">
+<h2>
+<span class="header-section-number">2.3</span> Scripts<a class="anchor" aria-label="anchor" href="#scripts"><i class="fas fa-link"></i></a>
+</h2>
+<p>Um script é um bloco de texto que pode ser editado em qualquer editor de texto comum
+(ex: bloco de notas), ou com o editor de texto do próprio R ou RStudio. Você vai
+escrever (ou copiar) os códigos dentro do editor de texto, e depois colar no console do
+R; alternativamente é possível selecionar a parte do código a ser enviada ao console do
+R e pressionar crtl+r ou ctrl+Enter.
+Ao salvar o script você mantém um registro do código utilizado.
+Se você quiser adicionar comentários ao código basta adicionar o sinal # na frente do
+comentário.</p>
+</div>
+<div id="funcionamento-básico-do-r" class="section level2" number="2.4">
+<h2>
+<span class="header-section-number">2.4</span> Funcionamento básico do R<a class="anchor" aria-label="anchor" href="#funcionamento-b%C3%A1sico-do-r"><i class="fas fa-link"></i></a>
+</h2>
+<p>Objetos e funções são os principais componentes do R. Objetos são variáveis, dados e
+resultados. Funções são tipos especiais de objetos que usam um ou mais argumentos
+para fazer alguma coisa dentro do R. Compilados de funções são organizados dentro de
+livrarias (library) criadas por múltiplos autores contribuintes.
+O R funciona através de comandos, que podem ser funções ou operações (+,-,*,etc).
+Um comando retorna um objeto na tela, ou armazena o objeto na memória quando um
+nome é atribuído com o operador &lt;-.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fl">2</span><span class="op">+</span><span class="fl">5</span></span>
+<span><span class="va">x</span><span class="op">&lt;-</span><span class="fl">2</span><span class="op">+</span><span class="fl">5</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co"># Os objetos são case-sensitive</span></span>
+<span><span class="va">x</span><span class="op">&lt;-</span><span class="fl">1</span></span>
+<span><span class="va">X</span><span class="op">&lt;-</span><span class="fl">10</span></span>
+<span><span class="va">x</span></span>
+<span><span class="va">X</span></span></code></pre></div>
+</div>
+<div id="tipos-de-objeto-no-r" class="section level2" number="2.5">
+<h2>
+<span class="header-section-number">2.5</span> Tipos de objeto no R<a class="anchor" aria-label="anchor" href="#tipos-de-objeto-no-r"><i class="fas fa-link"></i></a>
+</h2>
+<p>Alguns tipos de objetos são mais comuns no R, e vamos encontrá-los frequentemente:
+vector, factor, matrix, data frame, e list.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Vetores: séries de elementos do mesmo tipo</span></span>
+<span><span class="va">x</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span></span>
+<span><span class="va">x</span><span class="op">&lt;-</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span></span>
+<span><span class="va">x</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co"># A função which é útil para selecionar alguns dados de um vetor</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">x</span><span class="op">&gt;</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">x</span><span class="op">&gt;=</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="co"># Fatores possuem níveis</span></span>
+<span><span class="va">f</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Sp1"</span>,<span class="st">"Sp1"</span>,<span class="st">"Sp2"</span>,<span class="st">"Sp3"</span>,<span class="st">"Sp3"</span><span class="op">)</span></span>
+<span><span class="va">f</span></span>
+<span><span class="va">f</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span>
+<span><span class="va">f</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span>
+<span><span class="co"># Os vetores podem conter nomes, o que é bastante útil em análises filogenéticas</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">=</span><span class="va">f</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co"># Matrizes</span></span>
+<span><span class="va">m</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span>,<span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span> <span class="co"># dados, n-linhas, n-colunas</span></span>
+<span><span class="va">m</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">m</span><span class="op">)</span></span>
+<span><span class="va">m</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span> <span class="co"># a segunda coluna</span></span>
+<span><span class="va">m</span><span class="op">[</span><span class="fl">3</span>,<span class="op">]</span> <span class="co"># a terceira linha</span></span>
+<span><span class="co"># Data frames suportam vários tipos de dados distintos</span></span>
+<span><span class="va">d</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">f</span>,<span class="va">x</span><span class="op">)</span></span>
+<span><span class="va">d</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span></span>
+<span><span class="co"># Lista é uma estrutura geral que pode carregar vários tipos de dados, incluindo árvores</span></span>
+<span><span class="co"># filogenéticas</span></span>
+<span><span class="va">l</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">f</span>,<span class="va">x</span>,<span class="va">m</span>,<span class="va">d</span><span class="op">)</span></span>
+<span><span class="va">l</span></span>
+<span><span class="va">l</span><span class="op">[[</span><span class="fl">4</span><span class="op">]</span><span class="op">]</span> <span class="co"># quarto elemento da lista</span></span>
+<span><span class="co"># Função ls() lista todos os objetos criados na seção</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">?</span><span class="va">ls</span> <span class="co"># As funções possuem páginas de ajuda descrevendo a função.</span></span></code></pre></div>
+<p>Algumas operações são úteis para reproduzir códigos. O for loop repete uma
+determinada operação por um número fixo de vezes. Por exemplo, para repetir a mesma
+operação em todas as filogenias de um conjunto de dados.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># For loop para calcular a média de atributos, ex: colunas de uma matriz</span></span>
+<span><span class="va">X</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">16</span>,<span class="fl">4</span>,<span class="fl">4</span><span class="op">)</span></span>
+<span><span class="va">X</span></span>
+<span><span class="co"># vetor vazio para salvar os resultados</span></span>
+<span><span class="va">medias</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/vector.html">vector</a></span><span class="op">(</span>mode<span class="op">=</span><span class="st">"numeric"</span>,<span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">medias</span></span>
+<span><span class="co"># loop</span></span>
+<span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span><span class="va">medias</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">X</span><span class="op">[</span>,<span class="va">i</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="co"># resultado</span></span>
+<span><span class="va">medias</span></span></code></pre></div>
+</div>
+<div id="pacotes-filogenéticos-no-r" class="section level2" number="2.6">
+<h2>
+<span class="header-section-number">2.6</span> Pacotes filogenéticos no R<a class="anchor" aria-label="anchor" href="#pacotes-filogen%C3%A9ticos-no-r"><i class="fas fa-link"></i></a>
+</h2>
+<p>Existem muitos pacotes lidando com métodos filogenéticos no R. Nós vamos trabalhar
+com alguns pacotes mais importantes neste momento: ape, phytools e geiger.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Instalando pacotes:</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ape"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"phytools"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"geiger"</span><span class="op">)</span></span></code></pre></div>
+<p>A maioria dos pacotes é constantemente atualizado. É recomendável checar
+frequentemente por atualizações. Através do comando ? seguido do nome do pacote (ex:
+?phytools) é possível acessar o índice com a descrição de todas as funções daquele
+pacote.</p>
+</div>
+<div id="o-objeto-phylo" class="section level2" number="2.7">
+<h2>
+<span class="header-section-number">2.7</span> O objeto “phylo”<a class="anchor" aria-label="anchor" href="#o-objeto-phylo"><i class="fas fa-link"></i></a>
+</h2>
+<p>Árvores filogenéticas são lidas no R como um objeto list de classe phylo .</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Carregar ape</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/emmanuelparadis/ape">ape</a></span><span class="op">)</span></span>
+<span><span class="co"># Construindo uma árvore newick via texto</span></span>
+<span><span class="va">texto</span><span class="op">&lt;-</span><span class="st">"(((((((vaca,</span></span>
+<span><span class="st">cavalo),baleia),(morcego,(camundongo,humano))),(pardal,tartaruga)),celacanto),nemo),</span></span>
+<span><span class="st">tubarão);"</span></span>
+<span><span class="co"># Função read.tree lê o arquivo contendo a árvore</span></span>
+<span><span class="va">arvore</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/read.tree.html">read.tree</a></span><span class="op">(</span>text<span class="op">=</span><span class="va">texto</span><span class="op">)</span></span>
+<span><span class="co"># Representando a árvore graficamente</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">arvore</span>,edge.width<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co"># Estrutura da árvore</span></span>
+<span><span class="va">arvore</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">arvore</span><span class="op">)</span></span>
+<span><span class="co"># Decompondo a árvore</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">arvore</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">arvore</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/nodelabels.html">tiplabels</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/nodelabels.html">nodelabels</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co"># ramos</span></span>
+<span><span class="va">arvore</span><span class="op">$</span><span class="va">edge</span> <span class="co"># matriz contendo os índices do nó inicial e final para cada ramo</span></span>
+<span><span class="co"># O número de linhas em tree$edge é igual o número de ramos; cada ramo começa e</span></span>
+<span><span class="co"># termina com um par de índices (nó-nó ou nó-terminal)</span></span>
+<span><span class="co"># terminais</span></span>
+<span><span class="va">arvore</span><span class="op">$</span><span class="va">tip.label</span></span>
+<span><span class="co"># nós</span></span>
+<span><span class="va">arvore</span><span class="op">$</span><span class="va">Nnode</span></span>
+<span><span class="co"># Um objeto "phylo" também pode conter o comprimento dos ramos: edge.length</span></span></code></pre></div>
+</div>
+<div id="lendo-e-manipulando-árvores-filogenéticas" class="section level2" number="2.8">
+<h2>
+<span class="header-section-number">2.8</span> Lendo e manipulando árvores filogenéticas<a class="anchor" aria-label="anchor" href="#lendo-e-manipulando-%C3%A1rvores-filogen%C3%A9ticas"><i class="fas fa-link"></i></a>
+</h2>
+<p>É aconselhável criar um único diretório contendo a(s) árvore(s) e os dados fenotípicos, e
+informar ao R de qual diretório os arquivos devem ser lidos.
+Árvores filogenéticas podem ser importadas para dentro do ambiente R através de
+funções como read.tree e read.nexus.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Ler árvore contendo 31 espécies do gênero de roedores Neotropicais Akodon</span></span>
+<span><span class="va">akodon.tree</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/read.tree.html">read.tree</a></span><span class="op">(</span>file<span class="op">=</span><span class="st">"akodon.tree"</span><span class="op">)</span></span>
+<span><span class="va">akodon.tree</span></span>
+<span><span class="co"># Existem muitas formas de plotar a árvore</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">akodon.tree</span><span class="op">)</span></span>
+<span><span class="co"># cladograma orientado pra esquerda</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">akodon.tree</span>, type <span class="op">=</span> <span class="st">"c"</span>, use.edge.length <span class="op">=</span> <span class="cn">FALSE</span>,direction<span class="op">=</span><span class="st">"l"</span><span class="op">)</span></span>
+<span><span class="co"># nomes alinhados à esquerda</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">akodon.tree</span>, type <span class="op">=</span> <span class="st">"c"</span>, use.edge.length <span class="op">=</span> <span class="cn">FALSE</span>,direction<span class="op">=</span><span class="st">"l"</span>,adj<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span>
+<span><span class="co"># visualizar partes da árvore com zoom</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/zoom.html">zoom</a></span><span class="op">(</span><span class="va">akodon.tree</span>, <span class="fl">13</span><span class="op">:</span><span class="fl">17</span>, subtree <span class="op">=</span> <span class="cn">FALSE</span>, cex <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># mudando cores</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">akodon.tree</span>, type <span class="op">=</span> <span class="st">"fan"</span>, edge.color <span class="op">=</span> <span class="st">"violetred"</span>, tip.color <span class="op">=</span> <span class="st">"turquoise1"</span>,</span>
+<span>cex <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span><span class="co"># com o pacote phytools</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/liamrevell/phytools">phytools</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.html">plotTree</a></span><span class="op">(</span><span class="va">akodon.tree</span>,ftype<span class="op">=</span><span class="st">"i"</span>,fsize<span class="op">=</span><span class="fl">0.8</span>,lwd<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co"># filograma arredondado</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/roundPhylogram.html">roundPhylogram</a></span><span class="op">(</span><span class="va">akodon.tree</span><span class="op">)</span></span>
+<span><span class="co"># cladograma desenraizado (unrooted)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/root.html">unroot</a></span><span class="op">(</span><span class="va">akodon.tree</span><span class="op">)</span>,type<span class="op">=</span><span class="st">"unrooted"</span>,cex<span class="op">=</span><span class="fl">0.8</span>,use.edge.length<span class="op">=</span><span class="cn">FALSE</span>,lab4ut<span class="op">=</span><span class="st">"axi</span></span>
+<span><span class="st">al"</span><span class="op">)</span></span>
+<span><span class="co"># árvore circular (fan tree)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.html">plotTree</a></span><span class="op">(</span><span class="va">akodon.tree</span>,type<span class="op">=</span><span class="st">"fan"</span>,fsize<span class="op">=</span><span class="fl">0.8</span>,lwd<span class="op">=</span><span class="fl">1</span>,ftype<span class="op">=</span><span class="st">"i"</span><span class="op">)</span></span>
+<span><span class="co"># Legenda dos comprimento de ramos</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.html">plotTree</a></span><span class="op">(</span><span class="va">akodon.tree</span>,ftype<span class="op">=</span><span class="st">"i"</span>,fsize<span class="op">=</span><span class="fl">0.8</span>,lwd<span class="op">=</span><span class="fl">1</span>,mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3.0</span>,<span class="fl">0.1</span>,<span class="fl">0.1</span>,<span class="fl">0.1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/axisPhylo.html">axisPhylo</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="extraindo-clados-ou-espécies-da-árvore" class="section level2" number="2.9">
+<h2>
+<span class="header-section-number">2.9</span> Extraindo clados ou espécies da árvore<a class="anchor" aria-label="anchor" href="#extraindo-clados-ou-esp%C3%A9cies-da-%C3%A1rvore"><i class="fas fa-link"></i></a>
+</h2>
+<p>Para extrair espécies da árvore podemos identificar o conjunto a ser removido.
+Por exemplo, as espécies de Akodon do sul do Brasil: A. paranaensis, A. azarae, A.
+reigi, A. montensis, C. angustidens.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">akodon.tree</span><span class="op">$</span><span class="va">tip.label</span></span>
+<span><span class="va">sul.especies</span><span class="op">&lt;-</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Akodon_paranaensis"</span>,<span class="st">"Akodon_azarae"</span>,<span class="st">"Akodon_reigi"</span>,<span class="st">"Akodon_montensis"</span>,<span class="st">"Cast</span></span>
+<span><span class="st">oria_angustidens"</span><span class="op">)</span></span>
+<span><span class="co"># remover essas espécies da árvore</span></span>
+<span><span class="va">akodon.drop</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/drop.tip.html">drop.tip</a></span><span class="op">(</span><span class="va">akodon.tree</span>,<span class="va">sul.especies</span><span class="op">)</span></span>
+<span><span class="va">akodon.drop</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.html">plotTree</a></span><span class="op">(</span><span class="va">akodon.tree</span>,ftype<span class="op">=</span><span class="st">"i"</span>,fsize<span class="op">=</span><span class="fl">0.8</span>,lwd<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.html">plotTree</a></span><span class="op">(</span><span class="va">akodon.drop</span>,ftype<span class="op">=</span><span class="st">"i"</span>,fsize<span class="op">=</span><span class="fl">0.8</span>,lwd<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co"># ou manter apenas essas espécies na árvore</span></span>
+<span><span class="va">akodon.drop1</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/drop.tip.html">drop.tip</a></span><span class="op">(</span><span class="va">akodon.tree</span>,<span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="va">akodon.tree</span><span class="op">$</span><span class="va">tip.label</span>,<span class="va">sul.especies</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">akodon.drop1</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.html">plotTree</a></span><span class="op">(</span><span class="va">akodon.drop1</span>,ftype<span class="op">=</span><span class="st">"i"</span>,fsize<span class="op">=</span><span class="fl">0.8</span>,lwd<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co"># extrair um clado da árvore</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.html">plotTree</a></span><span class="op">(</span><span class="va">akodon.tree</span>,ftype<span class="op">=</span><span class="st">"i"</span>,fsize<span class="op">=</span><span class="fl">0.8</span>,lwd<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/nodelabels.html">nodelabels</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">clado1</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/drop.tip.html">extract.clade</a></span><span class="op">(</span><span class="va">akodon.tree</span>,node<span class="op">=</span><span class="fl">35</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.html">plotTree</a></span><span class="op">(</span><span class="va">clado1</span>,ftype<span class="op">=</span><span class="st">"i"</span>,fsize<span class="op">=</span><span class="fl">0.8</span>,lwd<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co"># remover o clado</span></span>
+<span><span class="va">akodon.noclado1</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/drop.tip.html">drop.tip</a></span><span class="op">(</span><span class="va">akodon.tree</span>,<span class="va">clado1</span><span class="op">$</span><span class="va">tip.label</span><span class="op">)</span></span>
+<span><span class="va">akodon.noclado1</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.html">plotTree</a></span><span class="op">(</span><span class="va">akodon.noclado1</span>,ftype<span class="op">=</span><span class="st">"i"</span>,fsize<span class="op">=</span><span class="fl">0.8</span>,lwd<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co"># função interativa do phytools para remover clados</span></span>
+<span><span class="va">akodon.col</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/collapseTree.html">collapseTree</a></span><span class="op">(</span><span class="va">akodon.tree</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.html">plotTree</a></span><span class="op">(</span><span class="va">akodon.col</span>,ftype<span class="op">=</span><span class="st">"i"</span>,fsize<span class="op">=</span><span class="fl">0.8</span>,lwd<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="resolvendo-politomias" class="section level2" number="2.10">
+<h2>
+<span class="header-section-number">2.10</span> Resolvendo politomias<a class="anchor" aria-label="anchor" href="#resolvendo-politomias"><i class="fas fa-link"></i></a>
+</h2>
+<p>Várias funções implementadas no R para métodos comparativos vão lidar com
+filogenias contendo politomias. No entanto, nem todas as funções vão funcionar;
+algumas exigem árvores sem politomias.
+É possível resolver aleatoriamente as politomias com a função multi2di do ape.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ex</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/read.tree.html">read.tree</a></span><span class="op">(</span>text<span class="op">=</span><span class="st">"((A,B,C),(D,E));"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">ex</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/is.binary.tree.html">is.binary</a></span><span class="op">(</span><span class="va">ex</span><span class="op">)</span></span>
+<span><span class="co"># resolver ao acaso</span></span>
+<span><span class="va">ex1</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/multi2di.html">multi2di</a></span><span class="op">(</span><span class="va">ex</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">ex1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/is.binary.tree.html">is.binary</a></span><span class="op">(</span><span class="va">ex1</span><span class="op">)</span></span></code></pre></div>
+<p>Existem outros métodos que permitem gerar múltiplas árvores com as politomias
+resolvidas ao acaso. Por exemplo: <a href="http://wsmartins.net/sunplin/" class="uri">http://wsmartins.net/sunplin/</a> - Rangel, T.F. et al. 
+(2015) Phylogenetic uncertainty revisited: implications for ecological analyses.
+Evolution, 69, 1301–1312.
+Lembre-se que ao resolver apenas 1 vez ao acaso não existe avaliação de incerteza
+filogenética.</p>
+</div>
+<div id="múltiplas-árvores" class="section level2" number="2.11">
+<h2>
+<span class="header-section-number">2.11</span> Múltiplas árvores<a class="anchor" aria-label="anchor" href="#m%C3%BAltiplas-%C3%A1rvores"><i class="fas fa-link"></i></a>
+</h2>
+<p>Múltiplas filogenias podem ser úteis se queremos incorporar incerteza filogenética, por
+exemplo, replicando as mesmas análises em múltiplas árvores.
+Árvores múltiplas pertencem ao objeto de classe multiPhylo, que é uma lista de
+filogenias da classe phylo. Muitas funções podem prontamente ser aplicadas tanto para
+phylo como para multiPhylo.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">akodon.trees</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">akodon.tree</span>,<span class="va">akodon.drop</span>,<span class="va">akodon.drop1</span>,<span class="va">clado1</span>,<span class="va">akodon.noclado1</span><span class="op">)</span></span>
+<span><span class="va">akodon.trees</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">akodon.trees</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">akodon.trees</span>,details<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">akodon.trees</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co"># Extraindo clados de múltiplas árvores</span></span>
+<span><span class="va">trees</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/pbtree.html">pbtree</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">50</span>,nsim<span class="op">=</span><span class="fl">100</span><span class="op">)</span></span>
+<span><span class="va">trees</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">trees</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">tree_cortado</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">vector</a></span><span class="op">(</span>mode <span class="op">=</span> <span class="st">"list"</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">trees</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">trees</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span><span class="va">tree_cortado</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/drop.tip.html">keep.tip</a></span><span class="op">(</span><span class="va">trees</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, tip<span class="op">=</span><span class="va">trees</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">tip.label</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="va">tree_cortado</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">tree_cortado</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="sinal-filogenético" class="section level2" number="2.12">
+<h2>
+<span class="header-section-number">2.12</span> Sinal Filogenético<a class="anchor" aria-label="anchor" href="#sinal-filogen%C3%A9tico"><i class="fas fa-link"></i></a>
+</h2>
+<p>Sinal filogenético é meramente um padrão que mostra se espécies mais próximas têm
+valores de atributo mais similares do que espécies mais distantes. É comum encontrar
+menções de que as regressões foram corrigidas pela filogenia porque um sinal
+filogenético foi encontrado nas variáveis brutas. No entanto, o uso de regressão
+filogenética deve estar associado aos resíduos do modelo de interesse apresentarem
+sinal filogenético (ver Revell 2010 Methods in Ecology and Evolution).
+Para calcular o sinal filogenético, nós vamos usar alguns dados de borboletas do artigo
+de Swanson et al 2016 Proc R Soc B.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/emmanuelparadis/ape">ape</a></span><span class="op">)</span></span>
+<span><span class="co"># Carregar dados</span></span>
+<span><span class="va">dados</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="st">"dados/butterfly-data.txt"</span>,h<span class="op">=</span><span class="cn">T</span>,row.names <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">dados</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/attach.html">attach</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span></span>
+<span><span class="va">wing_length</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="va">wing_length</span>,<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">temp</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="va">temp</span>,<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">eye_width</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="va">eye_width</span>,<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># Carregar árvore</span></span>
+<span><span class="va">tree</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/read.tree.html">read.tree</a></span><span class="op">(</span><span class="st">"dados/butterfly-tree.txt"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/axisPhylo.html">axisPhylo</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>Checar correspondência entre espécies na filogenia e nos dados. Todas as espécies
+precisam estar tanto na árvore como nos dados, e também tem que existir
+correspondência exata nos nomes.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">geiger</span><span class="op">)</span></span>
+<span><span class="va">obj</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/geiger/man/name.check.html">name.check</a></span><span class="op">(</span><span class="va">tree</span>,<span class="va">dados</span><span class="op">)</span></span>
+<span><span class="va">obj</span></span>
+<span><span class="co"># 59 espécies na árvore não contêm dados</span></span></code></pre></div>
+<p>Nós podemos remover estas espécies da árvore para seguir com as análises.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># remover espécies da árvore</span></span>
+<span><span class="va">tree.pruned</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/drop.tip.html">drop.tip</a></span><span class="op">(</span><span class="va">tree</span>,<span class="va">obj</span><span class="op">$</span><span class="va">tree_not_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/geiger/man/name.check.html">name.check</a></span><span class="op">(</span><span class="va">tree.pruned</span>,<span class="va">dados</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">tree.pruned</span><span class="op">)</span></span></code></pre></div>
+<p>Vários métodos existem para calcular sinal filogenético. Os dois métodos mais comuns
+são a estatística K (Blomberg et al 2003) e o lambda de Pagel (1999).
+K
+K=1 indica que espécies próximas são tão parecidas quanto prevê o modelo Browniano
+K&lt;1 indica sinal filogenético menor do que esperado pelo modelo Browniano
+K&gt;1 indica sinal filogenético maior do que esperado pelo modelo Browniano
+λ
+λ=0 indica ausência de sinal filogenético (sinal esperado em uma filogenia estrela)
+λ=1 indica sinal filogenético correspondente ao modelo Browniano</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/liamrevell/phytools">phytools</a></span><span class="op">)</span></span>
+<span><span class="co"># K</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/phylosig.html">phylosig</a></span><span class="op">(</span><span class="va">tree.pruned</span>,<span class="va">wing_length</span>,method<span class="op">=</span><span class="st">"K"</span><span class="op">)</span></span>
+<span><span class="co"># Pagel's λ</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/phylosig.html">phylosig</a></span><span class="op">(</span><span class="va">tree.pruned</span>,<span class="va">wing_length</span>,method <span class="op">=</span> <span class="st">"lambda"</span><span class="op">)</span></span>
+<span><span class="co"># Visualizando o atributo na filogenia</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.wBars.html">plotTree.barplot</a></span><span class="op">(</span><span class="va">tree.pruned</span>,<span class="va">wing_length</span>,</span>
+<span>args.plotTree<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>fsize<span class="op">=</span><span class="fl">0.5</span>,ftype<span class="op">=</span><span class="st">"i"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="exercício-1---árvore-filogenética-no-r" class="section level2" number="2.13">
+<h2>
+<span class="header-section-number">2.13</span> Exercício 1 - Árvore filogenética no R<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio-1---%C3%A1rvore-filogen%C3%A9tica-no-r"><i class="fas fa-link"></i></a>
+</h2>
+<p>Carregue uma árvore filogenética para o seu grupo de estudo e observe a estrutura dela.
+Represente a árvore graficamente de diferentes formas. Se você tiver variáveis
+fenotípicas para o seu grupo de estudo, tente carregar no R e testar o sinal filogenético.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="estrutura-e-programa-da-disciplina.html"><span class="header-section-number">1</span> Estrutura e Programa da Disciplina</a></div>
+<div class="next"><a href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos.html"><span class="header-section-number">3</span> Modelos para evolução de fenótipos contínuos</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#manipulando-filogenias-no-r---sinal-filogen%C3%A9tico"><span class="header-section-number">2</span> Manipulando filogenias no R - Sinal Filogenético</a></li>
+<li><a class="nav-link" href="#o-ambiente-r"><span class="header-section-number">2.1</span> O ambiente R</a></li>
+<li><a class="nav-link" href="#set-working-directory"><span class="header-section-number">2.2</span> Set working directory</a></li>
+<li><a class="nav-link" href="#scripts"><span class="header-section-number">2.3</span> Scripts</a></li>
+<li><a class="nav-link" href="#funcionamento-b%C3%A1sico-do-r"><span class="header-section-number">2.4</span> Funcionamento básico do R</a></li>
+<li><a class="nav-link" href="#tipos-de-objeto-no-r"><span class="header-section-number">2.5</span> Tipos de objeto no R</a></li>
+<li><a class="nav-link" href="#pacotes-filogen%C3%A9ticos-no-r"><span class="header-section-number">2.6</span> Pacotes filogenéticos no R</a></li>
+<li><a class="nav-link" href="#o-objeto-phylo"><span class="header-section-number">2.7</span> O objeto “phylo”</a></li>
+<li><a class="nav-link" href="#lendo-e-manipulando-%C3%A1rvores-filogen%C3%A9ticas"><span class="header-section-number">2.8</span> Lendo e manipulando árvores filogenéticas</a></li>
+<li><a class="nav-link" href="#extraindo-clados-ou-esp%C3%A9cies-da-%C3%A1rvore"><span class="header-section-number">2.9</span> Extraindo clados ou espécies da árvore</a></li>
+<li><a class="nav-link" href="#resolvendo-politomias"><span class="header-section-number">2.10</span> Resolvendo politomias</a></li>
+<li><a class="nav-link" href="#m%C3%BAltiplas-%C3%A1rvores"><span class="header-section-number">2.11</span> Múltiplas árvores</a></li>
+<li><a class="nav-link" href="#sinal-filogen%C3%A9tico"><span class="header-section-number">2.12</span> Sinal Filogenético</a></li>
+<li><a class="nav-link" href="#exerc%C3%ADcio-1---%C3%A1rvore-filogen%C3%A9tica-no-r"><span class="header-section-number">2.13</span> Exercício 1 - Árvore filogenética no R</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/renanmaestri/oee/blob/master/02-manipulando-filogenias.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/renanmaestri/oee/edit/master/02-manipulando-filogenias.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Oficina de Ecologia Evolutiva</strong>" was written by Renan Maestri &amp; Leandro Duarte. It was last built on 2026-07-02.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

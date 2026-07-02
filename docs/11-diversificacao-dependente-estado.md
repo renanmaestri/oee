@@ -1,0 +1,347 @@
+# Diversificação dependente de estado
+
+
+## Diversificação dependente de estado
+
+Vamos carregar a filogenia e atributos para as espécies de primatas. 
+
+
+
+``` r
+require(ape)
+require(phytools)
+require(geiger)
+require(diversitree)
+# Filogenia
+tree<-read.tree("dados/primate-tree.txt")
+plotTree(tree,fsize=0.4,ftype="i",type="fan",lwd=1)
+# Atributos
+dados<-read.table("dados/primate-data.txt",h=T,row.names=1)
+head(dados)
+# Recortar filogenia
+match.species<-treedata(tree,dados)
+tree<-match.species$phy
+plotTree(tree,fsize=0.5,ftype="i",type="fan",lwd=1)
+```
+
+Vamos utilizar o BiSSE (binary-state speciation and extinction) para testar hipóteses 
+sobre a diversificação de primatas e o tamanho do grupo social. 
+Considere a variável binária, que possui dois estados: Solitary vs. Social. 
+< 4 ind = solitary 
+> 4 ind = social 
+
+
+
+``` r
+binsocial<-dados$BinSocial
+names(binsocial)=rownames(dados)
+binsocial<-as.factor(binsocial)
+binsocial
+```
+
+Uma dessas categorias promove maior diversificação em primatas? 
+
+
+
+``` r
+# O diversitree requer que os códigos sejam numéricos.
+levels(binsocial) # 1-Social, 2-Solitário
+binsocial<-as.numeric(binsocial)-1 # valores tem que ser 0 e 1
+binsocial
+names(binsocial)=rownames(dados)
+binsocial # 0-Social, 1-Solitário
+```
+
+O BiSSE tem uma função para estimar valores iniciais 'razoáveis' dos parâmetros 
+de interesse. 
+
+
+
+``` r
+p<-starting.point.bisse(tree)
+p
+```
+
+Para rodar o BiSSE temos que criar a função de likelihood para posteriormente otimizar 
+os parâmetros. 
+
+
+
+``` r
+lik.bisse<-make.bisse(tree,binsocial)
+lik.bisse
+```
+
+Agora podemos restringir a função geral para criar diferentes modelos. 
+Por exemplo, podemos criar um modelo "nulo" onde as taxas de especiação e extinção 
+sejam iguais entre estados (b0~b1;d0~d1) e que existe uma única taxa de transição 
+(q01=q10). 
+
+
+
+``` r
+lik.null<-constrain(lik.bisse,lambda0~lambda1,mu0~mu1,q10~q01)
+lik.null
+```
+
+Ajustar os modelos. 
+
+
+
+``` r
+# Ajustar modelo nulo
+p[argnames(lik.null)] # ajustar número de parâmetros inicial
+fit.null<-find.mle(lik.null,x.init=p[argnames(lik.null)])
+fit.null
+# Ajustar o modelo mais complexo, onde as taxas de especiação e extinção dependem #
+# do estado do fenótipo
+fit.full<-find.mle(lik.bisse,x.init=p)
+fit.full
+```
+
+Outros modelos podem ser ajustados entre o mais simples e o mais complexo, 
+dependendo das hipóteses biológicas a priori . Em um estudo empírico, especialmente 
+com múltiplos estados (MuSSE), os modelos devem ser identificados a priori ao invés 
+de ajustar todos os modelos possíveis para identificar aqueles com melhor ajuste. 
+Como exemplo, vamos ajustar um modelo onde somente a taxa de especiação varie ente 
+estados, um modelo onde somente a taxa de extinção varie, e um modelo com b e d 
+constantes, mas com taxas de transição diferentes entre estados. 
+
+
+
+``` r
+# especiação variável
+lik.lambda<-constrain(lik.bisse,mu0~mu1,q10~q01)
+lik.lambda
+# ajuste
+fit.lambda<-find.mle(lik.lambda,x.init=p[argnames(lik.lambda)])
+fit.lambda
+# extinção variável
+lik.mu<-constrain(lik.bisse,lambda0~lambda1,q10~q01)
+lik.mu
+# ajuste
+fit.mu<-find.mle(lik.mu,x.init=p[argnames(lik.mu)])
+fit.mu
+# especiação e extinção variável, única taxa de transição entre estados
+lik.lambda.mu<-constrain(lik.bisse,q10~q01)
+lik.lambda.mu
+# ajuste
+fit.lambda.mu<-find.mle(lik.lambda.mu,x.init=p[argnames(lik.lambda.mu)])
+fit.lambda.mu
+# b e d constantes, taxas de transição flexíveis
+lik.q<-constrain(lik.bisse,lambda0~lambda1,mu0~mu1)
+lik.q
+# ajuste
+fit.q<-find.mle(lik.q,x.init=p[argnames(lik.q)])
+fit.q
+```
+
+Agora podemos comparar os modelos ajustados. A função genérica anova permite 
+obter os valores de AIC para uma lista. 
+
+
+
+``` r
+# Comparando os modelos
+resultados<-anova(fit.null,
+completo=fit.full,
+lambda.variavel=fit.lambda,
+mu.variavel=fit.mu,
+lambda.mu.variavel=fit.lambda.mu,
+q.variavel=fit.q)
+resultados
+aicw(setNames(resultados$AIC,rownames(resultados)))
+aic.w(setNames(resultados$AIC,rownames(resultados)))
+```
+
+Os modelos com especiação variável e com especiação e extinção variável (e taxa de 
+transição única) receberam maior suporte. 
+
+
+
+``` r
+coef(fit.lambda.mu)
+```
+
+Parece que tanto as taxas de especiação como de extinção são maiores para o estado 0 
+(social) do que para o estado 1 (solitário). 
+E a taxa de diversificação? 
+
+
+
+``` r
+lambda0<-coef(fit.lambda.mu)[[1]]
+mu0<-coef(fit.lambda.mu)[[3]]
+r.0<-lambda0-mu0
+r.0
+lambda1<-coef(fit.lambda.mu)[[2]]
+mu1<-coef(fit.lambda.mu)[[4]]
+r.1<-lambda1-mu1
+r.1
+```
+
+Como as taxas de extinção estimadas são muito baixas, as taxas de diversificação 
+são próximas das de especiação. 
+Assim como vimos no modelo bd simples, com o pacote diversitree podemos rodar 
+análises bayesianas com os nossos modelos. Vamos fazer isso para o nosso melhor 
+modelo para estimar os valores dos parâmetros. 
+
+
+
+``` r
+# MCMC
+mcmc.lambda.mu<-mcmc(lik.lambda.mu,fit.lambda.mu$par, nsteps = 1000, w =
+1,print.every=100)
+# visualizar probabilidades
+colors<-setNames(c("red","blue"),1:2)
+par(mfrow=c(1,1),mar=c(5,4,2,2))
+# especiação
+profiles.plot(mcmc.lambda.mu[,grep("lambda",colnames(mcmc.lambda.mu))],
+col.line=colors, las=1, legend.pos="topright")
+# extinção
+profiles.plot(mcmc.lambda.mu[,grep("mu",colnames(mcmc.lambda.mu))],
+col.line=colors, las=1, legend.pos="topright")
+# diversificação líquida
+div<-mcmc.lambda.mu[,grep("lambda",colnames(mcmc.lambda.mu))]-
+mcmc.lambda.mu[,grep("mu",colnames(mcmc.lambda.mu))]
+colnames(div)<-paste("lambda-mu(",0:1,")",sep="")
+profiles.plot(div,
+xlab="Net diversification rate", ylab="Probability density",
+legend.pos="topleft",col.line=setNames(colors,colnames(div)),
+lty=1)
+```
+
+
+## Diversificação por terminais (tip-speciation)
+
+Tip Rate Diversification. Uma das medidas mais comuns de taxa de diversificação nos 
+terminais (tipDR) é a de Jetz et al. (2012), que é o inverso da medida equal splits de 
+Redding & Mooers (2006). 
+
+
+
+``` r
+require(picante)
+ES = evol.distinct(tree, type = "equal.splits")$w
+DR = 1/ES
+# Plot
+names(DR)=tree$tip.label
+contMap(tree,DR)
+```
+
+O tamanho corporal influencia a diversificação? 
+
+
+
+``` r
+# Massa corporal
+massa<-dados$AdultBodyMass_g
+names(massa)=rownames(dados)
+contMap(tree,log(massa))
+# Correlação
+cor(DR,log(massa))
+plot(log(massa),DR)
+```
+
+
+## Co-Diversificação
+
+Análises cofilogenéticas investigam a associação/dependência entre a diversificação de 
+dois clados, normalmente um clado de parasitas e um clado de hospedeiros; para uma 
+revisão veja Perez-Lamarque & Morlon (2022). Aqui, usaremos um teste baseado em 
+Mantel para testar o sinal filogenético na associação entre dois clados (Perez-Lamarque 
+et al. 2023). Vamos carregar dados de associação entre coronavirus (parasitas) e 
+mamíferos (hospedeiros) de Maestri, Perez-Lamarque, Zhukova & Morlon (2023). 
+
+
+
+``` r
+# Carregar árvore de Coronaviridae
+require(ape)
+cov_tree<-read.nexus("dados/combined_alignment_cov_trimal_tree_35.tre")
+# Carregar matriz de associação
+hosts_matrix<-read.table("dados/association_matrix.txt")
+# Carregar árvore de mamíferos hospedeiros
+hostmammaltree<-read.tree("dados/hostsMammalTree.tre")
+# Sinal filogenético na associação
+require(RPANDA)
+# Calcular sinal filogenético para a interação entre espécies
+# com permutações mantendo constante o número de parceiros
+psuni_n<-phylosignal_network(hosts_matrix, tree_A = cov_tree,
+tree_B = hostmammaltree,
+method = "GUniFrac",
+correlation = "Pearson",
+nperm=1000, permutation = "nbpartners")
+psuni_n
+```
+
+Coronavirus próximos filogenéticamente tendem a se associar (infectar) mamíferos 
+proximos filogenéticamente (r=0.377) e vice-versa (r=0.295). 
+Também podemos testar se parasitas proximamente relacionados tendem a infectar um 
+número de hospeiros similar. 
+
+
+
+``` r
+# Sinal filogenético no número de parceiros
+npart_cov<-phylosignal_network(hosts_matrix,
+tree_A = cov_tree,
+method = "degree",
+correlation = "Pearson", nperm = 1000)
+npart_mammals<-phylosignal_network(t(hosts_matrix),
+tree_A = hostmammaltree,
+method = "degree",
+correlation = "Pearson", nperm = 1000)
+npart_cov
+npart_mammals
+```
+
+Coronavirus próximos filogenéticamente tendem a infectar um número de hospeiros 
+similar, porém, mamíferos proximos filogenéticamente não tendem a hospedar um 
+número similar de coronavirus. Isso sugere que a especificidade de coronavírus em 
+relação aos seus hospedeiros é conservada evolutivamente, enquanto que a 
+suscetibilidade dos hospedeiros aos coronavírus não é. 
+Por fim, podemos testar em que escala filogenética o sinal é mais forte. 
+
+
+
+``` r
+# Calcular sinal filogenético por subclados
+# Para parasitas
+results_clade_A <- phylosignal_sub_network(hosts_matrix,
+tree_A = cov_tree,
+tree_B = hostmammaltree,
+method = "GUniFrac",
+correlation = "Pearson",
+nperm=1000,
+minimum=10, degree=F,
+permutation = "shuffle")
+plot_phylosignal_sub_network(tree_A = cov_tree, results_clade_A,
+network = hosts_matrix)
+# Para hospedeiros
+results_clade_B <- phylosignal_sub_network(t(hosts_matrix),
+tree_A = hostmammaltree,
+tree_B = cov_tree,
+method = "GUniFrac",
+correlation = "Pearson",
+nperm=1000,
+minimum=10, degree=F,
+permutation = "shuffle")
+plot_phylosignal_sub_network(tree_A = hostmammaltree, results_clade_B,
+network = t(hosts_matrix),
+legend=FALSE,where = "topleft")
+# Plot conjunto
+layout(matrix(c(1,2),1,2),widths=c(0.5,0.5),heights=c(0.1,0.1))
+plot_phylosignal_sub_network(tree_A = cov_tree, results_clade_A,
+network = hosts_matrix)
+plot_phylosignal_sub_network(tree_A = hostmammaltree, results_clade_B,
+network = t(hosts_matrix),
+legend=FALSE,where = "topleft")
+```
+
+Em geral, o sinal filogenético é mais forte nos nós mais antigos das duas filogenias. 
+
+## Exercício 10 - Livre
+
+Livre. 
+

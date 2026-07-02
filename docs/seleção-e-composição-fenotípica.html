@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 15 Seleção e composição fenotípica | Oficina de Ecologia Evolutiva</title>
+<meta name="author" content="Renan Maestri &amp; Leandro Duarte">
+<meta name="description" content="Análises de diversidade e/ou composição funcional envolvem calcular medidas que consideram conjuntos de espécies descritas tanto por um ou mais atributos quanto sua distribuição num conjunto de...">
+<meta name="generator" content="bookdown 0.47 with bs4_book()">
+<meta property="og:title" content="Capítulo 15 Seleção e composição fenotípica | Oficina de Ecologia Evolutiva">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://renanmaestri.github.io/oee/seleção-e-composição-fenotípica.html">
+<meta property="og:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
+<meta property="og:description" content="Análises de diversidade e/ou composição funcional envolvem calcular medidas que consideram conjuntos de espécies descritas tanto por um ou mais atributos quanto sua distribuição num conjunto de...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 15 Seleção e composição fenotípica | Oficina de Ecologia Evolutiva">
+<meta name="twitter:description" content="Análises de diversidade e/ou composição funcional envolvem calcular medidas que consideram conjuntos de espécies descritas tanto por um ou mais atributos quanto sua distribuição num conjunto de...">
+<meta name="twitter:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Oficina de Ecologia Evolutiva</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefácio</a></li>
+<li><a class="" href="estrutura-e-programa-da-disciplina.html"><span class="header-section-number">1</span> Estrutura e Programa da Disciplina</a></li>
+<li><a class="" href="manipulando-filogenias-no-r---sinal-filogen%C3%A9tico.html"><span class="header-section-number">2</span> Manipulando filogenias no R - Sinal Filogenético</a></li>
+<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos.html"><span class="header-section-number">3</span> Modelos para evolução de fenótipos contínuos</a></li>
+<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-discretos.html"><span class="header-section-number">4</span> Modelos para evolução de fenótipos discretos</a></li>
+<li><a class="" href="regress%C3%A3o-filogen%C3%A9tica.html"><span class="header-section-number">5</span> Regressão Filogenética</a></li>
+<li><a class="" href="correla%C3%A7%C3%A3o-de-atributos-discretos.html"><span class="header-section-number">6</span> Correlação de atributos discretos</a></li>
+<li><a class="" href="modelos-multi-taxa-e-multi-regime.html"><span class="header-section-number">7</span> Modelos multi-taxa e multi-regime</a></li>
+<li><a class="" href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html"><span class="header-section-number">8</span> Métodos filogenéticos multivariados</a></li>
+<li><a class="" href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html"><span class="header-section-number">9</span> Diversificação de linhagens e fenotípica ao longo do tempo</a></li>
+<li><a class="" href="estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o.html"><span class="header-section-number">10</span> Estimativas de taxas de especiação e extinção</a></li>
+<li><a class="" href="diversifica%C3%A7%C3%A3o-dependente-de-estado.html"><span class="header-section-number">11</span> Diversificação dependente de estado</a></li>
+<li><a class="" href="manipulando-as-bases-de-dados.html"><span class="header-section-number">12</span> Manipulando as bases de dados</a></li>
+<li><a class="" href="diversidade-filogen%C3%A9tica.html"><span class="header-section-number">13</span> Diversidade filogenética</a></li>
+<li><a class="" href="diversidade-beta-filogen%C3%A9tica.html"><span class="header-section-number">14</span> Diversidade beta filogenética</a></li>
+<li><a class="active" href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html"><span class="header-section-number">15</span> Seleção e composição fenotípica</a></li>
+<li><a class="" href="medidas-de-diversifica%C3%A7%C3%A3o.html"><span class="header-section-number">16</span> Medidas de diversificação</a></li>
+<li><a class="" href="refer%C3%AAncias-2.html">Referências</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/renanmaestri/oee">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="seleção-e-composição-fenotípica" class="section level1" number="15">
+<h1>
+<span class="header-section-number">Capítulo 15</span> Seleção e composição fenotípica<a class="anchor" aria-label="anchor" href="#sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica"><i class="fas fa-link"></i></a>
+</h1>
+<p>Análises de diversidade e/ou composição funcional envolvem calcular medidas que
+consideram conjuntos de espécies descritas tanto por um ou mais atributos quanto sua
+distribuição num conjunto de assembleias. Neste sentido, o parentesco evolutivo entre
+as espécies influenciará tanto a evolução fenotípica da linhagem estudada (evolução de
+nicho), quanto a distribuição das linhagens entre as assembleias (diversificação e
+dispersão). Portanto, análises de determinantes ambientais da diversidade e/ou
+composição funcional podem apresentar inflação do erro tipo I. No script abaixo
+mostramos algumas maneiras de contornar o problema tanto para medidas de
+diversidade (Diniz-Filho et al. 2011) quanto para composição fenotípica (Duarte et al. 
+2018).</p>
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># require(phytools) ou require(ape)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">picante</span><span class="op">)</span></span>
+<span><span class="co"># Carregar dados</span></span>
+<span><span class="va">comm</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="st">"dados/community.txt"</span>,h<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">comm</span><span class="op">)</span></span>
+<span><span class="va">comm</span></span>
+<span><span class="co"># Carregar variável ambiental</span></span>
+<span><span class="va">env</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="st">"dados/environment.txt"</span>,h<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">env</span><span class="op">)</span></span>
+<span><span class="va">env</span></span>
+<span><span class="co"># Carregar filogenia (duas alternativas)</span></span>
+<span><span class="va">tree</span><span class="op">&lt;-</span><span class="fu">phytools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/read.newick.html">read.newick</a></span><span class="op">(</span><span class="st">"bird_orders.new"</span><span class="op">)</span></span>
+<span><span class="co">#ou</span></span>
+<span><span class="va">tree</span><span class="op">&lt;-</span><span class="fu">ape</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/read.tree.html">read.tree</a></span><span class="op">(</span><span class="st">"dados/bird_orders.txt"</span><span class="op">)</span></span>
+<span><span class="fu">phytools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.html">plotTree</a></span><span class="op">(</span><span class="va">tree</span>,fsize<span class="op">=</span><span class="fl">0.4</span>,ftype<span class="op">=</span><span class="st">"i"</span>,type<span class="op">=</span><span class="st">"fan"</span>,lwd<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co"># Carregar atributos</span></span>
+<span><span class="va">traits</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="st">"dados/traits.txt"</span>,h<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">traits</span><span class="op">)</span></span>
+<span><span class="va">traits</span></span></code></pre></div>
+<p>Organizar os conjuntos de dados:</p>
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">SYNCSA</span><span class="op">)</span></span>
+<span><span class="va">org</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/SYNCSA/man/organize.syncsa.html">organize.syncsa</a></span><span class="op">(</span><span class="va">comm</span>,<span class="va">traits</span>,phylodist<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/cophenetic.html">cophenetic</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span>,envir<span class="op">=</span><span class="va">env</span><span class="op">)</span></span>
+<span><span class="va">comm</span><span class="op">&lt;-</span><span class="va">org</span><span class="op">$</span><span class="va">community</span></span>
+<span><span class="va">phydist</span><span class="op">&lt;-</span><span class="va">org</span><span class="op">$</span><span class="va">phylodist</span></span>
+<span><span class="va">traits</span><span class="op">&lt;-</span><span class="va">org</span><span class="op">$</span><span class="va">traits</span></span>
+<span><span class="va">env</span><span class="op">&lt;-</span><span class="va">org</span><span class="op">$</span><span class="va">environmental</span></span></code></pre></div>
+<p>Quantificar sinal filogenético nos traits:</p>
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/liamrevell/phytools">phytools</a></span><span class="op">)</span></span>
+<span><span class="va">k.T1</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/phylosig.html">phylosig</a></span><span class="op">(</span><span class="va">tree</span>,<span class="va">traits</span><span class="op">$</span><span class="va">T1</span>,method<span class="op">=</span><span class="st">"K"</span>,test<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span>
+<span><span class="va">k.T2</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/phylosig.html">phylosig</a></span><span class="op">(</span><span class="va">tree</span>,<span class="va">traits</span><span class="op">$</span><span class="va">T2</span>,method<span class="op">=</span><span class="st">"K"</span>,test<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span></code></pre></div>
+<p>Calcular autovetores filogenéticos:</p>
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">PVR</span><span class="op">)</span></span>
+<span><span class="va">pvr_class</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/PVR/man/PVRdecomp.html">PVRdecomp</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span></span>
+<span><span class="va">pvr_reg.T1</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/PVR/man/PVR.html">PVR</a></span><span class="op">(</span><span class="va">pvr_class</span>,trait<span class="op">=</span><span class="va">traits</span><span class="op">$</span><span class="va">T1</span>,envVar<span class="op">=</span><span class="cn">NULL</span>,method<span class="op">=</span><span class="st">"moran"</span><span class="op">)</span></span>
+<span><span class="va">sel.vec.brown</span><span class="op">&lt;-</span><span class="va">pvr_reg.T1</span><span class="op">@</span><span class="va">Selection</span><span class="op">$</span><span class="va">Vectors</span></span>
+<span><span class="va">r2.pvr.T1</span><span class="op">&lt;-</span><span class="va">pvr_reg.T1</span><span class="op">@</span><span class="va">PVR</span><span class="op">$</span><span class="va">R2</span></span>
+<span><span class="va">res.pvr.T1</span><span class="op">&lt;-</span><span class="va">pvr_reg.T1</span><span class="op">@</span><span class="va">PVR</span><span class="op">$</span><span class="va">Residuals</span></span></code></pre></div>
+<p>Calcular resíduos da diversidade fenotípica (controlando efeito da filogenia) e analisar
+associação com o ambiente:</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb134-1" tabindex="-1"></a><span class="fu">require</span>(picante)</span>
+<span id="cb134-2"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb134-2" tabindex="-1"></a><span class="fu">require</span>(cluster)</span>
+<span id="cb134-3"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb134-3" tabindex="-1"></a><span class="co"># Calcular distâncias fenotípicas:</span></span>
+<span id="cb134-4"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb134-4" tabindex="-1"></a>dis.T1<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">daisy</span>(<span class="fu">as.data.frame</span>(res.pvr.T1),</span>
+<span id="cb134-5"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb134-5" tabindex="-1"></a><span class="at">metric=</span><span class="st">"euclidean"</span>,<span class="at">stand=</span><span class="cn">FALSE</span>))</span>
+<span id="cb134-6"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb134-6" tabindex="-1"></a><span class="fu">rownames</span>(dis.T1)<span class="ot">&lt;-</span><span class="fu">colnames</span>(comm)</span>
+<span id="cb134-7"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb134-7" tabindex="-1"></a><span class="fu">colnames</span>(dis.T1)<span class="ot">&lt;-</span><span class="fu">colnames</span>(comm)</span>
+<span id="cb134-8"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb134-8" tabindex="-1"></a><span class="co"># Calcular mfd – mean functional distance usando resíduos filogenéticos de T1:</span></span>
+<span id="cb134-9"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb134-9" tabindex="-1"></a>ses.mfd.T1<span class="ot">=</span><span class="fu">ses.mpd</span>(comm,</span>
+<span id="cb134-10"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb134-10" tabindex="-1"></a>dis.T1,<span class="at">null.model=</span><span class="st">"independentswap"</span>,<span class="at">abundance.weighted=</span><span class="cn">TRUE</span>,<span class="at">runs=</span><span class="dv">999</span>,iteratio</span>
+<span id="cb134-11"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb134-11" tabindex="-1"></a><span class="at">ns=</span><span class="dv">1000</span>)</span>
+<span id="cb134-12"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb134-12" tabindex="-1"></a>ses.mfd.T1<span class="ot">=</span><span class="fu">as.numeric</span>(ses.mfd.T1[,<span class="dv">6</span>])</span>
+<span id="cb134-13"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb134-13" tabindex="-1"></a><span class="co"># Estimar a associação entre ses.mfd.T1 e env:</span></span>
+<span id="cb134-14"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb134-14" tabindex="-1"></a>lm.ses.mfd.T1<span class="ot">&lt;-</span><span class="fu">lm</span>(ses.mfd.T1<span class="sc">~</span>E,<span class="at">data=</span>env)</span>
+<span id="cb134-15"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb134-15" tabindex="-1"></a><span class="fu">summary.lm</span>(lm.ses.mfd.T1)</span></code></pre></div>
+<p>Observação: Nesta análise, apenas o efeito do sinal filogenético do atributo é
+controlado. A distribuição das linhagens no espaço não é afetada.
+Analisar associação entre valores médios do atributo “T1” e variável ambiental “E”
+controlando ou não o efeito da filogenia:</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb135-1" tabindex="-1"></a><span class="fu">source</span>(“cwm.sig.R”)</span>
+<span id="cb135-2"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb135-2" tabindex="-1"></a><span class="co"># Ignorando o efeito da filogenia:</span></span>
+<span id="cb135-3"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb135-3" tabindex="-1"></a>cwmsig.T1.phylo<span class="ot">&lt;-</span><span class="fu">cwm.sig</span>(<span class="at">comm=</span>comm,<span class="at">traits=</span>traits,<span class="at">envir=</span>env, <span class="at">formula=</span><span class="st">"T1~E"</span>,</span>
+<span id="cb135-4"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb135-4" tabindex="-1"></a><span class="at">PGLS=</span><span class="cn">FALSE</span>,<span class="at">tree=</span>tree,<span class="at">runs =</span> <span class="dv">999</span>)</span>
+<span id="cb135-5"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb135-5" tabindex="-1"></a><span class="fu">summary.lm</span>(cwmsig.T1.phylo<span class="sc">$</span>model)</span>
+<span id="cb135-6"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb135-6" tabindex="-1"></a><span class="co"># Controlando o efeito da filogenia:</span></span>
+<span id="cb135-7"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb135-7" tabindex="-1"></a>cwmsig.T1.nophylo<span class="ot">&lt;-</span><span class="fu">cwm.sig</span>(<span class="at">comm=</span>comm,<span class="at">traits=</span>traits,<span class="at">envir=</span>env,</span>
+<span id="cb135-8"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb135-8" tabindex="-1"></a><span class="at">formula=</span><span class="st">"T1~E"</span>, <span class="at">PGLS=</span><span class="cn">TRUE</span>,<span class="at">tree=</span>tree,<span class="at">runs =</span> <span class="dv">999</span>)</span>
+<span id="cb135-9"><a href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html#cb135-9" tabindex="-1"></a><span class="fu">summary.lm</span>(cwmsig.T1.nophylo<span class="sc">$</span>model)</span></code></pre></div>
+<div id="exercício-1" class="section level2" number="15.1">
+<h2>
+<span class="header-section-number">15.1</span> Exercício<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio-1"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: decimal">
+<li>Calcule a relação entre diversidade fenotípica e ambiente sem controlar o efeito
+da filogenia e compare os resultados. Reanalise usando T2.</li>
+<li>De que forma a função cwm.sig permite controlar o efeito da filogenia sobre a
+relação entre valores médios de atributos nas comunidades e a variável
+ambiental? Qual o argumento chave para controlar o efeito da filogenia?</li>
+</ol>
+</div>
+<div id="referências" class="section level2" number="15.2">
+<h2>
+<span class="header-section-number">15.2</span> Referências<a class="anchor" aria-label="anchor" href="#refer%C3%AAncias"><i class="fas fa-link"></i></a>
+</h2>
+<p>Diniz-Filho, J. A. F., M. V. Cianciaruso, T. F. Rangel, and L. M. Bini. 2011.
+Eigenvector estimation of phylogenetic and functional diversity. Functional
+Ecology 25:735-744.
+Duarte, L. D. S., V. J. Debastiani, M. B. Carlucci, and J. A. F. Diniz-Filho. 2018.
+Analyzing community-weighted trait means across environmental gradients:
+should phylogeny stay or should it go? Ecology 99:385–398.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="diversidade-beta-filogen%C3%A9tica.html"><span class="header-section-number">14</span> Diversidade beta filogenética</a></div>
+<div class="next"><a href="medidas-de-diversifica%C3%A7%C3%A3o.html"><span class="header-section-number">16</span> Medidas de diversificação</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica"><span class="header-section-number">15</span> Seleção e composição fenotípica</a></li>
+<li><a class="nav-link" href="#exerc%C3%ADcio-1"><span class="header-section-number">15.1</span> Exercício</a></li>
+<li><a class="nav-link" href="#refer%C3%AAncias"><span class="header-section-number">15.2</span> Referências</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/renanmaestri/oee/blob/master/15-selecao.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/renanmaestri/oee/edit/master/15-selecao.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Oficina de Ecologia Evolutiva</strong>" was written by Renan Maestri &amp; Leandro Duarte. It was last built on 2026-07-02.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

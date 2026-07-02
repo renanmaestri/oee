@@ -1,0 +1,213 @@
+# Diversidade beta filogenética
+
+Da mesma forma que para as medidas de diversidade alfa filogenética, existem outras 
+tantas equivalentes para avaliar diversidade beta filogenética (PBD). 
+Para exercitarmos o cálculo de PBD, tomemos como exemplo as 50 comunidades de 
+aves descritas pela abundância de indivíduos de diferentes ordens. Algumas medidas de 
+PBD que serão apresentadas apresentam correspondência direta com as do Exercício 2. 
+
+
+
+``` r
+# require(phytools) ou require(ape)
+require(picante)
+# Carregar dados
+comm<-read.table("dados/community.txt",h=T)
+dim(comm)
+comm
+# Carregar filogenia (duas alternativas)
+tree<-phytools::read.newick("bird_orders.new")
+#ou
+tree<-ape::read.tree("dados/bird_orders.txt")
+plotTree(tree,fsize=0.4,ftype="i",type="fan",lwd=1)
+```
+
+Para verificar a correspondência entre espécies nos dados e na filogenia usar a função 
+match.phylo.comm. 
+
+
+
+``` r
+match.species<-picante::match.phylo.comm(tree,comm)
+tree<-match.species$phy
+comm<- match.species$comm
+```
+
+Medida de PBD equivalente ao índice de similaridade de Sorensen. Medida sensível aos 
+nós mais terminais da árvore. Disponível apenas para matrizes de presença/ausência. 
+
+
+
+``` r
+require(picante)
+phylosor_comm<-phylosor(comm,tree)
+phylosor_comm
+```
+
+
+## UniFrac
+
+Medida de PBD equivalente ao índice de dissimilaridade de Jaccard. Medida sensível 
+aos nós mais terminais da árvore. Pode ser empregado em matrizes de abundância ou 
+presença/ausência. 
+
+
+
+``` r
+# Unifrac para dados de presença/ausência:
+require(picante)
+unifrac_comm<-unifrac(comm, tree)
+unifrac_comm
+# Ou
+require(GUniFrac)
+unifrac_presab_comm<-GUniFrac(comm, tree)$unifracs
+unifrac_presab_comm[,,"d_UW"]
+unifrac_presab_comm
+# Unifrac para dados de abundância:
+require(GUniFrac)
+unifrac_abund_comm<-GUniFrac(comm, tree)$unifracs
+unifrac_abund_comm[,,"d_1"]
+unifrac_abund_comm
+```
+
+Observação: Apesar de ser bastante correlacionado com o PhyloSor, a relação entre os 
+dois índices não é totalmente linear. 
+
+## P β Sim
+
+Medida de PBD equivalente ao índice de dissimilaridade de Jaccard. Medida sensível 
+aos nós mais terminais da árvore. Pode ser empregado em matrizes de abundância ou 
+presença/ausência. 
+
+
+
+``` r
+source("beta.pd.decompo.R")
+beta_pd=beta.pd.decompo(comm, tree, type="both",output.dist=F, random=F)
+beta_pd$betadiv
+```
+
+Observação: O argumento type aceita as opções “UniFrac”, “Phylosor” ou “both”. 
+
+## Mean Phylogenetic Distance Between Communities
+
+
+## (COMDIST)
+
+Medida de PBD derivada do MPD. Medida sensível aos nós mais basais da árvore 
+filogenética. Pode ser empregado em matrizes de abundância ou presença/ausência. No 
+primeiro caso, equivale à medida Rao D. 
+
+
+
+``` r
+require(picante)
+comdist_comm<-comdist(comm, cophenetic(tree), abundance.weighted = FALSE)
+```
+
+Observação: para incluir o efeito da abundância, usar abundance.weighted=TRUE). 
+
+## Community Mean Nearest Taxon Distance (COMDISTNT)
+
+Medida de PBD derivada do MNTD. Medida sensível aos nós mais terminais da árvore 
+filogenética. Pode ser empregado em matrizes de abundância ou presença/ausência. 
+
+
+
+``` r
+require(picante)
+comdistnt_comm<-comdistnt(comm, cophenetic(tree), abundance.weighted =
+FALSE, exclude.conspecifics = FALSE)
+```
+
+Observação: para incluir o efeito da abundância, usar abundance.weighted=TRUE). 
+
+## PBD de Rao (Beta Rao’s D e Rao’s H)
+
+Medida de PBD derivada do índice de Rao. Medida sensível aos nós mais terminais da 
+árvore filogenética, mas apenas no caso de Rao D. Pode ser empregado em matrizes de 
+abundância ou presença/ausência. Neste último caso, Rao D será equivalente à 
+COMDIST com argumento abundance.weighted = FALSE. 
+
+
+
+``` r
+require(picante)
+# Rao D
+raoD_beta<-picante::raoD(comm, tree)$Dkl
+# Rao H
+raoH_beta<- picante::raoD(comm,tree)$H
+```
+
+Observação: Rao D equivale à COMDIST com argumento abundance.weighted=TRUE. 
+
+## Phylogenetic fuzzy weighting
+
+
+## O método de ponderação difusa calcula uma matriz P que descreve as comunidades
+
+abundância das espécies ponderada pela filogenia, o que equivale a descrever 
+comunidades pela abundância de linhagens filogenéticas. 
+
+
+
+``` r
+require(devtools)
+install_github("vanderleidebastiani/PCPS")
+require(PCPS)
+pcps_comm<-PCPS::pcps(comm,cophenetic(tree),method="bray",squareroot =
+TRUE)
+#Matriz P:
+P<-pcps_comm$P
+#Matriz DP de dissimilaridades pareadas entre comunidades:
+require(vegan)
+DP<- sqrt(vegdist(P,method="bray"))
+# Autovalores dos PCPS:
+AV<-pcps_comm$values
+# Autovetores dos PCPS (scores das comunidades):
+Vec<- pcps_comm$vectors
+# Scores das espécies no espaço dos vetores de sítio:
+Sp<- summary(pcps_comm)$scores$scores.species
+# Correlações entre as abundâncias das espécies ponderadas pela filogenia e os
+# vetores dos sítios:
+Cor_sp<- pcps_comm$correlations
+```
+
+Observação: squareroot = TRUE é importante quando method=”bray” para evitar 
+autovalores negativos. 
+
+## Relacionando matrizes pareadas de PBD com variáveis
+
+
+## ambientais
+
+
+
+
+``` r
+# Usando ADONIS - Matriz DP (fuzzy weighting):
+require(devtools)
+install_github("vanderleidebastiani/PCPS")
+require(PCPS)
+p.sig_comm<-matrix.p.sig(comm, phylodist=cophenetic(tree),
+envir=as.data.frame(env$E), formula= p.dist~env$E, FUN = FUN.ADONIS2.margin,
+method.p="bray", sqrt.p=TRUE, runs = 99, checkdata=FALSE)
+p.sig_comm
+# Usando vetores de PCPS:
+require(PCPS)
+rownames(env)<-rownames(comm)
+pcps.sig_comm <- pcps.sig(comm, phylodist=cophenetic(tree), envir =
+as.data.frame(env$E), FUN = FUN.GLM, method = "bray", squareroot=TRUE,
+formula = pcps.1~env$E, choices = 1, runs = 99,checkdata=FALSE)
+pcps.sig_comm
+```
+
+Observação: No arquivo de ajuda do R são descritas outras modalidades de análises 
+implementadas no argumento FUN. 
+
+## Exercícios
+
+Calcule as diferentes medidas de diversidade beta e correlacione as matrizes pareadas 
+usando os diferentes métodos. Com quais medidas de PBD a matriz DP ( fuzzy 
+weighting ) mais se assemelha? O que isso significa? 
+

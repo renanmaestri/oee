@@ -1,0 +1,45 @@
+# Estrutura e Programa da Disciplina
+
+## Informações Gerais
+* **Duração**: 3 semanas (concentrada)
+* **Professores**: Renan Maestri e Leandro Duarte
+* **PPG**: Ecologia - UFRGS
+* **Créditos**: 10
+
+---
+
+## Módulos da Disciplina
+
+### Módulo I: Macroevolução e Métodos Filogenéticos Comparativos
+* **Professores**: Renan Maestri, Leandro Duarte
+* **Ementa**: Evolução fenotípica; Fenótipos discretos e reconstrução de estado ancestral; Métodos comparativos; Modelos multi-taxa e multi-regime. Macroevolução e diversificação: Disparidade fenotípica e diversificação ao longo do tempo; Diversificação de espécies com taxas variáveis no tempo e entre clados; Associação entre diversificação de espécies e fenotípica. Princípios de Macroecologia.
+
+### Módulo II: Ecologia Filogenética de Comunidades e Macroecologia Evolutiva
+* **Professores**: Leandro Duarte, Renan Maestri
+* **Ementa**: Componentes evolutivos da diversidade biológica; Estrutura de comunidades e metacomunidades; Diversidade filogenética alfa e beta; Autocorrelação filogenética e análise de comunidades e metacomunidades; Mapeando a história evolutiva no espaço biogeográfico.
+
+### Módulo III: Desenvolvimento de Projetos
+* **Ementa**: Elaboração, desenvolvimento, mentoria e apresentação de um projeto de pesquisa prático individual ou em grupo usando os métodos apresentados.
+
+---
+
+## Cronograma de Aulas Práticas
+
+### Módulo I
+* **Atividade 1**: Manipulação de filogenias e sinal filogenético
+* **Atividade 10**: Diversificação dependente de estado (BiSSE)
+* **Atividade 2**: Modelos para evolução de fenótipos contínuos e reconstrução ancestral
+* **Atividade 3**: Evolução de fenótipos discretos e reconstrução ancestral
+* **Atividade 4**: Regressão Filogenética (PGLS)
+* **Atividade 5**: Correlação de atributos discretos (Pagel)
+* **Atividade 6**: Modelos de evolução multi-taxa e multi-regime (OUwie)
+* **Atividade 7**: Métodos filogenéticos comparativos multivariados (Morfometria)
+* **Atividade 8**: Diversificação de linhagens (LTT) e fenotípica (DTT) ao longo do tempo
+* **Atividade 9**: Especiação e extinção (RPANDA/BAMM)
+
+### Módulo II
+* **Atividade 1**: Organização e manipulação de bases de dados eco-espaciais
+* **Atividade 2**: Diversidade filogenética alfa e modelos nulos
+* **Atividade 3**: Filobetadiversidade alfa, beta e modelos nulos
+* **Atividade 4**: Seleção natural e processos ecológicos em metacomunidades
+* **Atividade 5**: Taxas de diversificação e biogeografia filogenética no espaço

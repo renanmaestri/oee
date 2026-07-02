@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 3 Modelos para evolução de fenótipos contínuos | Oficina de Ecologia Evolutiva</title>
+<meta name="author" content="Renan Maestri &amp; Leandro Duarte">
+<meta name="description" content="Existem vários modelos de evolução de atributos contínuos univariados. Os modelos macroevolutivos mais comuns são o Browniano (BM), o modelo de Ornstein- Uhlenbeck (OU) e o modelo Early-Burst...">
+<meta name="generator" content="bookdown 0.47 with bs4_book()">
+<meta property="og:title" content="Capítulo 3 Modelos para evolução de fenótipos contínuos | Oficina de Ecologia Evolutiva">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://renanmaestri.github.io/oee/modelos-para-evolução-de-fenótipos-contínuos.html">
+<meta property="og:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
+<meta property="og:description" content="Existem vários modelos de evolução de atributos contínuos univariados. Os modelos macroevolutivos mais comuns são o Browniano (BM), o modelo de Ornstein- Uhlenbeck (OU) e o modelo Early-Burst...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 3 Modelos para evolução de fenótipos contínuos | Oficina de Ecologia Evolutiva">
+<meta name="twitter:description" content="Existem vários modelos de evolução de atributos contínuos univariados. Os modelos macroevolutivos mais comuns são o Browniano (BM), o modelo de Ornstein- Uhlenbeck (OU) e o modelo Early-Burst...">
+<meta name="twitter:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Oficina de Ecologia Evolutiva</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Prefácio</a></li>
+<li><a class="" href="estrutura-e-programa-da-disciplina.html"><span class="header-section-number">1</span> Estrutura e Programa da Disciplina</a></li>
+<li><a class="" href="manipulando-filogenias-no-r---sinal-filogen%C3%A9tico.html"><span class="header-section-number">2</span> Manipulando filogenias no R - Sinal Filogenético</a></li>
+<li><a class="active" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos.html"><span class="header-section-number">3</span> Modelos para evolução de fenótipos contínuos</a></li>
+<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-discretos.html"><span class="header-section-number">4</span> Modelos para evolução de fenótipos discretos</a></li>
+<li><a class="" href="regress%C3%A3o-filogen%C3%A9tica.html"><span class="header-section-number">5</span> Regressão Filogenética</a></li>
+<li><a class="" href="correla%C3%A7%C3%A3o-de-atributos-discretos.html"><span class="header-section-number">6</span> Correlação de atributos discretos</a></li>
+<li><a class="" href="modelos-multi-taxa-e-multi-regime.html"><span class="header-section-number">7</span> Modelos multi-taxa e multi-regime</a></li>
+<li><a class="" href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html"><span class="header-section-number">8</span> Métodos filogenéticos multivariados</a></li>
+<li><a class="" href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html"><span class="header-section-number">9</span> Diversificação de linhagens e fenotípica ao longo do tempo</a></li>
+<li><a class="" href="estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o.html"><span class="header-section-number">10</span> Estimativas de taxas de especiação e extinção</a></li>
+<li><a class="" href="diversifica%C3%A7%C3%A3o-dependente-de-estado.html"><span class="header-section-number">11</span> Diversificação dependente de estado</a></li>
+<li><a class="" href="manipulando-as-bases-de-dados.html"><span class="header-section-number">12</span> Manipulando as bases de dados</a></li>
+<li><a class="" href="diversidade-filogen%C3%A9tica.html"><span class="header-section-number">13</span> Diversidade filogenética</a></li>
+<li><a class="" href="diversidade-beta-filogen%C3%A9tica.html"><span class="header-section-number">14</span> Diversidade beta filogenética</a></li>
+<li><a class="" href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html"><span class="header-section-number">15</span> Seleção e composição fenotípica</a></li>
+<li><a class="" href="medidas-de-diversifica%C3%A7%C3%A3o.html"><span class="header-section-number">16</span> Medidas de diversificação</a></li>
+<li><a class="" href="refer%C3%AAncias-2.html">Referências</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/renanmaestri/oee">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="modelos-para-evolução-de-fenótipos-contínuos" class="section level1" number="3">
+<h1>
+<span class="header-section-number">Capítulo 3</span> Modelos para evolução de fenótipos contínuos<a class="anchor" aria-label="anchor" href="#modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos"><i class="fas fa-link"></i></a>
+</h1>
+<p>Existem vários modelos de evolução de atributos contínuos univariados. Os modelos
+macroevolutivos mais comuns são o Browniano (BM), o modelo de Ornstein-
+Uhlenbeck (OU) e o modelo Early-Burst (EB).
+A função fitContinuous do pacote geiger vai ser usada para ajustar os modelos. O
+método é baseado em likelihood, então os resultados vão retornar o valor de maximum
+likelihood como estimativa para os parâmetros.
+Vamos carregar vários atributos para 77 espécies de Primatas.</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/liamrevell/phytools">phytools</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">geiger</span><span class="op">)</span></span>
+<span><span class="co"># Carregar dados</span></span>
+<span><span class="va">dados</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="st">"dados/primate-data.txt"</span>,h<span class="op">=</span><span class="cn">T</span>,row.names<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">dados</span></span>
+<span><span class="co"># Carregar filogenia</span></span>
+<span><span class="va">tree</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/read.tree.html">read.tree</a></span><span class="op">(</span><span class="st">"dados/primate-tree.txt"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.html">plotTree</a></span><span class="op">(</span><span class="va">tree</span>,fsize<span class="op">=</span><span class="fl">0.4</span>,ftype<span class="op">=</span><span class="st">"i"</span>,type<span class="op">=</span><span class="st">"fan"</span>,lwd<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<p>Outra forma de analisar a correspondência entre espécies nos dados e na filogenia é com
+a função treedata</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">match.species</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/geiger/man/treedata.html">treedata</a></span><span class="op">(</span><span class="va">tree</span>,<span class="va">dados</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">match.species</span><span class="op">)</span></span>
+<span><span class="va">tree</span><span class="op">&lt;-</span><span class="va">match.species</span><span class="op">$</span><span class="va">phy</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">tree</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.html">plotTree</a></span><span class="op">(</span><span class="va">tree</span>,fsize<span class="op">=</span><span class="fl">0.5</span>,ftype<span class="op">=</span><span class="st">"i"</span>,type<span class="op">=</span><span class="st">"fan"</span>,lwd<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">bodymass</span><span class="op">&lt;-</span><span class="va">dados</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span></span>
+<span><span class="va">bodymass</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="va">bodymass</span>,<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">bodymass</span></span></code></pre></div>
+<div id="modelos-evolutivos-contínuos" class="section level2" number="3.1">
+<h2>
+<span class="header-section-number">3.1</span> Modelos evolutivos contínuos<a class="anchor" aria-label="anchor" href="#modelos-evolutivos-cont%C3%ADnuos"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Modelo Browniano</span></span>
+<span><span class="va">BM</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/geiger/man/fitContinuous.html">fitContinuous</a></span><span class="op">(</span><span class="va">tree</span>,<span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">bodymass</span><span class="op">)</span>,model<span class="op">=</span><span class="st">"BM"</span><span class="op">)</span></span>
+<span><span class="va">BM</span></span></code></pre></div>
+<p>O modelo Browniano estima a taxa de evolução σ2 (sigsq no output), e o valor do
+atributo na raiz X(0) (z0 no output). Outras estimativas são o likelihood (lnL), o
+AIC/AICc e o número de parâmetros (k na literatura) do modelo.</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Modelo OU</span></span>
+<span><span class="va">OU</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/geiger/man/fitContinuous.html">fitContinuous</a></span><span class="op">(</span><span class="va">tree</span>,<span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">bodymass</span><span class="op">)</span>,model<span class="op">=</span><span class="st">"OU"</span><span class="op">)</span></span>
+<span><span class="va">OU</span></span></code></pre></div>
+<p>O modelo OU estima um parâmetro adicional, α ou alpha, que é a força de atração para
+a média do ótimo μ ou θ.</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Modelo Early-Burst</span></span>
+<span><span class="va">EB</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/geiger/man/fitContinuous.html">fitContinuous</a></span><span class="op">(</span><span class="va">tree</span>,<span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">bodymass</span><span class="op">)</span>,model<span class="op">=</span><span class="st">"EB"</span><span class="op">)</span></span>
+<span><span class="va">EB</span></span></code></pre></div>
+<p>No modelo EB o parâmetro a é a taxa de mudança através do tempo. O valor de a é
+normalmente menor ou igual a 0. Quando a é negativo, as taxas de evolução decrescem
+com o tempo. Se a é próximo de 0, a evolução é aproximadamente Browniana.</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Comparando os modelos</span></span>
+<span><span class="co"># Nós podemos comparar os modelos usando AIC.</span></span>
+<span><span class="va">BM</span><span class="op">$</span><span class="va">opt</span><span class="op">$</span><span class="va">aicc</span></span>
+<span><span class="va">OU</span><span class="op">$</span><span class="va">opt</span><span class="op">$</span><span class="va">aicc</span></span>
+<span><span class="va">EB</span><span class="op">$</span><span class="va">opt</span><span class="op">$</span><span class="va">aicc</span></span>
+<span><span class="va">aic.scores</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/setNames.html">setNames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">BM</span><span class="op">$</span><span class="va">opt</span><span class="op">$</span><span class="va">aicc</span>,<span class="va">OU</span><span class="op">$</span><span class="va">opt</span><span class="op">$</span><span class="va">aicc</span>,<span class="va">EB</span><span class="op">$</span><span class="va">opt</span><span class="op">$</span><span class="va">aicc</span><span class="op">)</span>,</span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"BM"</span>,<span class="st">"OU"</span>,<span class="st">"EB"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">aic.scores</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/geiger/man/aicw.html">aicw</a></span><span class="op">(</span><span class="va">aic.scores</span><span class="op">)</span> <span class="co"># Delta AICc e AICc weights</span></span></code></pre></div>
+<p>Existe debate sobre quão grande deve ser a diferença no AIC para definir um único
+“melhor” modelo, variando de 2-10 unidades. É comum usar 4 unidades, então EB não
+tem um ajuste muito melhor do que BM ou OU.</p>
+</div>
+<div id="reconstrução-ancestral-de-dados-contínuos" class="section level2" number="3.2">
+<h2>
+<span class="header-section-number">3.2</span> Reconstrução ancestral de dados contínuos<a class="anchor" aria-label="anchor" href="#reconstru%C3%A7%C3%A3o-ancestral-de-dados-cont%C3%ADnuos"><i class="fas fa-link"></i></a>
+</h2>
+<p>Estimativa do tamanho corporal ancestral para primatas, sob um modelo Browniano.
+As funções ace (ape) e fastAnc (phytools), entre outras, implementam reconstrução
+ancestral via maximum likelihood (encontrando os estados com probabilidade máxima
+de terem surgido sob o modelo escolhido).</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">rec</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/fastAnc.html">fastAnc</a></span><span class="op">(</span><span class="va">tree</span>,<span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">bodymass</span><span class="op">)</span>,vars<span class="op">=</span><span class="cn">TRUE</span>,CI<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">rec</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">rec</span>,printlen<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.html">plotTree</a></span><span class="op">(</span><span class="va">tree</span>,fsize<span class="op">=</span><span class="fl">0.5</span>,ftype<span class="op">=</span><span class="st">"i"</span>,type<span class="op">=</span><span class="st">"fan"</span>,lwd<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/nodelabels.html">nodelabels</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co"># Visualizando a reconstrução</span></span>
+<span><span class="va">rec.map</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/contMap.html">contMap</a></span><span class="op">(</span><span class="va">tree</span>,<span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">bodymass</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">rec.map</span></span>
+<span><span class="co"># customizando</span></span>
+<span><span class="va">rec.map</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/setMap.html">setMap</a></span><span class="op">(</span><span class="va">rec.map</span>,invert<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> <span class="co"># inverte cores</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">rec.map</span>,type<span class="op">=</span><span class="st">"fan"</span>,fsize<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span></span>
+<span><span class="co"># Modo fenograma 'traitgram'</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>,mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">phe</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/phenogram.html">phenogram</a></span><span class="op">(</span><span class="va">tree</span>,<span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">bodymass</span><span class="op">)</span>,ftype<span class="op">=</span><span class="st">"i"</span>,fsize<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span></span>
+<span><span class="co"># Incerteza (CI 95%) nas estimativas dos nós</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/fancyTree.html">fancyTree</a></span><span class="op">(</span><span class="va">tree</span>,type<span class="op">=</span><span class="st">"phenogram95"</span>,x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">bodymass</span><span class="op">)</span>,ftype<span class="op">=</span><span class="st">"i"</span>,fsize<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span> <span class="co"># pode</span></span>
+<span><span class="va">demorar</span></span>
+<span><span class="co"># Adicionando barra de erros com cores</span></span>
+<span><span class="va">rec.map</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/contMap.html">contMap</a></span><span class="op">(</span><span class="va">tree</span>,<span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">bodymass</span><span class="op">)</span>,fsize<span class="op">=</span><span class="fl">0.5</span>,ftype<span class="op">=</span><span class="st">"i"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/contMap.html">errorbar.contMap</a></span><span class="op">(</span><span class="va">rec.map</span><span class="op">)</span></span></code></pre></div>
+<p>Uma crítica comum a reconstrução ancestral é que a incerteza ao redor do nós pode ser
+grande. No entanto, se o modelo evolutivo está correto, as estimativas são confiáveis
+(95% de chance de o valor estimado incluir o valor ‘real’). Em teoria, é possível corrigir
+a estimativa se o valor de algum nó é conhecido (e.g., fóssil).</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Reconstrução com valores de nós conhecidos</span></span>
+<span><span class="va">rec</span><span class="op">$</span><span class="va">ace</span> <span class="co"># estados ancestrais estimados</span></span>
+<span><span class="va">anc.states</span><span class="op">&lt;-</span><span class="va">rec</span><span class="op">$</span><span class="va">ace</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">78</span>,<span class="fl">80</span>,<span class="fl">82</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">anc.states</span> <span class="co"># valores estimados para nós 78 (raiz), 80 e 82</span></span>
+<span><span class="va">anc.a</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4.2</span>,<span class="fl">5.1</span>,<span class="fl">5.3</span><span class="op">)</span> <span class="co"># valores conhecidos</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">anc.a</span><span class="op">)</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">anc.states</span><span class="op">)</span></span>
+<span><span class="va">anc.a</span></span>
+<span><span class="va">rec.1</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/fastAnc.html">fastAnc</a></span><span class="op">(</span><span class="va">tree</span>,x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">bodymass</span><span class="op">)</span>,anc.states<span class="op">=</span><span class="va">anc.a</span>,vars<span class="op">=</span><span class="cn">TRUE</span>,CI<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">rec.1</span>,printlen<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co"># Comparando com a reconstrução original</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">rec</span>,printlen<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="co"># Visualizando reconstrução com nós conhecidos</span></span>
+<span><span class="co"># lista contendo valores terminais + estimados com fastAnc</span></span>
+<span><span class="va">X</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">bodymass</span><span class="op">)</span>,<span class="va">rec.1</span><span class="op">$</span><span class="va">ace</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>,mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/phenogram.html">phenogram</a></span><span class="op">(</span><span class="va">tree</span>,<span class="va">X</span>,ftype<span class="op">=</span><span class="st">"i"</span>,fsize<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="exercício-2---modelos-contínuos-e-variação" class="section level2" number="3.3">
+<h2>
+<span class="header-section-number">3.3</span> Exercício 2 - Modelos contínuos e variação<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio-2---modelos-cont%C3%ADnuos-e-varia%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="intraespecífica" class="section level2" number="3.4">
+<h2>
+<span class="header-section-number">3.4</span> intraespecífica<a class="anchor" aria-label="anchor" href="#intraespec%C3%ADfica"><i class="fas fa-link"></i></a>
+</h2>
+<p>Carregue os dados:
+primate-data-erro.txt
+primate-tree.txt
+Estime o sinal filogenético com a estatística K, e ajuste e compare os modelos BM, OU
+e EB para os dados considerando a variação intraespecífica.
+O arquivo de dados contém log de massa corporal para dez indivíduos de cada espécie
+de primata. Faça uma média de tamanho corporal por espécie e calcule o erro padrão da
+média.
+Descubra (leia a documentação das funções ?phylosig e ?fitContinuous) como
+incorporar o erro padrão no cálculo de sinal filogenético e ajuste de modelos.
+Você pode usar a função apply para calcular a média e o desvio padrão da média (SD).
+O erro padrão da média (uma medida de quão precisa é a estimativa da média) pode ser
+obtido através da fórmula SD/√N (N=tamanho da amostra) = se&lt;-sd/sqrt(10).</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="manipulando-filogenias-no-r---sinal-filogen%C3%A9tico.html"><span class="header-section-number">2</span> Manipulando filogenias no R - Sinal Filogenético</a></div>
+<div class="next"><a href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-discretos.html"><span class="header-section-number">4</span> Modelos para evolução de fenótipos discretos</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos"><span class="header-section-number">3</span> Modelos para evolução de fenótipos contínuos</a></li>
+<li><a class="nav-link" href="#modelos-evolutivos-cont%C3%ADnuos"><span class="header-section-number">3.1</span> Modelos evolutivos contínuos</a></li>
+<li><a class="nav-link" href="#reconstru%C3%A7%C3%A3o-ancestral-de-dados-cont%C3%ADnuos"><span class="header-section-number">3.2</span> Reconstrução ancestral de dados contínuos</a></li>
+<li><a class="nav-link" href="#exerc%C3%ADcio-2---modelos-cont%C3%ADnuos-e-varia%C3%A7%C3%A3o"><span class="header-section-number">3.3</span> Exercício 2 - Modelos contínuos e variação</a></li>
+<li><a class="nav-link" href="#intraespec%C3%ADfica"><span class="header-section-number">3.4</span> intraespecífica</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/renanmaestri/oee/blob/master/03-modelos-continuos.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/renanmaestri/oee/edit/master/03-modelos-continuos.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Oficina de Ecologia Evolutiva</strong>" was written by Renan Maestri &amp; Leandro Duarte. It was last built on 2026-07-02.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

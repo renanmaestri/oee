@@ -4,7 +4,7 @@
 * **Duração**: 3 semanas (concentrada)
 * **Professores**: Renan Maestri e Leandro Duarte
 * **PPG**: Ecologia - UFRGS
-* **Créditos**: 10
+* **Créditos**: 9
 
 ---
 
@@ -27,15 +27,15 @@
 
 ### Módulo I
 * **Atividade 1**: Manipulação de filogenias e sinal filogenético
-* **Atividade 10**: Diversificação dependente de estado (BiSSE)
 * **Atividade 2**: Modelos para evolução de fenótipos contínuos e reconstrução ancestral
 * **Atividade 3**: Evolução de fenótipos discretos e reconstrução ancestral
-* **Atividade 4**: Regressão Filogenética (PGLS)
-* **Atividade 5**: Correlação de atributos discretos (Pagel)
-* **Atividade 6**: Modelos de evolução multi-taxa e multi-regime (OUwie)
-* **Atividade 7**: Métodos filogenéticos comparativos multivariados (Morfometria)
+* **Atividade 4**: Regressão Filogenética
+* **Atividade 5**: Correlação de atributos discretos
+* **Atividade 6**: Modelos de evolução multi-taxa e multi-regime
+* **Atividade 7**: Métodos filogenéticos comparativos multivariados
 * **Atividade 8**: Diversificação de linhagens (LTT) e fenotípica (DTT) ao longo do tempo
-* **Atividade 9**: Especiação e extinção (RPANDA/BAMM)
+* **Atividade 9**: Especiação e extinção
+* **Atividade 10**: Diversificação dependente de estado
 
 ### Módulo II
 * **Atividade 1**: Organização e manipulação de bases de dados eco-espaciais

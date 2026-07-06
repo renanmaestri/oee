@@ -84,10 +84,7 @@ beta_pd$betadiv
 
 Observação: O argumento type aceita as opções “UniFrac”, “Phylosor” ou “both”. 
 
-## Mean Phylogenetic Distance Between Communities
-
-
-## (COMDIST)
+## Mean Phylogenetic Distance Between Communities (COMDIST)
 
 Medida de PBD derivada do MPD. Medida sensível aos nós mais basais da árvore 
 filogenética. Pode ser empregado em matrizes de abundância ou presença/ausência. No 
@@ -135,10 +132,7 @@ Observação: Rao D equivale à COMDIST com argumento abundance.weighted=TRUE.
 
 ## Phylogenetic fuzzy weighting
 
-
-## O método de ponderação difusa calcula uma matriz P que descreve as comunidades
-
-abundância das espécies ponderada pela filogenia, o que equivale a descrever 
+O método de ponderação difusa calcula uma matriz P que descreve a abundância das espécies ponderada pela filogenia, o que equivale a descrever 
 comunidades pela abundância de linhagens filogenéticas. 
 
 
@@ -167,10 +161,7 @@ Cor_sp<- pcps_comm$correlations
 Observação: squareroot = TRUE é importante quando method=”bray” para evitar 
 autovalores negativos. 
 
-## Relacionando matrizes pareadas de PBD com variáveis
-
-
-## ambientais
+## Relacionando matrizes pareadas de PBD com variáveis ambientais
 
 
 

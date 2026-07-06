@@ -268,10 +268,7 @@ plot(resto.tree)
 ```
 
 
-## Exercício 9 – Diversificação dependente de variável
-
-
-## ambiental
+## Exercício 9 – Diversificação dependente de variável ambiental
 
 RPANDA pode ser usado para ajustar modelos de diversificação dependente de 
 variável ambiental (fit_env). Como variável adicional, esse modelo requer uma 

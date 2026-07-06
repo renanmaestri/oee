@@ -146,10 +146,7 @@ phenogram(tree,X,ftype="i",fsize=0.5)
 ```
 
 
-## Exercício 2 - Modelos contínuos e variação
-
-
-## intraespecífica
+## Exercício 2 - Modelos contínuos e variação intraespecífica
 
 Carregue os dados: 
 primate-data-erro.txt 

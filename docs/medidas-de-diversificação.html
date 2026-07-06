@@ -190,7 +190,7 @@ solução abaixo resolve o problema de forma manual:</p>
 <span><span class="co"># reconstrução de caracteres ancestrais (e.g. função ace do pacote ape):</span></span>
 <span><span class="va">ancestral.area</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="st">"dados/node_biogeo.txt"</span>,h<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span>
 <span><span class="co"># Calcula PD e PE:</span></span>
-<span><span class="va">Res_metricas</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/Herodotools/man/calc_insitu_metrics.html">calc_insitu_metrics</a></span><span class="op">(</span><span class="va">comm</span>, <span class="va">tree</span>, <span class="va">ancestral.area</span>, <span class="va">biogeo</span>, PD <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span><span class="va">Res_metricas</span><span class="op">&lt;-</span><span class="fu"><a href="https://gabrielnakamura.github.io/Herodotools/reference/calc_insitu_metrics.html">calc_insitu_metrics</a></span><span class="op">(</span><span class="va">comm</span>, <span class="va">tree</span>, <span class="va">ancestral.area</span>, <span class="va">biogeo</span>, PD <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>PE <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="idade-das-assembleias-van-dijk-et-al.-2021" class="section level2" number="15.4">
@@ -206,7 +206,7 @@ solução abaixo resolve o problema de forma manual:</p>
 <span><span class="co"># reconstrução de caracteres ancestrais (e.g. função ace do pacote ape):</span></span>
 <span><span class="va">ancestral.area</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="st">"dados/node_biogeo.txt"</span>,h<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span>
 <span><span class="co"># Calcula a idade das assembleias baseada na chegada do clado:</span></span>
-<span><span class="va">Idade</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Herodotools/man/calc_age_arrival.html">calc_age_arrival</a></span><span class="op">(</span><span class="va">comm</span>, <span class="va">tree</span>, <span class="va">ancestral.area</span>, <span class="va">biogeo</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">Idade</span><span class="op">&lt;-</span> <span class="fu"><a href="https://gabrielnakamura.github.io/Herodotools/reference/calc_age_arrival.html">calc_age_arrival</a></span><span class="op">(</span><span class="va">comm</span>, <span class="va">tree</span>, <span class="va">ancestral.area</span>, <span class="va">biogeo</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="evoregions" class="section level2" number="15.5">
 <h2>

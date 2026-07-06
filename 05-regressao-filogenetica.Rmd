@@ -114,10 +114,7 @@ summary.aov(fit.pic)
 ```
 
 
-## Regressão Filogenética Generalisada por Quadrados
-
-
-## Mínimos (PGLS)
+## Regressão Filogenética Generalizada por Quadrados Mínimos (PGLS)
 
 Nós usaremos novamente alguns dados de borboletas do artigo de Swanson et al 2016 
 Proc R Soc B. 

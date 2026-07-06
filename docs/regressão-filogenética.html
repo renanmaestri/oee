@@ -71,7 +71,7 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Prefácio</a></li>
 <li><a class="" href="estrutura-e-programa-da-disciplina.html">Estrutura e Programa da Disciplina</a></li>
-<li class="book-part">Módulo I</li>
+<li class="book-part">MÓDULO I</li>
 <li><a class="" href="manipulando-filogenias-no-r---sinal-filogen%C3%A9tico.html">1. Manipulando filogenias no R - Sinal Filogenético</a></li>
 <li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos.html">2. Modelos para evolução de fenótipos contínuos</a></li>
 <li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-discretos.html">3. Modelos para evolução de fenótipos discretos</a></li>
@@ -82,7 +82,7 @@
 <li><a class="" href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html">8. Diversificação de linhagens e fenotípica ao longo do tempo</a></li>
 <li><a class="" href="estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o.html">9. Estimativas de taxas de especiação e extinção</a></li>
 <li><a class="" href="diversifica%C3%A7%C3%A3o-dependente-de-estado.html">10. Diversificação dependente de estado</a></li>
-<li class="book-part">Módulo II</li>
+<li class="book-part">MÓDULO II</li>
 <li><a class="" href="manipulando-as-bases-de-dados.html">1. Manipulando as bases de dados</a></li>
 <li><a class="" href="diversidade-filogen%C3%A9tica.html">2. Diversidade filogenética</a></li>
 <li><a class="" href="diversidade-beta-filogen%C3%A9tica.html">3. Diversidade beta filogenética</a></li>
@@ -187,14 +187,14 @@ usar os contrastes independentes neste caso.</p>
 <span><span class="va">fit.pic</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">pic.y</span><span class="op">~</span><span class="va">pic.x</span><span class="op">+</span><span class="fl">0</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fit.pic</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/summary.aov.html">summary.aov</a></span><span class="op">(</span><span class="va">fit.pic</span><span class="op">)</span></span></code></pre></div>
-<div id="regressão-filogenética-generalisada-por-quadrados" class="section level2" number="4.1">
+<div id="regressão-filogenética-generalisada-por-quadrados" class="section level2" number="0.24">
 <h2>
-<span class="header-section-number">4.1</span> Regressão Filogenética Generalisada por Quadrados<a class="anchor" aria-label="anchor" href="#regress%C3%A3o-filogen%C3%A9tica-generalisada-por-quadrados"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.24</span> Regressão Filogenética Generalisada por Quadrados<a class="anchor" aria-label="anchor" href="#regress%C3%A3o-filogen%C3%A9tica-generalisada-por-quadrados"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="mínimos-pgls" class="section level2" number="4.2">
+<div id="mínimos-pgls" class="section level2" number="0.25">
 <h2>
-<span class="header-section-number">4.2</span> Mínimos (PGLS)<a class="anchor" aria-label="anchor" href="#m%C3%ADnimos-pgls"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.25</span> Mínimos (PGLS)<a class="anchor" aria-label="anchor" href="#m%C3%ADnimos-pgls"><i class="fas fa-link"></i></a>
 </h2>
 <p>Nós usaremos novamente alguns dados de borboletas do artigo de Swanson et al 2016
 Proc R Soc B.</p>
@@ -288,9 +288,9 @@ preditores e número de termos estimados no modelo em relação ao número de
 observações (espécies). Uma “regra” simples é usar +- 10 vezes mais espécies do que
 termos estimados (incluindo intercepto, interações, e o parâmetro lambda, por exemplo).</p>
 </div>
-<div id="regressão-de-autovetores-filogenéticos-pvr" class="section level2" number="4.3">
+<div id="regressão-de-autovetores-filogenéticos-pvr" class="section level2" number="0.26">
 <h2>
-<span class="header-section-number">4.3</span> Regressão de Autovetores Filogenéticos (PVR)<a class="anchor" aria-label="anchor" href="#regress%C3%A3o-de-autovetores-filogen%C3%A9ticos-pvr"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.26</span> Regressão de Autovetores Filogenéticos (PVR)<a class="anchor" aria-label="anchor" href="#regress%C3%A3o-de-autovetores-filogen%C3%A9ticos-pvr"><i class="fas fa-link"></i></a>
 </h2>
 <p>Regressão de autovetores filogenéticos e Curva PSR.</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
@@ -308,9 +308,9 @@ termos estimados (incluindo intercepto, interações, e o parâmetro lambda, por
 <span>null.model<span class="op">=</span><span class="cn">TRUE</span>,Brownian.model<span class="op">=</span><span class="cn">TRUE</span>,times<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/PVR/man/PSRplot.html">PSRplot</a></span><span class="op">(</span><span class="va">psr_obj</span>,info<span class="op">=</span><span class="st">"both"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="exercício-4-contrastes-filogenéticos-independentes" class="section level2" number="4.4">
+<div id="exercício-4-contrastes-filogenéticos-independentes" class="section level2" number="0.27">
 <h2>
-<span class="header-section-number">4.4</span> Exercício 4 – Contrastes filogenéticos independentes<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio-4-contrastes-filogen%C3%A9ticos-independentes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.27</span> Exercício 4 – Contrastes filogenéticos independentes<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio-4-contrastes-filogen%C3%A9ticos-independentes"><i class="fas fa-link"></i></a>
 </h2>
 <p>Carregue os dois conjuntos de dados:
 pic-dados.txt
@@ -327,10 +327,10 @@ contrastes independentes. Quais foram os resultados? Qual a interpretação?</p>
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#regress%C3%A3o-filogen%C3%A9tica">4. Regressão Filogenética</a></li>
-<li><a class="nav-link" href="#regress%C3%A3o-filogen%C3%A9tica-generalisada-por-quadrados"><span class="header-section-number">4.1</span> Regressão Filogenética Generalisada por Quadrados</a></li>
-<li><a class="nav-link" href="#m%C3%ADnimos-pgls"><span class="header-section-number">4.2</span> Mínimos (PGLS)</a></li>
-<li><a class="nav-link" href="#regress%C3%A3o-de-autovetores-filogen%C3%A9ticos-pvr"><span class="header-section-number">4.3</span> Regressão de Autovetores Filogenéticos (PVR)</a></li>
-<li><a class="nav-link" href="#exerc%C3%ADcio-4-contrastes-filogen%C3%A9ticos-independentes"><span class="header-section-number">4.4</span> Exercício 4 – Contrastes filogenéticos independentes</a></li>
+<li><a class="nav-link" href="#regress%C3%A3o-filogen%C3%A9tica-generalisada-por-quadrados"><span class="header-section-number">0.24</span> Regressão Filogenética Generalisada por Quadrados</a></li>
+<li><a class="nav-link" href="#m%C3%ADnimos-pgls"><span class="header-section-number">0.25</span> Mínimos (PGLS)</a></li>
+<li><a class="nav-link" href="#regress%C3%A3o-de-autovetores-filogen%C3%A9ticos-pvr"><span class="header-section-number">0.26</span> Regressão de Autovetores Filogenéticos (PVR)</a></li>
+<li><a class="nav-link" href="#exerc%C3%ADcio-4-contrastes-filogen%C3%A9ticos-independentes"><span class="header-section-number">0.27</span> Exercício 4 – Contrastes filogenéticos independentes</a></li>
 </ul>
 
       <div class="book-extra">
@@ -348,7 +348,7 @@ contrastes independentes. Quais foram os resultados? Qual a interpretação?</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Oficina de Ecologia Evolutiva</strong>" was written by Renan Maestri &amp; Leandro Duarte. It was last built on 2026-07-02.</p>
+    <p>"<strong>Oficina de Ecologia Evolutiva</strong>" was written by Renan Maestri &amp; Leandro Duarte. It was last built on 2026-07-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

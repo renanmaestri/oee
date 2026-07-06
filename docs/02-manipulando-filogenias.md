@@ -1,4 +1,4 @@
-# (PART) Módulo I {-}
+# (PART) MÓDULO I {-}
 
 # 1. Manipulando filogenias no R - Sinal Filogenético {-}
 

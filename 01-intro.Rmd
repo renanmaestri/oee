@@ -10,11 +10,11 @@
 
 ## Módulos da Disciplina
 
-### Módulo I: Macroevolução e Métodos Filogenéticos Comparativos
+### MÓDULO I: Macroevolução e Métodos Filogenéticos Comparativos
 * **Professores**: Renan Maestri, Leandro Duarte
 * **Ementa**: Evolução fenotípica; Fenótipos discretos e reconstrução de estado ancestral; Métodos comparativos; Modelos multi-taxa e multi-regime. Macroevolução e diversificação: Disparidade fenotípica e diversificação ao longo do tempo; Diversificação de espécies com taxas variáveis no tempo e entre clados; Associação entre diversificação de espécies e fenotípica. Princípios de Macroecologia.
 
-### Módulo II: Ecologia Filogenética de Comunidades e Macroecologia Evolutiva
+### MÓDULO II: Ecologia Filogenética de Comunidades e Macroecologia Evolutiva
 * **Professores**: Leandro Duarte, Renan Maestri
 * **Ementa**: Componentes evolutivos da diversidade biológica; Estrutura de comunidades e metacomunidades; Diversidade filogenética alfa e beta; Autocorrelação filogenética e análise de comunidades e metacomunidades; Mapeando a história evolutiva no espaço biogeográfico.
 
@@ -25,7 +25,7 @@
 
 ## Cronograma de Aulas Práticas
 
-### Módulo I
+### MÓDULO I
 * **Atividade 1**: Manipulação de filogenias e sinal filogenético
 * **Atividade 2**: Modelos para evolução de fenótipos contínuos e reconstrução ancestral
 * **Atividade 3**: Evolução de fenótipos discretos e reconstrução ancestral
@@ -37,7 +37,7 @@
 * **Atividade 9**: Especiação e extinção
 * **Atividade 10**: Diversificação dependente de estado
 
-### Módulo II
+### MÓDULO II
 * **Atividade 1**: Organização e manipulação de bases de dados eco-espaciais
 * **Atividade 2**: Diversidade filogenética alfa e modelos nulos
 * **Atividade 3**: Filobetadiversidade alfa, beta e modelos nulos

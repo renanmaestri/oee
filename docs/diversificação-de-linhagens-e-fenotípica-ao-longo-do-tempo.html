@@ -71,7 +71,7 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Prefácio</a></li>
 <li><a class="" href="estrutura-e-programa-da-disciplina.html">Estrutura e Programa da Disciplina</a></li>
-<li class="book-part">Módulo I</li>
+<li class="book-part">MÓDULO I</li>
 <li><a class="" href="manipulando-filogenias-no-r---sinal-filogen%C3%A9tico.html">1. Manipulando filogenias no R - Sinal Filogenético</a></li>
 <li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos.html">2. Modelos para evolução de fenótipos contínuos</a></li>
 <li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-discretos.html">3. Modelos para evolução de fenótipos discretos</a></li>
@@ -82,7 +82,7 @@
 <li><a class="active" href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html">8. Diversificação de linhagens e fenotípica ao longo do tempo</a></li>
 <li><a class="" href="estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o.html">9. Estimativas de taxas de especiação e extinção</a></li>
 <li><a class="" href="diversifica%C3%A7%C3%A3o-dependente-de-estado.html">10. Diversificação dependente de estado</a></li>
-<li class="book-part">Módulo II</li>
+<li class="book-part">MÓDULO II</li>
 <li><a class="" href="manipulando-as-bases-de-dados.html">1. Manipulando as bases de dados</a></li>
 <li><a class="" href="diversidade-filogen%C3%A9tica.html">2. Diversidade filogenética</a></li>
 <li><a class="" href="diversidade-beta-filogen%C3%A9tica.html">3. Diversidade beta filogenética</a></li>
@@ -109,9 +109,9 @@
 <span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.html">plotTree</a></span><span class="op">(</span><span class="va">tree</span>,fsize<span class="op">=</span><span class="fl">0.4</span>,ftype<span class="op">=</span><span class="st">"i"</span>,type<span class="op">=</span><span class="st">"fan"</span>,lwd<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p>A árvore tem 279 espécies, de um total de 400 (70%). Idealmente deveria haver 100%
 de amostragem.</p>
-<div id="lineage-through-time-plots" class="section level2" number="8.1">
+<div id="lineage-through-time-plots" class="section level2" number="0.31">
 <h2>
-<span class="header-section-number">8.1</span> Lineage through time plots<a class="anchor" aria-label="anchor" href="#lineage-through-time-plots"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.31</span> Lineage through time plots<a class="anchor" aria-label="anchor" href="#lineage-through-time-plots"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># LTT plot</span></span>
@@ -144,9 +144,9 @@ número de espécies que a nossa árvore de interesse.</p>
 <span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/ltt95.html">ltt95</a></span><span class="op">(</span><span class="va">trees</span>,log<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">obj.ltt</span>,add<span class="op">=</span><span class="cn">TRUE</span>,col<span class="op">=</span><span class="st">"red"</span>,lty<span class="op">=</span><span class="st">"dashed"</span>,lwd<span class="op">=</span><span class="fl">2</span>,log.lineages<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="estatística-γ" class="section level2" number="8.2">
+<div id="estatística-γ" class="section level2" number="0.32">
 <h2>
-<span class="header-section-number">8.2</span> Estatística γ<a class="anchor" aria-label="anchor" href="#estat%C3%ADstica-%CE%B3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.32</span> Estatística γ<a class="anchor" aria-label="anchor" href="#estat%C3%ADstica-%CE%B3"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Estatística gamma</span></span>
@@ -166,9 +166,9 @@ número de espécies que a nossa árvore de interesse.</p>
 <span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/ltt95.html">ltt95</a></span><span class="op">(</span><span class="va">trees</span>,log<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/ltt.html">ltt</a></span><span class="op">(</span><span class="va">coal.tree</span>,add<span class="op">=</span><span class="cn">TRUE</span>,log.lineages<span class="op">=</span><span class="cn">FALSE</span>,col<span class="op">=</span><span class="st">"red"</span>,lwd<span class="op">=</span><span class="fl">2</span>,lty<span class="op">=</span><span class="st">"dashed"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="disparity-though-time-plots-dtt" class="section level2" number="8.3">
+<div id="disparity-though-time-plots-dtt" class="section level2" number="0.33">
 <h2>
-<span class="header-section-number">8.3</span> Disparity though time plots (DTT)<a class="anchor" aria-label="anchor" href="#disparity-though-time-plots-dtt"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.33</span> Disparity though time plots (DTT)<a class="anchor" aria-label="anchor" href="#disparity-though-time-plots-dtt"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html#cb72-1" tabindex="-1"></a><span class="co"># Dados morfológicos</span></span>
 <span id="cb72-2"><a href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html#cb72-2" tabindex="-1"></a>dados<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">"dados/sigmodontinae-atributos.txt"</span>,<span class="at">h=</span>T,<span class="at">row.names=</span><span class="dv">1</span>)</span>
@@ -191,9 +191,9 @@ número de espécies que a nossa árvore de interesse.</p>
 <span id="cb72-19"><a href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html#cb72-19" tabindex="-1"></a>dtt.shape<span class="sc">$</span>MDI</span>
 <span id="cb72-20"><a href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html#cb72-20" tabindex="-1"></a>dtt.shape<span class="sc">$</span>MDIpVal</span></code></pre></div>
 </div>
-<div id="exercício-8---livre" class="section level2" number="8.4">
+<div id="exercício-8---livre" class="section level2" number="0.34">
 <h2>
-<span class="header-section-number">8.4</span> Exercício 8 - Livre<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio-8---livre"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.34</span> Exercício 8 - Livre<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio-8---livre"><i class="fas fa-link"></i></a>
 </h2>
 <p>Livre.</p>
 
@@ -206,10 +206,10 @@ número de espécies que a nossa árvore de interesse.</p>
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo">8. Diversificação de linhagens e fenotípica ao longo do tempo</a></li>
-<li><a class="nav-link" href="#lineage-through-time-plots"><span class="header-section-number">8.1</span> Lineage through time plots</a></li>
-<li><a class="nav-link" href="#estat%C3%ADstica-%CE%B3"><span class="header-section-number">8.2</span> Estatística γ</a></li>
-<li><a class="nav-link" href="#disparity-though-time-plots-dtt"><span class="header-section-number">8.3</span> Disparity though time plots (DTT)</a></li>
-<li><a class="nav-link" href="#exerc%C3%ADcio-8---livre"><span class="header-section-number">8.4</span> Exercício 8 - Livre</a></li>
+<li><a class="nav-link" href="#lineage-through-time-plots"><span class="header-section-number">0.31</span> Lineage through time plots</a></li>
+<li><a class="nav-link" href="#estat%C3%ADstica-%CE%B3"><span class="header-section-number">0.32</span> Estatística γ</a></li>
+<li><a class="nav-link" href="#disparity-though-time-plots-dtt"><span class="header-section-number">0.33</span> Disparity though time plots (DTT)</a></li>
+<li><a class="nav-link" href="#exerc%C3%ADcio-8---livre"><span class="header-section-number">0.34</span> Exercício 8 - Livre</a></li>
 </ul>
 
       <div class="book-extra">
@@ -227,7 +227,7 @@ número de espécies que a nossa árvore de interesse.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Oficina de Ecologia Evolutiva</strong>" was written by Renan Maestri &amp; Leandro Duarte. It was last built on 2026-07-02.</p>
+    <p>"<strong>Oficina de Ecologia Evolutiva</strong>" was written by Renan Maestri &amp; Leandro Duarte. It was last built on 2026-07-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

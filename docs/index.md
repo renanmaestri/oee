@@ -1,10 +1,10 @@
 --- 
 title: "Oficina de Ecologia Evolutiva"
 author: "Renan Maestri & Leandro Duarte"
-date: "2026-07-02"
+date: "2026-07-06"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [book.bib, packages.bib]
+bibliography: [references.bib, packages.bib]
 nocite: '@*'
 url: https://renanmaestri.github.io/oee/
 cover-image: images/Logo JPEG.jpg
@@ -29,8 +29,8 @@ A disciplina tem como objetivo introduzir conceitos fundamentais e avanços teó
 
 A disciplina é dividida em dois módulos principais de aulas teóricas e práticas, seguidos por um terceiro módulo voltado para o desenvolvimento de projetos individuais pelos discentes:
 
-* **Módulo I - Macroevolução e Métodos Filogenéticos Comparativos**
-* **Módulo II - Ecologia Filogenética de Comunidades e Macroecologia Evolutiva**
+* **MÓDULO I - Macroevolução e Métodos Filogenéticos Comparativos**
+* **MÓDULO II - Ecologia Filogenética de Comunidades e Macroecologia Evolutiva**
 * **Módulo III - Desenvolvimento de Projetos**
 
 ## Dados e Arquivos {-}

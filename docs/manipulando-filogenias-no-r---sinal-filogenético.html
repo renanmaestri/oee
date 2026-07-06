@@ -71,7 +71,7 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Prefácio</a></li>
 <li><a class="" href="estrutura-e-programa-da-disciplina.html">Estrutura e Programa da Disciplina</a></li>
-<li class="book-part">Módulo I</li>
+<li class="book-part">MÓDULO I</li>
 <li><a class="active" href="manipulando-filogenias-no-r---sinal-filogen%C3%A9tico.html">1. Manipulando filogenias no R - Sinal Filogenético</a></li>
 <li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos.html">2. Modelos para evolução de fenótipos contínuos</a></li>
 <li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-discretos.html">3. Modelos para evolução de fenótipos discretos</a></li>
@@ -82,7 +82,7 @@
 <li><a class="" href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html">8. Diversificação de linhagens e fenotípica ao longo do tempo</a></li>
 <li><a class="" href="estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o.html">9. Estimativas de taxas de especiação e extinção</a></li>
 <li><a class="" href="diversifica%C3%A7%C3%A3o-dependente-de-estado.html">10. Diversificação dependente de estado</a></li>
-<li class="book-part">Módulo II</li>
+<li class="book-part">MÓDULO II</li>
 <li><a class="" href="manipulando-as-bases-de-dados.html">1. Manipulando as bases de dados</a></li>
 <li><a class="" href="diversidade-filogen%C3%A9tica.html">2. Diversidade filogenética</a></li>
 <li><a class="" href="diversidade-beta-filogen%C3%A9tica.html">3. Diversidade beta filogenética</a></li>
@@ -99,9 +99,9 @@
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="manipulando-filogenias-no-r---sinal-filogenético" class="section level1 unnumbered">
 <h1>1. Manipulando filogenias no R - Sinal Filogenético<a class="anchor" aria-label="anchor" href="#manipulando-filogenias-no-r---sinal-filogen%C3%A9tico"><i class="fas fa-link"></i></a>
 </h1>
-<div id="o-ambiente-r" class="section level2" number="1.1">
+<div id="o-ambiente-r" class="section level2" number="0.4">
 <h2>
-<span class="header-section-number">1.1</span> O ambiente R<a class="anchor" aria-label="anchor" href="#o-ambiente-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.4</span> O ambiente R<a class="anchor" aria-label="anchor" href="#o-ambiente-r"><i class="fas fa-link"></i></a>
 </h2>
 <p>O R pode ser instalado a partir do website: <a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>
 Nós vamos usar também o RStudio: <a href="https://www.rstudio.com/" class="uri">https://www.rstudio.com/</a>
@@ -110,9 +110,9 @@ porque é flexível e adaptável para várias necessidades, e existe uma comunid
 de indivíduos dispostos a fornecer ajuda. No contexto de análises comparativas, o R tem
 sido a área primária de desenvolvimento de novos métodos.</p>
 </div>
-<div id="set-working-directory" class="section level2" number="1.2">
+<div id="set-working-directory" class="section level2" number="0.5">
 <h2>
-<span class="header-section-number">1.2</span> Set working directory<a class="anchor" aria-label="anchor" href="#set-working-directory"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.5</span> Set working directory<a class="anchor" aria-label="anchor" href="#set-working-directory"><i class="fas fa-link"></i></a>
 </h2>
 <p>É conveniente criar uma pasta única com todos os arquivos das aulas práticas.
 Nós vamos informar ao R para carregar os dados a partir desta pasta.
@@ -120,9 +120,9 @@ Isso pode ser feito no RStudio com o menu: Session&gt;Set Working Directory&gt;C
 Directory.
 Ou com o código setwd().</p>
 </div>
-<div id="scripts" class="section level2" number="1.3">
+<div id="scripts" class="section level2" number="0.6">
 <h2>
-<span class="header-section-number">1.3</span> Scripts<a class="anchor" aria-label="anchor" href="#scripts"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.6</span> Scripts<a class="anchor" aria-label="anchor" href="#scripts"><i class="fas fa-link"></i></a>
 </h2>
 <p>Um script é um bloco de texto que pode ser editado em qualquer editor de texto comum
 (ex: bloco de notas), ou com o editor de texto do próprio R ou RStudio. Você vai
@@ -133,9 +133,9 @@ Ao salvar o script você mantém um registro do código utilizado.
 Se você quiser adicionar comentários ao código basta adicionar o sinal # na frente do
 comentário.</p>
 </div>
-<div id="funcionamento-básico-do-r" class="section level2" number="1.4">
+<div id="funcionamento-básico-do-r" class="section level2" number="0.7">
 <h2>
-<span class="header-section-number">1.4</span> Funcionamento básico do R<a class="anchor" aria-label="anchor" href="#funcionamento-b%C3%A1sico-do-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.7</span> Funcionamento básico do R<a class="anchor" aria-label="anchor" href="#funcionamento-b%C3%A1sico-do-r"><i class="fas fa-link"></i></a>
 </h2>
 <p>Objetos e funções são os principais componentes do R. Objetos são variáveis, dados e
 resultados. Funções são tipos especiais de objetos que usam um ou mais argumentos
@@ -154,9 +154,9 @@ nome é atribuído com o operador &lt;-.</p>
 <span><span class="va">x</span></span>
 <span><span class="va">X</span></span></code></pre></div>
 </div>
-<div id="tipos-de-objeto-no-r" class="section level2" number="1.5">
+<div id="tipos-de-objeto-no-r" class="section level2" number="0.8">
 <h2>
-<span class="header-section-number">1.5</span> Tipos de objeto no R<a class="anchor" aria-label="anchor" href="#tipos-de-objeto-no-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.8</span> Tipos de objeto no R<a class="anchor" aria-label="anchor" href="#tipos-de-objeto-no-r"><i class="fas fa-link"></i></a>
 </h2>
 <p>Alguns tipos de objetos são mais comuns no R, e vamos encontrá-los frequentemente:
 vector, factor, matrix, data frame, e list.</p>
@@ -215,9 +215,9 @@ operação em todas as filogenias de um conjunto de dados.</p>
 <span><span class="co"># resultado</span></span>
 <span><span class="va">medias</span></span></code></pre></div>
 </div>
-<div id="pacotes-filogenéticos-no-r" class="section level2" number="1.6">
+<div id="pacotes-filogenéticos-no-r" class="section level2" number="0.9">
 <h2>
-<span class="header-section-number">1.6</span> Pacotes filogenéticos no R<a class="anchor" aria-label="anchor" href="#pacotes-filogen%C3%A9ticos-no-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.9</span> Pacotes filogenéticos no R<a class="anchor" aria-label="anchor" href="#pacotes-filogen%C3%A9ticos-no-r"><i class="fas fa-link"></i></a>
 </h2>
 <p>Existem muitos pacotes lidando com métodos filogenéticos no R. Nós vamos trabalhar
 com alguns pacotes mais importantes neste momento: ape, phytools e geiger.</p>
@@ -231,9 +231,9 @@ frequentemente por atualizações. Através do comando ? seguido do nome do paco
 ?phytools) é possível acessar o índice com a descrição de todas as funções daquele
 pacote.</p>
 </div>
-<div id="o-objeto-phylo" class="section level2" number="1.7">
+<div id="o-objeto-phylo" class="section level2" number="0.10">
 <h2>
-<span class="header-section-number">1.7</span> O objeto “phylo”<a class="anchor" aria-label="anchor" href="#o-objeto-phylo"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.10</span> O objeto “phylo”<a class="anchor" aria-label="anchor" href="#o-objeto-phylo"><i class="fas fa-link"></i></a>
 </h2>
 <p>Árvores filogenéticas são lidas no R como um objeto list de classe phylo .</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -265,9 +265,9 @@ pacote.</p>
 <span><span class="va">arvore</span><span class="op">$</span><span class="va">Nnode</span></span>
 <span><span class="co"># Um objeto "phylo" também pode conter o comprimento dos ramos: edge.length</span></span></code></pre></div>
 </div>
-<div id="lendo-e-manipulando-árvores-filogenéticas" class="section level2" number="1.8">
+<div id="lendo-e-manipulando-árvores-filogenéticas" class="section level2" number="0.11">
 <h2>
-<span class="header-section-number">1.8</span> Lendo e manipulando árvores filogenéticas<a class="anchor" aria-label="anchor" href="#lendo-e-manipulando-%C3%A1rvores-filogen%C3%A9ticas"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.11</span> Lendo e manipulando árvores filogenéticas<a class="anchor" aria-label="anchor" href="#lendo-e-manipulando-%C3%A1rvores-filogen%C3%A9ticas"><i class="fas fa-link"></i></a>
 </h2>
 <p>É aconselhável criar um único diretório contendo a(s) árvore(s) e os dados fenotípicos, e
 informar ao R de qual diretório os arquivos devem ser lidos.
@@ -303,9 +303,9 @@ funções como read.tree e read.nexus.</p>
 <span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.html">plotTree</a></span><span class="op">(</span><span class="va">akodon.tree</span>,ftype<span class="op">=</span><span class="st">"i"</span>,fsize<span class="op">=</span><span class="fl">0.8</span>,lwd<span class="op">=</span><span class="fl">1</span>,mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3.0</span>,<span class="fl">0.1</span>,<span class="fl">0.1</span>,<span class="fl">0.1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/axisPhylo.html">axisPhylo</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="extraindo-clados-ou-espécies-da-árvore" class="section level2" number="1.9">
+<div id="extraindo-clados-ou-espécies-da-árvore" class="section level2" number="0.12">
 <h2>
-<span class="header-section-number">1.9</span> Extraindo clados ou espécies da árvore<a class="anchor" aria-label="anchor" href="#extraindo-clados-ou-esp%C3%A9cies-da-%C3%A1rvore"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.12</span> Extraindo clados ou espécies da árvore<a class="anchor" aria-label="anchor" href="#extraindo-clados-ou-esp%C3%A9cies-da-%C3%A1rvore"><i class="fas fa-link"></i></a>
 </h2>
 <p>Para extrair espécies da árvore podemos identificar o conjunto a ser removido.
 Por exemplo, as espécies de Akodon do sul do Brasil: A. paranaensis, A. azarae, A.
@@ -337,9 +337,9 @@ reigi, A. montensis, C. angustidens.</p>
 <span><span class="va">akodon.col</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/collapseTree.html">collapseTree</a></span><span class="op">(</span><span class="va">akodon.tree</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/phytools/man/plotTree.html">plotTree</a></span><span class="op">(</span><span class="va">akodon.col</span>,ftype<span class="op">=</span><span class="st">"i"</span>,fsize<span class="op">=</span><span class="fl">0.8</span>,lwd<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="resolvendo-politomias" class="section level2" number="1.10">
+<div id="resolvendo-politomias" class="section level2" number="0.13">
 <h2>
-<span class="header-section-number">1.10</span> Resolvendo politomias<a class="anchor" aria-label="anchor" href="#resolvendo-politomias"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.13</span> Resolvendo politomias<a class="anchor" aria-label="anchor" href="#resolvendo-politomias"><i class="fas fa-link"></i></a>
 </h2>
 <p>Várias funções implementadas no R para métodos comparativos vão lidar com
 filogenias contendo politomias. No entanto, nem todas as funções vão funcionar;
@@ -360,9 +360,9 @@ Evolution, 69, 1301–1312.
 Lembre-se que ao resolver apenas 1 vez ao acaso não existe avaliação de incerteza
 filogenética.</p>
 </div>
-<div id="múltiplas-árvores" class="section level2" number="1.11">
+<div id="múltiplas-árvores" class="section level2" number="0.14">
 <h2>
-<span class="header-section-number">1.11</span> Múltiplas árvores<a class="anchor" aria-label="anchor" href="#m%C3%BAltiplas-%C3%A1rvores"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.14</span> Múltiplas árvores<a class="anchor" aria-label="anchor" href="#m%C3%BAltiplas-%C3%A1rvores"><i class="fas fa-link"></i></a>
 </h2>
 <p>Múltiplas filogenias podem ser úteis se queremos incorporar incerteza filogenética, por
 exemplo, replicando as mesmas análises em múltiplas árvores.
@@ -386,9 +386,9 @@ phylo como para multiPhylo.</p>
 <span><span class="va">tree_cortado</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">tree_cortado</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="sinal-filogenético" class="section level2" number="1.12">
+<div id="sinal-filogenético" class="section level2" number="0.15">
 <h2>
-<span class="header-section-number">1.12</span> Sinal Filogenético<a class="anchor" aria-label="anchor" href="#sinal-filogen%C3%A9tico"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.15</span> Sinal Filogenético<a class="anchor" aria-label="anchor" href="#sinal-filogen%C3%A9tico"><i class="fas fa-link"></i></a>
 </h2>
 <p>Sinal filogenético é meramente um padrão que mostra se espécies mais próximas têm
 valores de atributo mais similares do que espécies mais distantes. É comum encontrar
@@ -445,9 +445,9 @@ K&gt;1 indica sinal filogenético maior do que esperado pelo modelo Browniano
 <span>args.plotTree<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>fsize<span class="op">=</span><span class="fl">0.5</span>,ftype<span class="op">=</span><span class="st">"i"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="exercício-1---árvore-filogenética-no-r" class="section level2" number="1.13">
+<div id="exercício-1---árvore-filogenética-no-r" class="section level2" number="0.16">
 <h2>
-<span class="header-section-number">1.13</span> Exercício 1 - Árvore filogenética no R<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio-1---%C3%A1rvore-filogen%C3%A9tica-no-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">0.16</span> Exercício 1 - Árvore filogenética no R<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio-1---%C3%A1rvore-filogen%C3%A9tica-no-r"><i class="fas fa-link"></i></a>
 </h2>
 <p>Carregue uma árvore filogenética para o seu grupo de estudo e observe a estrutura dela.
 Represente a árvore graficamente de diferentes formas. Se você tiver variáveis
@@ -462,19 +462,19 @@ fenotípicas para o seu grupo de estudo, tente carregar no R e testar o sinal fi
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#manipulando-filogenias-no-r---sinal-filogen%C3%A9tico">1. Manipulando filogenias no R - Sinal Filogenético</a></li>
-<li><a class="nav-link" href="#o-ambiente-r"><span class="header-section-number">1.1</span> O ambiente R</a></li>
-<li><a class="nav-link" href="#set-working-directory"><span class="header-section-number">1.2</span> Set working directory</a></li>
-<li><a class="nav-link" href="#scripts"><span class="header-section-number">1.3</span> Scripts</a></li>
-<li><a class="nav-link" href="#funcionamento-b%C3%A1sico-do-r"><span class="header-section-number">1.4</span> Funcionamento básico do R</a></li>
-<li><a class="nav-link" href="#tipos-de-objeto-no-r"><span class="header-section-number">1.5</span> Tipos de objeto no R</a></li>
-<li><a class="nav-link" href="#pacotes-filogen%C3%A9ticos-no-r"><span class="header-section-number">1.6</span> Pacotes filogenéticos no R</a></li>
-<li><a class="nav-link" href="#o-objeto-phylo"><span class="header-section-number">1.7</span> O objeto “phylo”</a></li>
-<li><a class="nav-link" href="#lendo-e-manipulando-%C3%A1rvores-filogen%C3%A9ticas"><span class="header-section-number">1.8</span> Lendo e manipulando árvores filogenéticas</a></li>
-<li><a class="nav-link" href="#extraindo-clados-ou-esp%C3%A9cies-da-%C3%A1rvore"><span class="header-section-number">1.9</span> Extraindo clados ou espécies da árvore</a></li>
-<li><a class="nav-link" href="#resolvendo-politomias"><span class="header-section-number">1.10</span> Resolvendo politomias</a></li>
-<li><a class="nav-link" href="#m%C3%BAltiplas-%C3%A1rvores"><span class="header-section-number">1.11</span> Múltiplas árvores</a></li>
-<li><a class="nav-link" href="#sinal-filogen%C3%A9tico"><span class="header-section-number">1.12</span> Sinal Filogenético</a></li>
-<li><a class="nav-link" href="#exerc%C3%ADcio-1---%C3%A1rvore-filogen%C3%A9tica-no-r"><span class="header-section-number">1.13</span> Exercício 1 - Árvore filogenética no R</a></li>
+<li><a class="nav-link" href="#o-ambiente-r"><span class="header-section-number">0.4</span> O ambiente R</a></li>
+<li><a class="nav-link" href="#set-working-directory"><span class="header-section-number">0.5</span> Set working directory</a></li>
+<li><a class="nav-link" href="#scripts"><span class="header-section-number">0.6</span> Scripts</a></li>
+<li><a class="nav-link" href="#funcionamento-b%C3%A1sico-do-r"><span class="header-section-number">0.7</span> Funcionamento básico do R</a></li>
+<li><a class="nav-link" href="#tipos-de-objeto-no-r"><span class="header-section-number">0.8</span> Tipos de objeto no R</a></li>
+<li><a class="nav-link" href="#pacotes-filogen%C3%A9ticos-no-r"><span class="header-section-number">0.9</span> Pacotes filogenéticos no R</a></li>
+<li><a class="nav-link" href="#o-objeto-phylo"><span class="header-section-number">0.10</span> O objeto “phylo”</a></li>
+<li><a class="nav-link" href="#lendo-e-manipulando-%C3%A1rvores-filogen%C3%A9ticas"><span class="header-section-number">0.11</span> Lendo e manipulando árvores filogenéticas</a></li>
+<li><a class="nav-link" href="#extraindo-clados-ou-esp%C3%A9cies-da-%C3%A1rvore"><span class="header-section-number">0.12</span> Extraindo clados ou espécies da árvore</a></li>
+<li><a class="nav-link" href="#resolvendo-politomias"><span class="header-section-number">0.13</span> Resolvendo politomias</a></li>
+<li><a class="nav-link" href="#m%C3%BAltiplas-%C3%A1rvores"><span class="header-section-number">0.14</span> Múltiplas árvores</a></li>
+<li><a class="nav-link" href="#sinal-filogen%C3%A9tico"><span class="header-section-number">0.15</span> Sinal Filogenético</a></li>
+<li><a class="nav-link" href="#exerc%C3%ADcio-1---%C3%A1rvore-filogen%C3%A9tica-no-r"><span class="header-section-number">0.16</span> Exercício 1 - Árvore filogenética no R</a></li>
 </ul>
 
       <div class="book-extra">
@@ -492,7 +492,7 @@ fenotípicas para o seu grupo de estudo, tente carregar no R e testar o sinal fi
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Oficina de Ecologia Evolutiva</strong>" was written by Renan Maestri &amp; Leandro Duarte. It was last built on 2026-07-02.</p>
+    <p>"<strong>Oficina de Ecologia Evolutiva</strong>" was written by Renan Maestri &amp; Leandro Duarte. It was last built on 2026-07-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

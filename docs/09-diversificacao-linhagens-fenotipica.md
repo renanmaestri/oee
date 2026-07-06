@@ -1,4 +1,4 @@
-# 8. Diversificação de linhagens e fenotípica ao longo do tempo {-}
+# Diversificação de linhagens e fenotípica ao longo do tempo
 
 Vamos carregar a hipótese filogenética para roedores sigmodontíneos. 
 

@@ -1,4 +1,4 @@
-# 5. Correlação de atributos discretos {-}
+# Correlação de atributos discretos
 
 Carregar filogenia e atributos para espécies de primatas. 
 

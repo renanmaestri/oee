@@ -1,4 +1,4 @@
-# 3. Modelos para evolução de fenótipos discretos {-}
+# Modelos para evolução de fenótipos discretos
 
 Carregar filogenia e atributos para espécies de primatas. 
 

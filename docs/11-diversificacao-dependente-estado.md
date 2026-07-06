@@ -1,4 +1,4 @@
-# 10. Diversificação dependente de estado {-}
+# Diversificação dependente de estado
 
 
 ## Diversificação dependente de estado

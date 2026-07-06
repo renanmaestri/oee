@@ -1,6 +1,6 @@
 # (PART) MÓDULO II {-}
 
-# 1. Manipulando as bases de dados {-}
+# Manipulando as bases de dados
 
 Em estudos sobre macroevolução, normalmente as bases de dados envolvem 
 informações sobre atributos e árvores filogenéticas. Porém, quando integramos o 

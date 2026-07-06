@@ -1,4 +1,4 @@
-# 3. Diversidade beta filogenética {-}
+# Diversidade beta filogenética
 
 Da mesma forma que para as medidas de diversidade alfa filogenética, existem outras 
 tantas equivalentes para avaliar diversidade beta filogenética (PBD). 

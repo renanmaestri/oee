@@ -1,6 +1,6 @@
 # (PART) MÓDULO I {-}
 
-# 1. Manipulando filogenias no R - Sinal Filogenético {-}
+# Manipulando filogenias no R - Sinal Filogenético
 
 
 ## O ambiente R

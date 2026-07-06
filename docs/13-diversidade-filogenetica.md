@@ -1,4 +1,4 @@
-# 2. Diversidade filogenética {-}
+# Diversidade filogenética
 
 Existem diversas medidas de diversidade filogenética (PD), e várias delas apresentam 
 correspondência com medidas de diversidade funcional. Além disso, algumas são 

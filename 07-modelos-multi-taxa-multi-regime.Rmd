@@ -1,4 +1,4 @@
-# 6. Modelos multi-taxa e multi-regime {-}
+# Modelos multi-taxa e multi-regime
 
 Modelos mais complexos que permitem que os parâmetros σ 2 , α, e θ (taxa, seleção, 
 ótimo) variem podem ser implementados com o pacote OUwie. 

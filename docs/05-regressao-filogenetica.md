@@ -1,4 +1,4 @@
-# 4. Regressão Filogenética {-}
+# Regressão Filogenética
 
 Esse tutorial implementa os Contrastes Filogenéticos Independentes (PIC) (Felsenstein 
 (1985), PGLS (Grafen 1989) e PVR (Diniz-Filho et al. 1998). 

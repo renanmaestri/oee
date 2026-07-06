@@ -4,18 +4,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>9. Estimativas de taxas de especiação e extinção | Oficina de Ecologia Evolutiva</title>
+<title>Capítulo 9 Estimativas de taxas de especiação e extinção | Oficina de Ecologia Evolutiva</title>
 <meta name="author" content="Renan Maestri &amp; Leandro Duarte">
-<meta name="description" content='0.35 Diversificação Constante Vamos usar os dados de primatas que já vimos antes. require(ape) require(phytools) # Filogenia tree&lt;-read.tree("dados/primate-tree.txt")...'>
+<meta name="description" content='9.1 Diversificação Constante Vamos usar os dados de primatas que já vimos antes. require(ape) require(phytools) # Filogenia tree&lt;-read.tree("dados/primate-tree.txt")...'>
 <meta name="generator" content="bookdown 0.47 with bs4_book()">
-<meta property="og:title" content="9. Estimativas de taxas de especiação e extinção | Oficina de Ecologia Evolutiva">
+<meta property="og:title" content="Capítulo 9 Estimativas de taxas de especiação e extinção | Oficina de Ecologia Evolutiva">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://renanmaestri.github.io/oee/estimativas-de-taxas-de-especiação-e-extinção.html">
 <meta property="og:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
-<meta property="og:description" content='0.35 Diversificação Constante Vamos usar os dados de primatas que já vimos antes. require(ape) require(phytools) # Filogenia tree&lt;-read.tree("dados/primate-tree.txt")...'>
+<meta property="og:description" content='9.1 Diversificação Constante Vamos usar os dados de primatas que já vimos antes. require(ape) require(phytools) # Filogenia tree&lt;-read.tree("dados/primate-tree.txt")...'>
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="9. Estimativas de taxas de especiação e extinção | Oficina de Ecologia Evolutiva">
-<meta name="twitter:description" content='0.35 Diversificação Constante Vamos usar os dados de primatas que já vimos antes. require(ape) require(phytools) # Filogenia tree&lt;-read.tree("dados/primate-tree.txt")...'>
+<meta name="twitter:title" content="Capítulo 9 Estimativas de taxas de especiação e extinção | Oficina de Ecologia Evolutiva">
+<meta name="twitter:description" content='9.1 Diversificação Constante Vamos usar os dados de primatas que já vimos antes. require(ape) require(phytools) # Filogenia tree&lt;-read.tree("dados/primate-tree.txt")...'>
 <meta name="twitter:image" content="https://renanmaestri.github.io/oee/images/Logo JPEG.jpg">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -72,22 +72,22 @@
 <li><a class="" href="index.html">Prefácio</a></li>
 <li><a class="" href="estrutura-e-programa-da-disciplina.html">Estrutura e Programa da Disciplina</a></li>
 <li class="book-part">MÓDULO I</li>
-<li><a class="" href="manipulando-filogenias-no-r---sinal-filogen%C3%A9tico.html">1. Manipulando filogenias no R - Sinal Filogenético</a></li>
-<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos.html">2. Modelos para evolução de fenótipos contínuos</a></li>
-<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-discretos.html">3. Modelos para evolução de fenótipos discretos</a></li>
-<li><a class="" href="regress%C3%A3o-filogen%C3%A9tica.html">4. Regressão Filogenética</a></li>
-<li><a class="" href="correla%C3%A7%C3%A3o-de-atributos-discretos.html">5. Correlação de atributos discretos</a></li>
-<li><a class="" href="modelos-multi-taxa-e-multi-regime.html">6. Modelos multi-taxa e multi-regime</a></li>
-<li><a class="" href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html">7. Métodos filogenéticos multivariados</a></li>
-<li><a class="" href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html">8. Diversificação de linhagens e fenotípica ao longo do tempo</a></li>
-<li><a class="active" href="estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o.html">9. Estimativas de taxas de especiação e extinção</a></li>
-<li><a class="" href="diversifica%C3%A7%C3%A3o-dependente-de-estado.html">10. Diversificação dependente de estado</a></li>
+<li><a class="" href="manipulando-filogenias-no-r---sinal-filogen%C3%A9tico.html"><span class="header-section-number">1</span> Manipulando filogenias no R - Sinal Filogenético</a></li>
+<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-cont%C3%ADnuos.html"><span class="header-section-number">2</span> Modelos para evolução de fenótipos contínuos</a></li>
+<li><a class="" href="modelos-para-evolu%C3%A7%C3%A3o-de-fen%C3%B3tipos-discretos.html"><span class="header-section-number">3</span> Modelos para evolução de fenótipos discretos</a></li>
+<li><a class="" href="regress%C3%A3o-filogen%C3%A9tica.html"><span class="header-section-number">4</span> Regressão Filogenética</a></li>
+<li><a class="" href="correla%C3%A7%C3%A3o-de-atributos-discretos.html"><span class="header-section-number">5</span> Correlação de atributos discretos</a></li>
+<li><a class="" href="modelos-multi-taxa-e-multi-regime.html"><span class="header-section-number">6</span> Modelos multi-taxa e multi-regime</a></li>
+<li><a class="" href="m%C3%A9todos-filogen%C3%A9ticos-multivariados.html"><span class="header-section-number">7</span> Métodos filogenéticos multivariados</a></li>
+<li><a class="" href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html"><span class="header-section-number">8</span> Diversificação de linhagens e fenotípica ao longo do tempo</a></li>
+<li><a class="active" href="estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o.html"><span class="header-section-number">9</span> Estimativas de taxas de especiação e extinção</a></li>
+<li><a class="" href="diversifica%C3%A7%C3%A3o-dependente-de-estado.html"><span class="header-section-number">10</span> Diversificação dependente de estado</a></li>
 <li class="book-part">MÓDULO II</li>
-<li><a class="" href="manipulando-as-bases-de-dados.html">1. Manipulando as bases de dados</a></li>
-<li><a class="" href="diversidade-filogen%C3%A9tica.html">2. Diversidade filogenética</a></li>
-<li><a class="" href="diversidade-beta-filogen%C3%A9tica.html">3. Diversidade beta filogenética</a></li>
-<li><a class="" href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html">4. Seleção e composição fenotípica</a></li>
-<li><a class="" href="medidas-de-diversifica%C3%A7%C3%A3o.html">5. Medidas de diversificação</a></li>
+<li><a class="" href="manipulando-as-bases-de-dados.html"><span class="header-section-number">11</span> Manipulando as bases de dados</a></li>
+<li><a class="" href="diversidade-filogen%C3%A9tica.html"><span class="header-section-number">12</span> Diversidade filogenética</a></li>
+<li><a class="" href="diversidade-beta-filogen%C3%A9tica.html"><span class="header-section-number">13</span> Diversidade beta filogenética</a></li>
+<li><a class="" href="sele%C3%A7%C3%A3o-e-composi%C3%A7%C3%A3o-fenot%C3%ADpica.html"><span class="header-section-number">14</span> Seleção e composição fenotípica</a></li>
+<li><a class="" href="medidas-de-diversifica%C3%A7%C3%A3o.html"><span class="header-section-number">15</span> Medidas de diversificação</a></li>
 <li><a class="" href="refer%C3%AAncias-2.html">Referências</a></li>
 </ul>
 
@@ -96,12 +96,13 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="estimativas-de-taxas-de-especiação-e-extinção" class="section level1 unnumbered">
-<h1>9. Estimativas de taxas de especiação e extinção<a class="anchor" aria-label="anchor" href="#estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="estimativas-de-taxas-de-especiação-e-extinção" class="section level1" number="9">
+<h1>
+<span class="header-section-number">Capítulo 9</span> Estimativas de taxas de especiação e extinção<a class="anchor" aria-label="anchor" href="#estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o"><i class="fas fa-link"></i></a>
 </h1>
-<div id="diversificação-constante" class="section level2" number="0.35">
+<div id="diversificação-constante" class="section level2" number="9.1">
 <h2>
-<span class="header-section-number">0.35</span> Diversificação Constante<a class="anchor" aria-label="anchor" href="#diversifica%C3%A7%C3%A3o-constante"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.1</span> Diversificação Constante<a class="anchor" aria-label="anchor" href="#diversifica%C3%A7%C3%A3o-constante"><i class="fas fa-link"></i></a>
 </h2>
 <p>Vamos usar os dados de primatas que já vimos antes.</p>
 <div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
@@ -184,9 +185,9 @@ diversificação usando a distribuição posterior probabilidades.</p>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">4</span>,<span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/diversitree/man/profiles.plot.html">profiles.plot</a></span><span class="op">(</span><span class="va">postSamples</span>,col.line<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span><span class="op">)</span>,las<span class="op">=</span><span class="fl">1</span>,legend <span class="op">=</span><span class="st">"topright"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="diversificação-time-dependent" class="section level2" number="0.36">
+<div id="diversificação-time-dependent" class="section level2" number="9.2">
 <h2>
-<span class="header-section-number">0.36</span> Diversificação Time-dependent<a class="anchor" aria-label="anchor" href="#diversifica%C3%A7%C3%A3o-time-dependent"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.2</span> Diversificação Time-dependent<a class="anchor" aria-label="anchor" href="#diversifica%C3%A7%C3%A3o-time-dependent"><i class="fas fa-link"></i></a>
 </h2>
 <p>Vamos carregar uma filogenia de marsupiais.</p>
 <div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
@@ -241,9 +242,9 @@ Se não temos uma hipótese a priori de quais clados tem diversificação mais r
 podemos identificar mudanças rápidas olhando pra árvore, ou usando métodos como o
 MEDUSA ou o BAMM para detectar mudanças na diversificação.</p>
 </div>
-<div id="diversificação-clade-dependent" class="section level2" number="0.37">
+<div id="diversificação-clade-dependent" class="section level2" number="9.3">
 <h2>
-<span class="header-section-number">0.37</span> Diversificação Clade-dependent<a class="anchor" aria-label="anchor" href="#diversifica%C3%A7%C3%A3o-clade-dependent"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.3</span> Diversificação Clade-dependent<a class="anchor" aria-label="anchor" href="#diversifica%C3%A7%C3%A3o-clade-dependent"><i class="fas fa-link"></i></a>
 </h2>
 <p>MEDUSA</p>
 <div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
@@ -264,9 +265,9 @@ Agora podemos hipotetizar, como exemplo, que o clado dos cangurus e aliados
 <span><span class="va">resto.tree</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/drop.tip.html">drop.tip</a></span><span class="op">(</span><span class="va">tree</span>,<span class="va">macropodidae.tree</span><span class="op">$</span><span class="va">tip.label</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">resto.tree</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="diversificação-clade-dependent-e-time-dependent" class="section level2" number="0.38">
+<div id="diversificação-clade-dependent-e-time-dependent" class="section level2" number="9.4">
 <h2>
-<span class="header-section-number">0.38</span> Diversificação Clade-dependent e Time-dependent<a class="anchor" aria-label="anchor" href="#diversifica%C3%A7%C3%A3o-clade-dependent-e-time-dependent"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.4</span> Diversificação Clade-dependent e Time-dependent<a class="anchor" aria-label="anchor" href="#diversifica%C3%A7%C3%A3o-clade-dependent-e-time-dependent"><i class="fas fa-link"></i></a>
 </h2>
 <p>Vamos usar RPANDA para ajustar modelos com taxas variáveis entre clados.
 Para facilitar, vamos unir os modelos em uma função.</p>
@@ -310,14 +311,14 @@ tempo para os modelos mais prováveis de cada clado.</p>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">macropodidae.tree</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">resto.tree</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="exercício-9-diversificação-dependente-de-variável" class="section level2" number="0.39">
+<div id="exercício-9-diversificação-dependente-de-variável" class="section level2" number="9.5">
 <h2>
-<span class="header-section-number">0.39</span> Exercício 9 – Diversificação dependente de variável<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio-9-diversifica%C3%A7%C3%A3o-dependente-de-vari%C3%A1vel"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.5</span> Exercício 9 – Diversificação dependente de variável<a class="anchor" aria-label="anchor" href="#exerc%C3%ADcio-9-diversifica%C3%A7%C3%A3o-dependente-de-vari%C3%A1vel"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="ambiental" class="section level2" number="0.40">
+<div id="ambiental" class="section level2" number="9.6">
 <h2>
-<span class="header-section-number">0.40</span> ambiental<a class="anchor" aria-label="anchor" href="#ambiental"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.6</span> ambiental<a class="anchor" aria-label="anchor" href="#ambiental"><i class="fas fa-link"></i></a>
 </h2>
 <p>RPANDA pode ser usado para ajustar modelos de diversificação dependente de
 variável ambiental (fit_env). Como variável adicional, esse modelo requer uma
@@ -343,18 +344,18 @@ Plote os resultados com plot_fit_env e interprete os resultados.</p>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html">8. Diversificação de linhagens e fenotípica ao longo do tempo</a></div>
-<div class="next"><a href="diversifica%C3%A7%C3%A3o-dependente-de-estado.html">10. Diversificação dependente de estado</a></div>
+<div class="prev"><a href="diversifica%C3%A7%C3%A3o-de-linhagens-e-fenot%C3%ADpica-ao-longo-do-tempo.html"><span class="header-section-number">8</span> Diversificação de linhagens e fenotípica ao longo do tempo</a></div>
+<div class="next"><a href="diversifica%C3%A7%C3%A3o-dependente-de-estado.html"><span class="header-section-number">10</span> Diversificação dependente de estado</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o">9. Estimativas de taxas de especiação e extinção</a></li>
-<li><a class="nav-link" href="#diversifica%C3%A7%C3%A3o-constante"><span class="header-section-number">0.35</span> Diversificação Constante</a></li>
-<li><a class="nav-link" href="#diversifica%C3%A7%C3%A3o-time-dependent"><span class="header-section-number">0.36</span> Diversificação Time-dependent</a></li>
-<li><a class="nav-link" href="#diversifica%C3%A7%C3%A3o-clade-dependent"><span class="header-section-number">0.37</span> Diversificação Clade-dependent</a></li>
-<li><a class="nav-link" href="#diversifica%C3%A7%C3%A3o-clade-dependent-e-time-dependent"><span class="header-section-number">0.38</span> Diversificação Clade-dependent e Time-dependent</a></li>
-<li><a class="nav-link" href="#exerc%C3%ADcio-9-diversifica%C3%A7%C3%A3o-dependente-de-vari%C3%A1vel"><span class="header-section-number">0.39</span> Exercício 9 – Diversificação dependente de variável</a></li>
-<li><a class="nav-link" href="#ambiental"><span class="header-section-number">0.40</span> ambiental</a></li>
+<li><a class="nav-link" href="#estimativas-de-taxas-de-especia%C3%A7%C3%A3o-e-extin%C3%A7%C3%A3o"><span class="header-section-number">9</span> Estimativas de taxas de especiação e extinção</a></li>
+<li><a class="nav-link" href="#diversifica%C3%A7%C3%A3o-constante"><span class="header-section-number">9.1</span> Diversificação Constante</a></li>
+<li><a class="nav-link" href="#diversifica%C3%A7%C3%A3o-time-dependent"><span class="header-section-number">9.2</span> Diversificação Time-dependent</a></li>
+<li><a class="nav-link" href="#diversifica%C3%A7%C3%A3o-clade-dependent"><span class="header-section-number">9.3</span> Diversificação Clade-dependent</a></li>
+<li><a class="nav-link" href="#diversifica%C3%A7%C3%A3o-clade-dependent-e-time-dependent"><span class="header-section-number">9.4</span> Diversificação Clade-dependent e Time-dependent</a></li>
+<li><a class="nav-link" href="#exerc%C3%ADcio-9-diversifica%C3%A7%C3%A3o-dependente-de-vari%C3%A1vel"><span class="header-section-number">9.5</span> Exercício 9 – Diversificação dependente de variável</a></li>
+<li><a class="nav-link" href="#ambiental"><span class="header-section-number">9.6</span> ambiental</a></li>
 </ul>
 
       <div class="book-extra">

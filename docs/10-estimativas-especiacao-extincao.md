@@ -1,4 +1,4 @@
-# 9. Estimativas de taxas de especiação e extinção {-}
+# Estimativas de taxas de especiação e extinção
 
 
 ## Diversificação Constante
